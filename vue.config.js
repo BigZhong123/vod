@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: './',
   // 全局引入scss文件
   css: {
     loaderOptions: {
