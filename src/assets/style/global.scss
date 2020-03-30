@@ -1,0 +1,98 @@
+// @import './reset.scss';
+@import "./px2rem.scss";
+@import "./transition.scss";
+@import "../theme/theme.scss";
+
+a {
+  color: #515a6e;
+}
+
+#chatra.chatra--side-bottom {
+  bottom: 10% !important;
+}
+
+.ivu-message-notice-content {
+  padding: px2rem(20) px2rem(40);
+}
+.ivu-message .ivu-icon {
+  font-size: px2rem(50);
+}
+.ivu-message-custom-content span {
+  font-size: px2rem(30);
+}
+
+.item-input {
+  display: inline-block;
+  width: 100%;
+  height: px2rem(80);
+  line-height: px2rem(80);
+  padding: px2rem(20) px2rem(20);
+  border: 1px solid #dcdee2;
+  border-radius: 4px;
+  color: #515a6e;
+  background-color: #fff;
+  background-image: none;
+  position: relative;
+  cursor: text;
+  font-size: px2rem(35);
+  transition: border 0.2s ease-in-out, background 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  &:focus {
+    outline: 0;
+    border-color: #5872f1;
+  }
+}
+
+.ivu-upload {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ivu-btn {
+  font-size: px2rem(30);
+  height: auto;
+  padding: px2rem(10) px2rem(20);
+  border-radius: px2rem(8);
+}
+.ivu-upload-list-file {
+  font-size: px2rem(40);
+  padding: 0 0 0 px2rem(10);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: white;
+}
+.ivu-upload-list-file > span i {
+  margin-right: px2rem(30);
+}
+.ivu-upload-list {
+  margin: px2rem(20) 0 auto;
+  width: 90%;
+}
+.ivu-upload-list-remove {
+  font-size: px2rem(40);
+}
+.ivu-progress {
+  display: flex;
+  align-items: center;
+  padding: 0 px2rem(8) 0 0;
+  box-sizing: border-box;
+}
+.ivu-progress-show-info .ivu-progress-outer {
+  // padding-right: px2rem(100);
+}
+// 背景条高度
+.ivu-progress-bg {
+  height: px2rem(5);
+}
+// 上传进度颜色
+.ivu-progress-text {
+  color: #6494ff;
+  font-size: px2rem(24);
+}

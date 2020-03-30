@@ -1,0 +1,21 @@
+$bg-color-light: white;
+$bg-color-night: #000000;
+$bg-color-pink: #ff8f8f;
+$bg-color-green:#0bba4f;
+
+@mixin color_primary($color){
+  // color:$color;
+  /*判断匹配*/
+  [data-theme="light"] & {
+    background-color: $bg-color-light;
+  }
+  [data-theme="night"] & {
+    background-color: $bg-color-night;
+  }
+  [data-theme="pink"] & {
+    background-color: $bg-color-pink;
+  }
+  [data-theme="green"] & {
+    background-color: $bg-color-green;
+  }
+}
