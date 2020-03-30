@@ -5,7 +5,7 @@ import { Base64 } from 'js-base64';
 export const getCode = function (email) {
   return axios({
     methods: 'GET',
-    url: '/res/get_email_check_code',
+    url: '/api/get_email_check_code',
     params: {
       email
     }
@@ -21,7 +21,7 @@ export const toRegister = function (params) {
     emailCheckCode: code,
     password
   };
-  const url = '/res/register';
+  const url = '/api/register';
   // return axios.post(url, data)
   return axios({
     url,

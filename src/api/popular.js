@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getPartVideoLists = function(id, page) {
-    const url = '/res/video/get_partition_videos';
+    const url = '/api/video/get_partition_videos';
     const partition_id = id;
     const params = {
         partition_id,

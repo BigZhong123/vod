@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const clickVideo = function(userId, videoId) {
-    const url = '/res/video/click';
+    const url = '/api/video/click';
     const params = {
         user_id: userId,
         video_id: videoId
