@@ -5,14 +5,14 @@
     </div>
     <div class="classification">
       <div class="class-type">
-        <router-link to="/watch/introduce" @click.native="type = 1">视频简介</router-link>
-        <router-link to="/watch/comment" @click.native="type = 2">精选评论</router-link>
+        <router-link :to="{name: 'watchIntroduce'}" @click.native="type = 1">视频简介</router-link>
+        <router-link :to="{name: 'watchComment'}" @click.native="type = 2">精选评论</router-link>
       </div>
       <div class="b-bottom" :class="{'right': type === 2}"></div>
     </div>
-    <keep-alive>
+    <!-- <keep-alive> -->
       <router-view @switchVideo="switchVideo"></router-view>
-    </keep-alive>
+    <!-- </keep-alive> -->
   </div>
 </template>
 
@@ -70,7 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 .watch {
-  margin-top: px2rem(100);
+  margin: 50px 0;
   .video-wrapper {
 
   }
@@ -81,14 +81,14 @@ export default {
         display: inline-block;
         width: 50%;
         text-align: center;
-        font-size: px2rem(26);
-        padding: px2rem(20) 0;
+        font-size: 12px;
+        padding: 10px 0;
         transition: all .2s linear;
       }
     }
     .b-bottom {
       background-color: pink;
-      height: px2rem(4);
+      height: 2px;
       position: absolute;
       bottom: 0;
       left: 0;

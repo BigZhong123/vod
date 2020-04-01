@@ -2,88 +2,62 @@
   <div class="mine">
     <div class="line"
       @click="handleShowavatar"
-      style="margin-top: 40px;">
+      style="margin-top: 10px;">
       <div class="line-left">
-        <Icon type="md-person" size="80" />
+        <Icon type="md-person" size="25" />
         <span class="line-text">头像</span>
       </div>
       <div class="line-right">
         <img :src="userInfo.avatar">
-        <Icon type="ios-arrow-forward" size="80" />
+        <Icon type="ios-arrow-forward" size="20" />
       </div>
     </div>
     <div class="line"
       @click="handleShowName"
-      style="margin-top: 40px;">
+      style="margin-top: 10px;">
       <div class="line-left">
         <Icon type="ios-time-outline"
-            size="80" />
+            size="25" />
         <span class="line-text">昵称</span>
       </div>
       <div class="line-right">
         <span>{{userInfo.nickname}}</span>
-        <Icon type="ios-arrow-forward" size="80" />
+        <Icon type="ios-arrow-forward" size="20" />
       </div>
     </div>
     <div class="line"
       @click="handleShowInstro"
-      style="margin-top: 40px;">
+      style="margin-top: 10px;">
       <div class="line-left">
         <Icon type="ios-bookmark"
-            size="80" />
+            size="25" />
         <span class="line-text">个人简介</span>
       </div>
       <div class="line-right">
         <span>{{userInfo.introduction}}</span>
-        <Icon type="ios-arrow-forward" size="80" />
+        <Icon type="ios-arrow-forward" size="20" />
       </div>
     </div>
     <div class="line"
-      style="margin-top: 40px;"
+      style="margin-top: 10px;"
       @click="handleShowVideo">
       <div class="line-left">
         <Icon type="md-cloud-upload"
-            size="80" />
+            size="25" />
         <span class="line-text">上传视频</span>
       </div>
-      <Icon type="ios-arrow-forward" size="80" />
+      <Icon type="ios-arrow-forward" size="20" />
     </div>
     <div class="line"
-      style="margin-top: 40px;">
+      style="margin-top: 10px;">
       <div class="line-left">
         <Icon type="logo-youtube"
-            size="80" />
-        <span class="line-text">我的视频</span>
+            size="25" />
+        <span class="line-text">我的收藏</span>
       </div>
-      <Icon type="ios-arrow-forward" size="80" />
+      <Icon type="ios-arrow-forward" size="20" />
     </div>
     <br><br>
-    <!-- <div class="exceptional">
-      <div class="play">播放列表</div>
-      <div class="play-video-lists">
-        <div class="lists-image">
-          <img src="@/assets/images/video-list-bg.jpg">
-          <div class="video-num-wrapper">
-            <div class="video-num">
-              <div class="num">0</div>
-              <div>
-                <Icon type="md-list"
-                      size="80" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="info">
-          <div class="info-text1">
-            打赏过的视频
-          </div>
-          <div class="info-text2">
-            <div>bobo</div>
-            <div>无视频</div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <modal-bg v-if="showavatar">
       <div class="content" v-click-outside="hideModal">
         <Upload
@@ -216,12 +190,12 @@ export default {
 
 <style lang="scss" scoped>
 .mine {
-  margin: px2rem(100) 0;
+  margin: 50px 0;
   position: relative;
   .line {
-    padding: px2rem(20) px2rem(30);
+    padding: 5px 10px;
     box-sizing: content-box;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #eee;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -229,8 +203,8 @@ export default {
       display: flex;
       align-items: center;
       .line-text {
-        font-size: px2rem(26);
-        margin-left: px2rem(20);
+        font-size: 12px;
+        margin-left: 10px;
         line-height: inherit;
         height: 100%;
         display: inline-block;
@@ -240,68 +214,22 @@ export default {
       display: flex;
       align-items: center;
       span {
-        width: px2rem(200);
+        width: 100px;
         text-align: right;
-        font-size: px2rem(20);
+        font-size: 12px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        margin-right: 10px;
       }
       img {
-        width: px2rem(50);
-        height: px2rem(50);
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
+        margin-right: 10px;
       }
     }
   }
-  // .exceptional {
-  //   padding: px2rem(50) px2rem(30);
-  //   .play {
-  //     font-size: px2rem(34);
-  //   }
-  //   .play-video-lists {
-  //     display: flex;
-  //     .lists-image {
-  //       width: px2rem(300);
-  //       height: px2rem(200);
-  //       position: relative;
-  //       img {
-  //         width: px2rem(300);
-  //         height: px2rem(200);
-  //       }
-  //       .video-num-wrapper {
-  //         position: absolute;
-  //         bottom: 0;
-  //         right: 0;
-  //         width: px2rem(100);
-  //         height: px2rem(200);
-  //         color: white;
-  //         display: flex;
-  //         flex-direction: column;
-  //         justify-content: center;
-  //         align-items: center;
-  //         background-color: #111111cc;
-  //         .video-num {
-  //           .num {
-  //             text-align: center;
-  //             font-size: px2rem(24);
-  //           }
-  //         }
-  //       }
-  //     }
-  //     .info {
-  //       margin-left: px2rem(20);
-  //       .info-text1 {
-  //         color: #111111;
-  //         font-size: px2rem(26);
-  //       }
-  //       .info-text2 {
-  //         font-size: px2rem(24);
-  //         color: #707070;
-  //       }
-  //     }
-  //   }
-  // }
   .content {
     position: absolute;
     top: 50%;
@@ -312,7 +240,7 @@ export default {
     align-items: center;
     width: 100%;
     .upload {
-      margin-top: px2rem(30);
+      margin-top: 30px;
       display: inline-block;
       margin-bottom: 0;
       font-weight: 400;
@@ -327,9 +255,9 @@ export default {
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
-      padding: px2rem(10) px2rem(80);
-      font-size: px2rem(30);
-      border-radius: px2rem(8);
+      padding: 10px 80px;
+      font-size: 12px;
+      border-radius: 8px;
       transition: color .2s linear,background-color .2s linear,border .2s linear,box-shadow .2s linear;
       color: #1d63ff;
       background-color: #fff;

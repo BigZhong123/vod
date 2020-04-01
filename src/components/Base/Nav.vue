@@ -9,7 +9,7 @@
           <Icon
             type="logo-youtube"
             color="red"
-            size="100"
+            size="30"
             style="margin-right: 15px;"
           />
           <logo></logo>
@@ -17,9 +17,9 @@
         <div class="right-wrapper">
           <Icon
             type="md-search"
-            size="100"
+            size="30"
             @click="search"
-            style="margin-right: 20px;"
+            style="margin-right: 10px;"
           />
           <img
             src="@/assets/images/avatar.jpg"
@@ -64,14 +64,14 @@
               class="light"
               :class="{'selected-border': theme === 'light'}"
               @click="switchTheme('light')"
-              size="80"
+              size="30"
             />
             <Icon
               type="ios-moon-outline"
               class="night"
               :class="{'selected-border': theme === 'night'}"
               @click="switchTheme('night')"
-              size="80"
+              size="30"
             />
             <div
               class="pink"
@@ -158,13 +158,13 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: px2rem(100);
-    padding: 0 px2rem(20);
+    height: 50px;
+    padding: 0 0 0 10px;
     position: fixed;
     top: 0;
     width: 100%;
     @include color_primary($bg-color-light);
-    box-shadow: 0 8px 2px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.2);
     z-index: 999;
     .left-wrapper {
       display: flex;
@@ -177,34 +177,34 @@ export default {
       align-items: center;
       height: 100%;
       .image {
-        height: px2rem(80);
+        height: 40px;
         border-radius: 50%;
       }
       .more {
         display: inline-block;
-        width: px2rem(60);
-        height: px2rem(60);
+        width: 40px;
+        height: 30px;
         cursor: pointer;
         position: relative;
-        margin-right: px2rem(20);
+        margin-right: 20px;
         &::before,
         span,
         &::after {
           display: block;
           content: "";
-          width: px2rem(50);
-          height: px2rem(4);
+          width: 30px;
+          height: 2px;
           position: absolute;
-          top: px2rem(10);
+          top: 5px;
           left: 50%;
           background: #434341;
-          transition: all .2s linear;
+          transition: all .3s linear;
         }
         span {
-          top: px2rem(25);
+          top: 15px;
         }
         &::after {
-          top: px2rem(40);
+          top: 25px;
         }
       }
       .active {
@@ -212,48 +212,46 @@ export default {
           opacity: 0;
         }
         &::before {
-          top: px2rem(30);
+          top: 15px;
           transform: rotate(45deg);
         }
         &::after {
-          top: px2rem(30);
+          top: 15px;
           transform: rotate(-45deg);
         }
       }
     }
   }
   .menu {
-    height: px2rem(400);
+    height: 200px;
     width: 100%;
     position: fixed;
-    top: px2rem(-500);
+    top: -500px;
     left: 0;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     z-index: 500;
-    transition: all 0.2s linear;
+    transition: all 0.4s linear;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: px2rem(60) 0;
+    padding: 30px 0;
     align-items: center;
     .language-wrapper {
-      font-size: px2rem(24);
-      height: px2rem(60);
+      font-size: 14px;
       display: flex;
       align-items: center;
-      margin-bottom: px2rem(20);
+      margin-bottom: 10px;
       i {
-        font-size: px2rem(50);
+        font-size: 30px;
       }
     }
     .theme-wrapper {
-      font-size: px2rem(24);
-      margin-bottom: px2rem(25);
+      font-size: 14px;
+      margin-bottom: 25px;
       .fast-theme {
         display: flex;
         align-items: center;
-        height: px2rem(60);
         .theme-titlte {
         }
         .theme-opts {
@@ -261,30 +259,33 @@ export default {
           justify-content: space-between;
           align-items: center;
           .selected-border {
-            border: 2px solid #17233d;
+            border: 1px solid #17233d;
           }
           .light {
             box-sizing: border-box;
-            height: px2rem(50);
-            width: px2rem(50);
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            margin-right: 10px;
           }
           .night {
             box-sizing: border-box;
-            height: px2rem(50);
-            width: px2rem(50);
-            margin-right: px2rem(10);
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            margin-right: 10px;
           }
           .pink {
             background-color: pink;
-            height: px2rem(50);
-            width: px2rem(50);
-            margin-right: px2rem(10);
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
             box-sizing: border-box;
           }
           .green {
             background-color: lightgreen;
-            height: px2rem(50);
-            width: px2rem(50);
+            height: 30px;
+            width: 30px;
             box-sizing: border-box;
           }
         }
@@ -296,22 +297,22 @@ export default {
       justify-content: center;
       .register-btn,
       .login-btn {
-        height: px2rem(60);
-        width: px2rem(150);
-        line-height: px2rem(60);
+        height: 30px;
+        width: 80px;
+        line-height: 30px;
         text-align: center;
         @include color_primary($bg-color-light);
         a {
-          font-size: px2rem(20);
+          font-size: 14px;
         }
       }
       .login-btn {
-        margin-left: px2rem(20);
+        margin-left: 20px;
       }
     }
   }
   .showMenu {
-    top: px2rem(98);
+    top: 50px;
   }
 }
 </style>

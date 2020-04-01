@@ -20,7 +20,7 @@
     <div class="spin-wrapper" v-if="isBottomLoading">
       <Spin>
         <Icon type="ios-loading"
-              size=100
+              size=50
               class="demo-spin-icon-load"></Icon>
         <div class="loading-text">Loading</div>
       </Spin>
@@ -30,13 +30,13 @@
       <div class="search-box">
         <Icon type="ios-arrow-back"
               @click="cancelSearch"
-              size="60" />
+              size="20" />
         <Input v-model="searchContent"
                placeholder="在SUNTV中搜索..."
                class="search-ipt"
                clearable />
         <Icon type="ios-search"
-              size="60" />
+              size="20" />
       </div>
       <div class="search-history"
            v-if="historySearch.length > 0">
@@ -128,17 +128,16 @@ export default {
 
 <style lang="scss">
 .home {
-  margin: px2rem(100) 0;
+  margin: 50px 0;
   .shine {
     background: #ffc800;
     text-align: center;
-    padding: px2rem(10) 0;
     span {
-      font-size: px2rem(20);
+      font-size: 12px;
       color: red;
       animation: blink .8s infinite;
       i {
-        font-size: px2rem(30);
+        font-size: 10px;
       }
     }
   }
@@ -146,7 +145,7 @@ export default {
     position: relative;
     .loading-text {
       color: #515a6e;
-      font-size: px2rem(24);
+      font-size: 12px;
     }
   }
   .search-wrapper {
@@ -158,24 +157,24 @@ export default {
     width: 100%;
     background-color: hsla(0, 0%, 6.7%, 0.8);
     .search-box {
-      padding: 0 px2rem(24);
+      padding: 0 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: px2rem(100);
+      height: 50px;
       background-color: #eee;
       .search-ipt {
-        margin: 0 px2rem(30);
+        margin: 0 10px;
       }
     }
     .search-history {
-      padding: 0 px2rem(20);
+      padding: 0 10px;
       background-color: white;
-      border-bottom: px2rem(4) solid black;
+      border-bottom: 1px solid black;
       .history {
-        font-size: px2rem(24);
+        font-size: 12px;
         color: #6666ff;
-        height: px2rem(80);
+        height: 40px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -190,20 +189,20 @@ export default {
     color: #515a6e;
   }
   .ivu-input {
-    height: px2rem(60);
+    height: 30px;
     background-color: #eee;
     border: none;
-    border-bottom: 6px solid black;
-    font-size: px2rem(24);
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
     &:focus {
       box-shadow: 0 0 0;
       border-color: black;
     }
   }
   .ivu-input-icon {
-    font-size: px2rem(30);
-    height: px2rem(60);
-    line-height: px2rem(60);
+    font-size: 30px;
+    height: 60px;
+    line-height: 60px;
   }
 }
 .demo-spin-icon-load {

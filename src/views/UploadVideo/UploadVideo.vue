@@ -74,23 +74,23 @@ import { iconLists } from '@/utils/icon.js';
 
 <style lang="scss">
 .upload-video {
-    margin-top: px2rem(120);
+    margin: 50px 0 50px 0;
     .form {
-        width: 100%;
-        max-width: px2rem(700);
+        width: 95%;
         margin: 0 auto;
         input {
             border-top: none;
             border-left: none;
             border-right: none;
-            margin-top: px2rem(20);
-            font-size: px2rem(26);
+            margin-top: 10px;
+            font-size: 16px;
         }
         .upload-btn {
             width: 100%;
-            margin-top: px2rem(20);
+            margin-top: 20px;
             .btn {
                 width: 100%;
+                padding: 5px 0;
                 color: #001fff;
             }
             .ivu-upload {
@@ -99,30 +99,29 @@ import { iconLists } from '@/utils/icon.js';
         }
         .confirm-btn {
             width: 100%;
-            height: px2rem(65);
+            padding: 5px 0;
             text-align: center;
-            line-height: px2rem(65);
-            margin-top: px2rem(50);
-            font-size: px2rem(26);
-            border: px2rem(1) solid #001fff;
+            margin-top: 20px;
+            font-size: 14px;
+            border: 1px solid #001fff;
         }
         .tip {
-            margin: px2rem(20) 0 0 px2rem(10);
-            font-size: px2rem(26);
+            margin: 10px 0 0 0;
+            font-size: 16px;
         }
         .type {
             display: flex;
             flex-wrap: wrap;
-            margin-top: px2rem(20);
+            margin-top: 10px;
             .type-btn {
                 background: white;
                 color: #5f4b4b;
                 border: 1px solid #5f4b4b;
-                margin: px2rem(8);
-                border-radius: px2rem(4);
+                margin: 3px;
+                border-radius: 4px;
                 text-align: center;
-                padding: px2rem(5) px2rem(10);
-                font-size: px2rem(22);
+                padding: 5px 10px;
+                font-size: 12px;
             }
             .select-btn {
                 color: #001fff;

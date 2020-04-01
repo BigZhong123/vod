@@ -10,7 +10,7 @@ export default new Vuex.Store({
     isBottom: false, // 屏幕是否到达底部
     isSearch: false, // 是否搜索
     isMenu: false, // 菜单栏是否打开
-    userId: 8, // 用户id, null
+    userId: 7, // 用户id, null
     isLogin: true, // 是否登录 flase
     notRead: 0, // 订阅未阅读数
     isLoading: false, // 是否处于加载中

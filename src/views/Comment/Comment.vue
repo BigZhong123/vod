@@ -19,6 +19,6 @@
 
 <style lang="scss">
 .comment {
-  font-size: px2rem(26);
+  font-size: 16px;
 }
 </style>

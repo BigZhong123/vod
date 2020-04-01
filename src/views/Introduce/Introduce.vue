@@ -6,8 +6,8 @@
         <span>{{upName}}</span>
       </div>
       <div class="info-right">
-        <Icon type="md-heart" @click="showLove" :class="{'animation': isShowLove, 'isPink': isShowLove}" size="80" />
-        <Icon type="ios-star" @click="showCollect" :class="{'animation': isShowCollect, 'isPink': isShowCollect}" size="80" />
+        <Icon type="md-heart" @click="showLove" :class="{'animation': isShowLove, 'isPink': isShowLove}" size="30" />
+        <Icon type="ios-star" @click="showCollect" :class="{'animation': isShowCollect, 'isPink': isShowCollect}" size="30" />
         <div class="order-btn">
           <span>+ 关注</span>
         </div>
@@ -65,7 +65,6 @@ export default {
       getUserOperation(this.userId, this.currentVideoId).then(res => {
         if(res.data.status === 1) {
           const info = res.data.data;
-          // console.log(info)
           this.isShowLove = info.isLike > 0;
           this.isShowCollect = info.isCollect > 0;
         }
@@ -127,30 +126,31 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: px2rem(40) px2rem(40);
+    padding: 10px;
     .info-left {
       display: flex;
       align-items: center;
       img {
-        width: px2rem(50);
-        height: px2rem(50);
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
       }
       span {
-        font-size: px2rem(18);
-        margin-left: px2rem(20);
+        font-size: 14px;
+        margin-left: 20px;
       }
     }
     .info-right {
       display: flex;
+      align-items: center;
       .order-btn {
         background: #f98c8c;
         color: white;
-        font-size: px2rem(24);
-        padding: px2rem(10) px2rem(20);
+        font-size: 12px;
+        padding: 5px 10px;
       }
       i {
-        margin-right: px2rem(20);
+        margin-right: 10px;
         color: #505050;
       }
       .animation {
@@ -162,12 +162,12 @@ export default {
     }
   }
   .instroduction {
-    margin-top: px2rem(20);
-    padding: 0 px2rem(40);
-    font-size: px2rem(26);
+    margin-top: 5px;
+    padding: 0 20px;
+    font-size: 14px;
   }
   .small-video-wrapper {
-    margin-top: px2rem(40);
+    margin-top: 10px;
   }
 }
 @keyframes scale {

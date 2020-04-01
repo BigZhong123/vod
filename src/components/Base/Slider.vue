@@ -5,7 +5,7 @@
         <router-link :to="{ path: '/home' }"
                      tag="div">
           <Icon type="ios-home"
-                size="60" />
+                size="20" />
           <div>{{$t('slider.home')}}</div>
         </router-link>
       </div>
@@ -13,7 +13,7 @@
         <router-link :to="{ path: '/popular' }"
                      tag="div">
           <Icon type="ios-flame"
-                size="60" />
+                size="20" />
           <div>{{$t('slider.popular')}}</div>
         </router-link>
       </div>
@@ -21,7 +21,7 @@
         <router-link :to="{ path: '/order' }"
                      tag="div">
           <Icon type="logo-youtube"
-                size="60" />
+                size="20" />
           <div>{{$t('slider.order')}}</div>
         </router-link>
       </div>
@@ -29,7 +29,7 @@
         <router-link :to="{ path: '/mine' }"
                      tag="div">
           <Icon type="ios-contact"
-                size="60" />
+                size="20" />
           <div>{{$t('slider.mine')}}</div>
         </router-link>
       </div>
@@ -55,10 +55,11 @@ export default {
   width: 100%;
   position: fixed;
   bottom: 0;
+  z-index: 500;
   // background-color: white;
   @include color_primary($bg-color-light);
-  font-size: px2rem(25);
-  height: px2rem(100);
+  font-size: 12px;
+  height: 50px;
   .slider {
     height: 100%;
     display: flex;

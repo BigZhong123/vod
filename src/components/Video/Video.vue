@@ -76,32 +76,36 @@ export default {
     }
     .desc-wrapper {
       display: flex;
-      padding: px2rem(10) 0 px2rem(30) 0;
+      padding: 5px 20px 10px 0;
       @include color_primary($bg-color-light);
       .avatar-wrapper {
-        margin-left: px2rem(15);
-        margin-right: px2rem(30);
+        margin-left: 15px;
+        margin-right: 20px;
         .avatar {
-          width: px2rem(100);
-          height: px2rem(100);
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
         }
       }
       .text-wrapper {
         .title {
-          font-size: px2rem(25);
+          font-size: 12px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
         .name {
-          margin-top: px2rem(5);
-          font-size: px2rem(20);
+          font-size: 12px;
         }
         .num-time {
-          font-size: px2rem(20);
+          font-size: 12px;
           .dot {
             &::before {
               content: "\002022";
               margin: 4px;
-              font-size: px2rem(20);
+              font-size: 10px;
             }
           }
         }

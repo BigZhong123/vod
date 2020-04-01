@@ -65,16 +65,16 @@ export default {
   width: 100%;
   overflow: hidden;
   display: flex;
-  padding: px2rem(20) px2rem(40);
-  height: px2rem(190);
+  padding: 10px 10px;
+  height: 100px;
   box-sizing: border-box;
-  border-bottom: px2rem(1) solid #eee;
+  border-bottom: 1px solid #eee;
   .img-wrapper {
     display: inline-block;
     overflow: hidden;
-    height: px2rem(150);
-    width: px2rem(250);
-    flex: 0 0 px2rem(250);
+    height: 80px;
+    width: 130px;
+    flex: 0 0 130px;
     img {
       width: 100%;
     }
@@ -82,23 +82,25 @@ export default {
   .info-wrapper {
     height: 100%;
     display: inline-block;
-    font-size: px2rem(24);
-    margin-left: px2rem(40);
+    font-size: 12px;
+    margin-left: 10px;
     width: 100%;
-    max-width: px2rem(380);
+    padding-right: 10px;
     .name-instr {
       width: 100%;
       .introduce {
         width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         text-overflow: ellipsis;
+        overflow: hidden;
       }
       .up-name {
       }
     }
     .watch-num {
-      margin-top: px2rem(20);
+      margin-top: 10px;
     }
   }
 }

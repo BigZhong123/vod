@@ -51,7 +51,7 @@ export default {
       this.setIsMenu(false);
     });
     window.ChatraSetup = {
-      buttonSize: 150,
+      // buttonSize: 150,
       language: 'zh'
     };
     setTimeout(() => {

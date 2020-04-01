@@ -68,8 +68,8 @@ export default {
   },
   computed: {
     moveLeft() {
-      let left = (this.$hotcss.px2rem(100)) * parseInt(this.currentType - 1);
-      return left + 'rem'
+      let left = 60 * parseInt(this.currentType - 1);
+      return left + 'px';
     }
   },
   methods: {
@@ -103,21 +103,22 @@ export default {
 
 <style lang="scss">
 .popular {
-  margin: px2rem(100) 0;
+  margin: 50px 0;
   overflow-x: hidden;
+  height: 100%;
   .opts-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     overflow-x: auto;
-    height: px2rem(145);
+    height: 80px;
     &::-webkit-scrollbar {
       display:none
     }
     .current-type {
       position: absolute;
-      height: px2rem(145);
-      width: px2rem(100);
+      height: 80px;
+      width: 60px;
       left: 0;
       top: 0;
       background: #c8edff;
@@ -125,44 +126,36 @@ export default {
       transition: left .2s linear;
     }
     .opt-box {
-      width: px2rem(100);
+      width: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: px2rem(10) px2rem(20);
+      padding: 0 15px;
       .icon {
-        width: px2rem(90);
-        height: px2rem(90);
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 50%;
         span {
-          font-size: px2rem(50);
+          font-size: 30px;
           color: #4087c6;
         }
       }
       .opt-text {
-        font-size: px2rem(24);
-        height: px2rem(30);
-        line-height: px2rem(30);
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
         text-align: center;
         color: black;
       }
     }
   }
   .spin {
-    position: relative;
-    height: px2rem(800);
-  }
-  .btn {
-    margin-top: px2rem(200);
-    width: px2rem(200);
-    height: px2rem(100);
+    height: 100%;
   }
 }
 .ivu-spin-large .ivu-spin-dot {
-  height: px2rem(100);
-  width: px2rem(100);
+  height: 100px;
+  width: 100px;
 }
 </style>

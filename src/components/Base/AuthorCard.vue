@@ -34,8 +34,8 @@ export default {
       default: 0
     },
     videoNum: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
     }
   }
 }
@@ -44,26 +44,33 @@ export default {
 <style lang="scss" scoped>
 .author-card {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: px2rem(200);
+  height: 100px;
+  padding-left: 100px;
   .avatar-wrapper {
+    width: 50px;
+    height: 50px;
     .avatar {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       overflow: hidden;
+      img {
+        width: 100%;
+      }
     }
   }
   .info-wrapper {
-    margin-left: px2rem(50);
+    margin-left: 10px;
     .name {
-      font-size: px2rem(24);
+      font-size: 14px;
     }
     .video-num {
-      margin-top: px2rem(10);
-      font-size: px2rem(20);
+      margin-top: 5px;
+      font-size: 12px;
     }
     .order-num {
-      font-size: px2rem(20);
+      font-size: 12px;
     }
   }
 }

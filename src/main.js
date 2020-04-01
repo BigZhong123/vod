@@ -9,7 +9,7 @@ import 'dplayer/dist/DPlayer.min.css';
 
 import '@/assets/iconFont/iconfont.css';
 
-import '@/assets/style/hotcss.js';
+// import '@/assets/style/hotcss.js';
 
 import '@/plugin/iview.js';
 import '@/plugin/js-base64.js';

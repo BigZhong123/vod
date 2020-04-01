@@ -12,7 +12,7 @@
             @blur="validateEmail"
           />
           <div class="input-icon">
-            <Icon type="ios-mail" size="80" />
+            <Icon type="ios-mail" size="30" />
           </div>
           <div
             class="move-label"
@@ -31,8 +31,8 @@
             @blur="validatePwd"
           />
           <div class="input-icon icon-eye">
-            <Icon type="md-eye" size="60" v-if="isPasswdSee" @click="isPasswdSee = !isPasswdSee" />
-            <Icon type="md-eye-off" size="60" v-if="!isPasswdSee" @click="isPasswdSee = !isPasswdSee" />
+            <Icon type="md-eye" size="20" v-if="isPasswdSee" @click="isPasswdSee = !isPasswdSee" />
+            <Icon type="md-eye-off" size="20" v-if="!isPasswdSee" @click="isPasswdSee = !isPasswdSee" />
           </div>
           <div
             class="move-label"
@@ -50,8 +50,8 @@
             @blur="validatePasswdCheck"
           />
           <div class="input-icon icon-eye">
-            <Icon type="md-eye" size="60" v-if="isPasswdCheckSee" @click="isPasswdCheckSee = !isPasswdCheckSee" />
-            <Icon type="md-eye-off" size="60" v-if="!isPasswdCheckSee" @click="isPasswdCheckSee = !isPasswdCheckSee" />
+            <Icon type="md-eye" size="20" v-if="isPasswdCheckSee" @click="isPasswdCheckSee = !isPasswdCheckSee" />
+            <Icon type="md-eye-off" size="20" v-if="!isPasswdCheckSee" @click="isPasswdCheckSee = !isPasswdCheckSee" />
           </div>
           <div
             class="move-label"
@@ -243,28 +243,33 @@ export default {
 
 <style lang="scss">
 .register {
-  margin-top: px2rem(100);
-  padding: px2rem(50) px2rem(60);
+  margin: 50px 0;
+  padding: 10px 0;
   .form-wrapper {
+    width: 95%;
+    margin: 0 auto;
     p {
-      font-size: px2rem(50);
+      font-size: 26px;
       text-align: center;
-      margin-bottom: px2rem(30);
+      margin-bottom: 15px;
     }
     .item {
       position: relative;
       width: 100%;
       margin: 0 auto;
-      height: px2rem(120);
+      height: 70px;
+      // padding: 0 10px;
       &:nth-child(n + 2) {
-        margin-top: px2rem(70);
+        margin-top: 10px;
       }
       .item-input {
         display: inline-block;
         width: 100%;
-        height: px2rem(80);
-        line-height: px2rem(80);
-        padding: px2rem(20) px2rem(20);
+        height: 40px;
+        box-sizing: border-box;
+        padding-left: 10px;
+        line-height: 40px;
+        padding: 10px;
         border: 1px solid #dcdee2;
         border-radius: 4px;
         color: #515a6e;
@@ -272,7 +277,7 @@ export default {
         background-image: none;
         position: relative;
         cursor: text;
-        font-size: px2rem(35);
+        font-size: 12px;
         transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
         &:focus {
           outline: 0;
@@ -281,67 +286,66 @@ export default {
       }
       .input-icon {
         position: absolute;
-        top: px2rem(15);
-        right: px2rem(15);
+        top: 5px;
+        right: 15px;
         i {
           color: #aaa;
         }
       }
       .icon-eye {
-        top: px2rem(20);
-        right: px2rem(25);
+        top: 10px;
+        right: 20px;
       }
       .input-btn {
         position: absolute;
         top: 0;
         right: 0;
-        width: px2rem(150);
-        height: px2rem(80);
-        line-height: px2rem(80);
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
         text-align: center;
         background-color:#5872f1;
-        font-size: px2rem(26);
+        font-size: 12px;
         a {
           color: white;
         }
       }
       .move-label {
-        font-size: px2rem(34);
+        font-size: 14px;
         color: #c5c8ce;
         position: absolute;
-        top: px2rem(25);
-        left: px2rem(10);
-        padding: 0 px2rem(10);
+        top: 9px;
+        left: 8px;
+        padding: 0 8px;
         background: white;
-        height: px2rem(35);
-        line-height: px2rem(35);
+        height: 25px;
+        line-height: 25px;
         transition: all .2s linear;
       }
       .is-move {
         color: #515a6e;
-        top: px2rem(-20);
+        top: -12px;
       }
       .tip {
-        font-size: px2rem(26);
+        font-size: 12px;
         color: #ed4014;
-        margin: px2rem(10) px2rem(5);
+        margin: 10px 5px;
       }
     }
     .register-btn-wrapper {
-      margin-top: px2rem(40);
+      margin-top: 20px;
       .register-btn {
         width: 100%;
-        height: px2rem(70);
-        line-height: px2rem(70);
+        padding: 10px 0;
         background: #5872f1;
         color: white;
-        font-size: px2rem(26);
+        font-size: 14px;
         text-align: center;
       }
     }
     .to-login {
-      font-size: px2rem(26);
-      margin-top: px2rem(10);
+      font-size: 12px;
+      margin-top: 10px;
       a {
         color: #5872f1;
       }

@@ -73,6 +73,7 @@ export default {
             userEntities[index].avatar = baseUrl + userEntities[index].avatar;
           });
           this.recommendUp = userEntities;
+          console.log(this.recommendUp)
         }
       }).finally(() => {
         this.setIsLoading(false);
@@ -89,6 +90,7 @@ export default {
           lists[i].userEntity.avatar = baseUrl + lists[i].userEntity.avatar;
         }
         this.videoLists = lists;
+        console.log(this.videoLists)
       }).finally(() => {
         this.setIsLoading(false);
       })
@@ -116,23 +118,23 @@ export default {
 
 <style lang="scss" scoped>
 .order {
-  margin: px2rem(100) 0;
+  margin: 50px 0;
+  height: 100%;
   .bg-wrapper {
     position: relative;
     background-color: #e8e8e8;
     width: 100%;
-    height: px2rem(600);
+    height: 600px;
     text-align: center;
     overflow: hidden;
   }
   .tip {
-    font-size: px2rem(26);
+    font-size: 12px;
     text-align: center;
-    margin-top: px2rem(30);
+    margin-top: 30px;
   }
   .spin {
-    position: relative;
-    height: px2rem(1135);
+    height: 100%;
   }
 }
 </style>
