@@ -73,7 +73,6 @@ export default {
             userEntities[index].avatar = baseUrl + userEntities[index].avatar;
           });
           this.recommendUp = userEntities;
-          console.log(this.recommendUp)
         }
       }).finally(() => {
         this.setIsLoading(false);
@@ -90,7 +89,6 @@ export default {
           lists[i].userEntity.avatar = baseUrl + lists[i].userEntity.avatar;
         }
         this.videoLists = lists;
-        console.log(this.videoLists)
       }).finally(() => {
         this.setIsLoading(false);
       })

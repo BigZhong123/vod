@@ -224,7 +224,7 @@ export default {
       let data = this.dataURLtoFile(this.headerImage, 'avatar.jpg');
       let formData = new FormData();
       formData.file = data
-      console.log(formData)
+      // console.log(formData)
       uploadAvatar(formData).then(() => {
         // this.$emit('on-success', )
       })
