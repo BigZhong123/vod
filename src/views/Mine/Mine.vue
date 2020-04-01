@@ -58,21 +58,7 @@
       <Icon type="ios-arrow-forward" size="20" />
     </div>
     <br><br>
-    <modal-bg v-if="showavatar">
-      <div class="content" v-click-outside="hideModal">
-        <Upload
-          ref="upload"
-          :format="['jpg','jpeg','png']"
-          :on-format-error="uploadErr"
-          action="http://101.133.165.169:8000/api/upload/avatar"
-          :on-success="handleavatarSuccess">
-          <Button icon="ios-cloud-upload-outline">上传头像</Button>
-        </Upload>
-        <div class="upload"  @click="updateUserInfo">
-          上传
-        </div>
-      </div>
-    </modal-bg>
+    <cropper-bg v-if="showavatar" @on-cancel="hideModal"></cropper-bg>
     <modal-bg v-if="showName">
       <div class="content" v-click-outside="hideModal">
         <input v-model="newName" type="text" class="item-input" placeholder="请输入新昵称">
@@ -94,6 +80,7 @@
 
 <script>
 import ModalBg from '@/components/Base/ModalBg.vue';
+import CropperBg from '@/components/Image/Cropper.vue';
 import ClickOutside from 'vue-click-outside';
 import { getUserInfo, updateUserInfo } from '@/api/mine.js';
 import { baseUrl } from '@/api/home.js';
@@ -116,7 +103,8 @@ export default {
     }
   },
   components: {
-    ModalBg
+    ModalBg,
+    CropperBg
   },
   created() {
     this.getUserInfo(this.userId)

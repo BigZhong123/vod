@@ -13,7 +13,9 @@ const mixins = {
       'notRead',
       'isLoading',
       'currentVideoId',
-      'currentPartId'
+      'currentPartId',
+      'isSlider',
+      'isNav',
     ])
   },
   methods: {
@@ -28,7 +30,9 @@ const mixins = {
       'setNotRead',
       'setIsLoading',
       'setCurrentVideoId',
-      'setCurrentPartId'
+      'setCurrentPartId',
+      'setIsSlider',
+      'setIsNav'
     ])
   }
 }

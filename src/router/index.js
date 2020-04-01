@@ -60,6 +60,10 @@ const routes = [
     path: '/upload',
     name: 'upload',
     component: () => import('../views/UploadVideo/UploadVideo.vue')
+  }, {
+    path: '/cropper',
+    name: 'cropper',
+    component: () => import('../components/Image/Cropper.vue')
   }
 ]
 

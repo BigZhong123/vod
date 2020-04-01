@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
+    <nav-bar v-if="isNav"></nav-bar>
     <router-view />
-    <slider></slider>
+    <slider v-if="isSlider"></slider>
   </div>
 </template>
 
@@ -25,7 +25,6 @@ export default {
   watch: {
     $route: function() {
       getNotRead(this.userId).then(res => {
-      // getNotRead(8).then(res => {
         const unRead = res.data.data.unreadCount;
         this.setNotRead(unRead);
       })

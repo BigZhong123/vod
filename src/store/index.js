@@ -16,6 +16,8 @@ export default new Vuex.Store({
     isLoading: false, // 是否处于加载中
     currentVideoId: 1, //当前观看的视频id null
     currentPartId: 1, // 当前观看视频的分类 nu;;
+    isSlider: true, // 是否显示底部导航条
+    isNav: true, // 是否显示头部导航条
   },
   mutations: {
     SET_FROM_TOP (state, fromTop) {
@@ -50,6 +52,12 @@ export default new Vuex.Store({
     },
     SET_CURRENT_PART_ID(state, currentPartId) {
       state.currentPartId = currentPartId;
+    },
+    SET_IS_SLIDER(state, isSlider) {
+      state.isSlider = isSlider;
+    },
+    SET_IS_NAV(state, isNav) {
+      state.isNav = isNav;
     }
   },
   actions: {
@@ -85,6 +93,12 @@ export default new Vuex.Store({
     },
     setCurrentPartId({ commit }, currentPartId) {
       commit('SET_CURRENT_PART_ID', currentPartId);
+    },
+    setIsSlider({ commit }, isSlider) {
+      commit('SET_IS_SLIDER', isSlider);
+    },
+    setIsNav({ commit }, isNav) {
+      commit('SET_IS_NAV', isNav);
     }
   },
   getters: {
@@ -98,7 +112,9 @@ export default new Vuex.Store({
     notRead: state => state.notRead,
     isLoading: state => state.isLoading,
     currentVideoId: state => state.currentVideoId,
-    currentPartId: state => state.currentPartId
+    currentPartId: state => state.currentPartId,
+    isSlider: state => state.isSlider,
+    isNav: state => state.isNav
   },
   modules: {
   }

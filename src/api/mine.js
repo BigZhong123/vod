@@ -11,6 +11,19 @@ export const getUserInfo = function(id) {
     })
 }
 
+// 上传图片
+export const uploadAvatar = function(binaryFile) {
+    const url = '/api/upload/avatar';
+    const params = {
+        file: binaryFile
+    };
+    return axios.post(url, params, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+}
+
 // 更新用户信息
 export const updateUserInfo = function(params) {
     const url = '/api/update_user_info';
