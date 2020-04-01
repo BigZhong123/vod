@@ -68,7 +68,7 @@
           <span>本地上传</span>
         </div>
         <div>
-          <input type="file" accept="image/*" capture="camera" multiple />
+          <input type="file" accept="image/*" capture="camera" />
         </div>
         <!-- 拍照上传 -->
         <!-- <div class="take-image">
