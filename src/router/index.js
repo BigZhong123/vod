@@ -6,11 +6,11 @@ import Comment from '../views/Comment/Comment.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '*',
-  //   name: 'home',
-  //   component: () => import('../views/Home/Home.vue')
-  // },
+  {
+    path: '*',
+    name: 'home',
+    component: () => import('../views/Home/Home.vue')
+  },
   {
     path: '/registration',
     name: 'register',
