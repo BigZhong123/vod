@@ -1,14 +1,16 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Instroduce from '../views/Introduce/Introduce.vue';
+import Comment from '../views/Comment/Comment.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '*',
-    name: 'home',
-    component: () => import('../views/Home/Home.vue')
-  },
+  // {
+  //   path: '*',
+  //   name: 'home',
+  //   component: () => import('../views/Home/Home.vue')
+  // },
   {
     path: '/registration',
     name: 'register',
@@ -43,19 +45,19 @@ const routes = [
     path: '/watch',
     name: 'watch',
     component: () => import('../views/Watch/Watch.vue'),
-    redirect: '/watch/introduce',
     children: [
       {
         path: '/watch/introduce',
         name: 'watchIntroduce',
-        component: () => import('../views/Introduce/Introduce.vue')
+        component: Instroduce
       },
       {
         path: '/watch/comment',
         name: 'watchComment',
-        component: () => import('../views/Comment/Comment.vue')
+        component: Comment
       }
-    ]
+    ],
+    redirect: '/watch/introduce',
   }, {
     path: '/upload',
     name: 'upload',

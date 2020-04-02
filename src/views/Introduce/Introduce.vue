@@ -3,7 +3,10 @@
     <div class="up-info">
       <div class="info-left">
         <img :src="upAvatar">
-        <span>{{upName}}</span>
+        <div style="margin-left: 10px">
+          <span>{{upName}}</span>
+          <div class="title">{{title}}</div>
+        </div>
       </div>
       <div class="info-right">
         <Icon type="md-heart" @click="showLove" :class="{'animation': isShowLove, 'isPink': isShowLove}" size="30" />
@@ -13,8 +16,14 @@
         </div>
       </div>
     </div>
-    <div class="instroduction">
-      {{videoInstr}}
+    <div style="padding: 10px;">
+      <div class="instroduction">
+        {{videoInstr}}
+      </div>
+      <div class="click-count">
+        <Icon type="logo-youtube" size="10" />
+        {{clickCount}}w观看
+      </div>
     </div>
     <div class="small-video-wrapper">
       <small-video
@@ -49,7 +58,9 @@ export default {
       recommendVideo: [],
       upAvatar: '',
       upName: '',
-      videoInstr: ''
+      title: '',
+      videoInstr: '',
+      clickCount: '',
     }
   },
   components: {
@@ -84,10 +95,13 @@ export default {
     },
     getVideoInfo() {
       getVideoInfo(this.currentVideoId).then(res => {
+        console.log(res)
         const data = res.data.data;
         this.videoInstr = data.introduction;
         this.upName = data.userEntity.nickname;
+        this.title = data.title;
         this.upAvatar = baseUrl + data.userEntity.img;
+        this.clickCount = data.videoOperationEntity.clickCount;
       })
     },
     showLove() {
@@ -137,7 +151,13 @@ export default {
       }
       span {
         font-size: 14px;
-        margin-left: 20px;
+      }
+      .title {
+        font-size: 12px;
+        width: 185px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
     .info-right {
@@ -163,8 +183,11 @@ export default {
   }
   .instroduction {
     margin-top: 5px;
-    padding: 0 20px;
     font-size: 14px;
+    color: black;
+  }
+  .click-count {
+    font-size: 12px;
   }
   .small-video-wrapper {
     margin-top: 10px;

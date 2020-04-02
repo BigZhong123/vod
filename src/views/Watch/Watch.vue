@@ -5,14 +5,14 @@
     </div>
     <div class="classification">
       <div class="class-type">
-        <router-link :to="{name: 'watchIntroduce'}" @click.native="type = 1">视频简介</router-link>
-        <router-link :to="{name: 'watchComment'}" @click.native="type = 2">精选评论</router-link>
+        <router-link :to="{path: '/watch/introduce'}" @click.native="type = 1">视频简介</router-link>
+        <router-link :to="{path: '/watch/comment'}" @click.native="type = 2">精选评论</router-link>
       </div>
       <div class="b-bottom" :class="{'right': type === 2}"></div>
     </div>
-    <!-- <keep-alive> -->
+    <keep-alive>
       <router-view @switchVideo="switchVideo"></router-view>
-    <!-- </keep-alive> -->
+    </keep-alive>
   </div>
 </template>
 
