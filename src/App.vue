@@ -27,8 +27,8 @@ export default {
       getNotRead(this.userId).then(res => {
         const unRead = res.data.data.unreadCount;
         this.setNotRead(unRead);
-      }).catch(err => {
-        console.log(err)
+      }).catch(() => {
+        // console.log(err)
       })
     }
   },
