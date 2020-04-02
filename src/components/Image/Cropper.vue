@@ -1,5 +1,5 @@
 <template>
-  <div class="cropper" id="demo">
+  <div class="cropper" id="demo" v-show="showOpt">
     <!-- 遮罩层 -->
     <div class="container" v-show="panel">
       <div class="nav" v-if="!isNav">
@@ -67,14 +67,6 @@
           </div>
           <span>本地上传</span>
         </div>
-        <div>
-          <input type="file" accept="image/*" capture="camera" />
-        </div>
-        <!-- 拍照上传 -->
-        <!-- <div class="take-image">
-                    <div><Icon type="ios-reverse-camera" size="30" /></div>
-                    <span>拍照上传</span>
-                </div> -->
       </div>
     </div>
   </div>
@@ -96,7 +88,8 @@ export default {
       url: "",
       imgCropperData: {
         accept: "image/gif, image/jpeg, image/png, image/jpg"
-      }
+      },
+      showOpt: true
     };
   },
   mounted() {
@@ -167,6 +160,7 @@ export default {
     },
     //确定提交
     commit() {
+      this.showOpt = false;
       this.panel = false;
       var croppedCanvas;
       var roundedCanvas;
@@ -178,11 +172,15 @@ export default {
       // Round
       roundedCanvas = this.getRoundedCanvas(croppedCanvas);
       this.headerImage = roundedCanvas.toDataURL();
+      // 关闭弹窗
+      this.$emit('hide-modal')
       //上传图片
       this.postImg();
     },
     //canvas画图
     getRoundedCanvas(sourceCanvas) {
+      this.setIsNav(true);
+      this.setIsSlider(true);
       var canvas = document.createElement("canvas");
       var context = canvas.getContext("2d");
       var width = sourceCanvas.width;
@@ -202,11 +200,9 @@ export default {
         true
       );
       context.fill();
-      this.setIsNav(true);
-      this.setIsSlider(true);
       return canvas;
     },
-    // base64格式转换成图片
+    // base64格式转换成MultipartFile
     dataURLtoFile(base64Str, fileName) {
       let arr = base64Str.split(',');
       let mime = arr[0].match(/:(.*?);/)[1];
@@ -219,14 +215,21 @@ export default {
       }
       return new File([u8arr], `${fileName}.${suffix}`, {type: mime})
     },
+    // base64转成blob对象
+    dataURLtoBlob(dataurl) {
+      var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+      while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new Blob([u8arr], {type:mime});
+    },
     //提交上传函数
     postImg() {
-      let data = this.dataURLtoFile(this.headerImage, 'avatar.jpg');
-      let formData = new FormData();
-      formData.file = data
-      // console.log(formData)
-      uploadAvatar(formData).then(() => {
-        // this.$emit('on-success', )
+      uploadAvatar(this.headerImage).then((res) => {
+        if(res.data.status === 1) {
+          this.$emit('on-success', res.data.data);
+        }
       })
     }
   }
@@ -257,6 +260,7 @@ export default {
     top: 0;
     left: 0;
     background-color: rgba(55, 55, 55, 0.6);
+    z-index: 9999;
     .opts-btn {
       width: 100%;
       height: 100%;

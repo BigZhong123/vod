@@ -5,7 +5,7 @@
       style="margin-top: 10px;">
       <div class="line-left">
         <Icon type="md-person" size="25" />
-        <span class="line-text">头像</span>
+        <span class="line-text">{{$t('mine.avatar')}}</span>
       </div>
       <div class="line-right">
         <img :src="userInfo.avatar">
@@ -18,7 +18,7 @@
       <div class="line-left">
         <Icon type="ios-time-outline"
             size="25" />
-        <span class="line-text">昵称</span>
+        <span class="line-text">{{$t('mine.name')}}</span>
       </div>
       <div class="line-right">
         <span>{{userInfo.nickname}}</span>
@@ -31,7 +31,7 @@
       <div class="line-left">
         <Icon type="ios-bookmark"
             size="25" />
-        <span class="line-text">个人简介</span>
+        <span class="line-text">{{$t('mine.instroduction')}}</span>
       </div>
       <div class="line-right">
         <span>{{userInfo.introduction}}</span>
@@ -44,7 +44,7 @@
       <div class="line-left">
         <Icon type="md-cloud-upload"
             size="25" />
-        <span class="line-text">上传视频</span>
+        <span class="line-text">{{$t('mine.uploadVideo')}}</span>
       </div>
       <Icon type="ios-arrow-forward" size="20" />
     </div>
@@ -53,34 +53,30 @@
       <div class="line-left">
         <Icon type="logo-youtube"
             size="25" />
-        <span class="line-text">我的收藏</span>
+        <span class="line-text">{{$t('mine.myCollect')}}</span>
       </div>
       <Icon type="ios-arrow-forward" size="20" />
     </div>
-    <br><br>
-    <cropper-bg v-if="showavatar" @on-cancel="hideModal"></cropper-bg>
-    <modal-bg v-if="showName">
-      <div class="content" v-click-outside="hideModal">
-        <input v-model="newName" type="text" class="item-input" placeholder="请输入新昵称">
-        <div class="upload" @click="updateUserInfo">
-          确定
-        </div>
-      </div>
-    </modal-bg>
-    <modal-bg v-if="showInstruction">
-      <div class="content" v-click-outside="hideModal">
-        <input type="text" v-model="newIntroduction" class="item-input" placeholder="请输入新个人简介">
-        <div class="upload" @click="updateUserInfo">
-          确定
-        </div>
-      </div>
-    </modal-bg>
+    <cropper-bg
+      v-if="showavatar"
+      @on-cancel="hideModal"
+      @on-success="handleAvatarSuccess"
+      @hide-modla="hideModal"
+    ></cropper-bg>
+    <transition name="fade" v-if="showUpdate">
+      <update
+        :type="type"
+        @on-cancel="hideModal"
+        @on-save="onSaveUpdate"
+      ></update>
+    </transition>
   </div>
 </template>
 
 <script>
-import ModalBg from '@/components/Base/ModalBg.vue';
+// import ModalBg from '@/components/Base/ModalBg.vue';
 import CropperBg from '@/components/Image/Cropper.vue';
+import Update from './component/Update.vue';
 import ClickOutside from 'vue-click-outside';
 import { getUserInfo, updateUserInfo } from '@/api/mine.js';
 import { baseUrl } from '@/api/home.js';
@@ -93,64 +89,63 @@ export default {
   data () {
     return {
       showavatar: false,
-      showName: false,
-      showInstruction: false,
+      showUpdate: false,
       userInfo: {},
       newName: '',
       newIntroduction: '',
       videoInfo: '',
       avatarInfo: '',
+      type: 'name'
     }
   },
   components: {
-    ModalBg,
-    CropperBg
+    // ModalBg,
+    CropperBg,
+    Update
   },
   created() {
     this.getUserInfo(this.userId)
-    // this.getUserInfo(8)
   },
   methods: {
     getUserInfo(id) {
-      // console.log(id)
       getUserInfo(id).then(res => {
         this.userInfo = res.data.data;
-        // console.log('res', res)
         this.userInfo.avatar = baseUrl + this.userInfo.avatar;
       })
     },
     handleShowVideo() {
       this.$router.push('/upload')
     },
-    handleShowavatar(e) {
+    handleShowavatar() {
       this.showavatar = true;
-      e.preventDefault();
-      e.stopPropagation();
     },
-    handleShowInstro(e) {
-      this.showInstruction = true;
-      e.preventDefault();
-      e.stopPropagation();
+    onSaveUpdate(name, introduce) {
+      this.hideModal();
+      this.newName = name;
+      this.newIntroduction = introduce;
+      this.updateUserInfo();
     },
-    handleShowName(e) {
-      this.showName = true;
-      e.preventDefault();
-      e.stopPropagation();
+    handleShowInstro() {
+      this.type = 'introduce';
+      this.showUpdate = true;
+    },
+    handleShowName() {
+      this.type = 'name';
+      this.showUpdate = true;
     },
     hideModal() {
       this.showavatar = false;
-      this.showName = false;
-      this.showInstruction = false;
+      this.showUpdate = false;
     },
     uploadErr() {
       this.$Message.error('请上传正确的文件格式')
     },
-    handleavatarSuccess(res) {
-      if(res.status === 1) {
-        this.avatarInfo = res.data
-      }
+    handleAvatarSuccess(data) {
+      this.avatarInfo =  data;
+      this.updateUserInfo();
     },
     updateUserInfo() {
+      this.hideModal();
       const params = {
         avatar: this.avatarInfo,
         id: this.userId,
@@ -168,7 +163,6 @@ export default {
           if(this.newIntroduction) {
             this.userInfo.introduction = this.newIntroduction;
           }
-          this.hideModal();
         }
       })
     }

@@ -3,18 +3,19 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import i18n from '@/locale';
+import axios from 'axios'
 
-// import 'vue-dplayer/dist/vue-dplayer.css';
 import 'dplayer/dist/DPlayer.min.css';
 
 import '@/assets/iconFont/iconfont.css';
+
+axios.defaults.baseURL = 'http://101.133.165.169:8000/';
 
 // import '@/assets/style/hotcss.js';
 
 import '@/plugin/iview.js';
 import '@/plugin/js-base64.js';
 import '@/plugin/moment.js';
-// import '@/plugin/video.js'
 Vue.prototype.$hotcss = window.hotcss;
 
 Vue.config.productionTip = false;

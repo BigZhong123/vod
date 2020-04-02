@@ -1,11 +1,14 @@
 const messages = {
+  base: {
+    save: 'save',
+  },
   slider: {
     home: 'Home',
     popular: 'Popular',
     order: 'Order Content',
     mine: 'Mine'
   },
-  nav: {
+  nav: { 
     switchLanguage: 'Switch Language',
     light: 'Light Mode',
     night: 'Night Mode',
@@ -46,6 +49,24 @@ const messages = {
     noneAccount: 'No SUNTV account?',
     toRegister: 'To register',
     errTip: 'Email or password error'
+  },
+  home: {
+    slogan: 'SUNTV, A freewheeling video site'
+  },
+  introduce: {
+    follow: 'Follow',
+    followed: 'Followed'
+  },
+  mine: {
+    avatar: 'Avatar',
+    name: 'Name',
+    instroduction: 'Instroduction',
+    uploadVideo: 'Upload Video',
+    myCollect: 'Collect',
+    confirm: 'Confirm',
+    newName: 'Please enter new name',
+    newInstroduction: 'Please enter a new instroduction',
+    format: 'Please upload the correct file format',
   }
 }
 

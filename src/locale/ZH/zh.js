@@ -1,4 +1,7 @@
 const messages = {
+  base: {
+    save: '保存',
+  },
   slider: {
     home: '首页',
     popular: '时下流行',
@@ -8,7 +11,7 @@ const messages = {
   nav: {
     switchLanguage: '切换语言',
     light: '日间模式',
-    night: '夜间模式',
+    night: '夜间模式', 
     themeTitle: '切换主题'
   },
   noneOrder: {
@@ -46,6 +49,24 @@ const messages = {
     noneAccount: '没有SUNTV账号？',
     toRegister: '去注册',
     errTip: '邮箱或密码错误'
+  },
+  home: {
+    slogan: 'SUNTV，一个随心所欲的视频网站',
+  },
+  introduce: {
+    follow: '关注',
+    followed: '已关注'
+  },
+  mine: {
+    avatar: '头像',
+    name: '昵称',
+    instroduction: '个人简介',
+    uploadVideo: '上传视频',
+    myCollect: '我的收藏',
+    confirm: '确定',
+    newName: '请输入新呢称',
+    newInstroduction: '请输入新个人简介',
+    format: '请上传正确格式的文件',
   }
 }
 

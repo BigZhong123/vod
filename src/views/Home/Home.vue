@@ -3,7 +3,7 @@
     <div class="shine">
       <span>
         <Icon type="ios-megaphone-outline" />
-        SUNTV，一个随心所欲的视频网站
+        {{$t('home.slogan')}}
       </span>
     </div>
     <div v-for="(item, index) in videoLists"

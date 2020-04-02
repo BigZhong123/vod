@@ -3,13 +3,13 @@
         <div class="form">
             <input type="text" v-model="title" class="item-input" placeholder="请输入视频标题">
             <input type="text" v-model="instroduction" class="item-input" placeholder="请输入视频介绍">
-            <div class="tip" :style="{'clolr': noneType ? 'red' : 'black'}">请选择一个分类</div>
+            <div class="tip" :style="{'color': noneType ? 'red' : 'black'}">请选择一个分类</div>
             <div class="type">
                 <div
                     v-for="item in opts"
                     :key="item.part"
-                    @click="selected = item.part"
-                    :class="{'select-btn': selected === item.part}"
+                    @click="seceltRealPart(item.part)"
+                    :class="{'select-btn': realPart === item.part}"
                     class="type-btn">
                 {{item.name}}</div>
             </div>
@@ -23,9 +23,15 @@
                 <Button class="btn" icon="ios-cloud-upload-outline">上传视频</Button>
             </Upload>
             <div class="cover-img" v-if="imgPath && imgPath.length > 0">
-                <div class="tip" :style="{'clolr': noneType ? 'red' : 'black'}">请选择一张封面</div>
+                <div class="tip" :style="{'color': noneImg ? 'red' : 'black'}">请选择一张封面</div>
                 <div class="img-wrapper">
-                    <img v-for="(item, index) in imgPath" :key="index" :src="item">
+                    <img
+                        v-for="(item, index) in imgPath"
+                        :key="index"
+                        :src="item"
+                        @click="selectRealCover(index)"
+                        :class="{'selected': realCover === index}"
+                    >
                 </div>
             </div>
             <div class="confirm-btn" @click="upload">上传</div>
@@ -35,38 +41,82 @@
 
 <script>
 import { iconLists } from '@/utils/icon.js';
+import { uploadVideo } from '@/api/mine.js';
+import mixins from '@/utils/mixins.js';
   export default {
+    mixins: [mixins],
     data() {
       return {
           opts: iconLists,
-          selected: 0,
+          realPart: 0,
           imgPath: [],
+          uploadImgPath: [],
           videoPath: '',
           videoLength: 0,
           noneType: false,
           noneImg: false,
-          realImgPath: '',
           title: '',
-          instroduction: ''
+          instroduction: '',
+          realCover: -1
       }
     },
     methods: {
         handleVideoSuccess(res) {
-            const url = 'http://101.133.165.169:8000/res';
+            const url = 'http://101.133.165.169:8000/res/';
+            this.noneImg = false;
             if(res.status === 1) {
                 const data = res.data;
                 this.videoPath = data.savePath;
                 this.imgPath.push(url + data.img1);
                 this.imgPath.push(url + data.img2);
                 this.imgPath.push(url + data.img3);
+                this.uploadImgPath.push(data.img1);
+                this.uploadImgPath.push(data.img2);
+                this.uploadImgPath.push(data.img3);
                 this.videoLength = data.length;
             }
         },
         uploadErr() {
             this.$Message.error('请上传正确格式的文件')
         },
+        seceltRealPart(index) {
+            this.realPart = index;
+            this.noneType = false;
+        },
+        selectRealCover(index) {
+            this.realCover = index;
+            this.noneImg = false;
+        },
         upload() {
-
+            if(!this.title || !this.instroduction || this.realPart === 0 || this.realCover === -1) {
+                if(!this.title || !this.instroduction) {
+                    this.$Message.error('请输入视频标题或介绍');
+                }
+                if(this.realPart === 0) {
+                    this.noneType = true;
+                }
+                if(this.realCover === -1) {
+                    this.noneImg = true;
+                }
+            } else {
+                const params = {
+                    "img": this.uploadImgPath[this.realCover],
+                    "introduction": this.instroduction,
+                    "length": this.videoLength,
+                    "partitionId": this.realPart,
+                    "savePath": this.videoPath,
+                    "title": this.title,
+                    "upId": this.userId,
+                    // type随便填的
+                    "type": 0,
+                }
+                uploadVideo(params).then(res => {
+                    if(res.data.status === 1) {
+                        this.$Message.success('上传成功');
+                        this.$router.push('/mine');
+                    }
+                })
+            }
         }
     }
   }
@@ -130,7 +180,15 @@ import { iconLists } from '@/utils/icon.js';
         }
         .cover-img {
             .img-wrapper {
-                
+                width: 100%;
+                img {
+                    width: 33.3%;
+                    padding: 5px;
+                    transition: all .5s linear;
+                }
+                .selected {
+                    border: 1px solid #001fff;
+                }
             }
         }
     }

@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://101.133.165.169:8000/'
-
 // 资源路径
 export const baseUrl = 'http://101.133.165.169:8000/res/'
 

@@ -13,13 +13,23 @@ export const getUserInfo = function(id) {
 
 // 上传图片
 export const uploadAvatar = function(binaryFile) {
-    const url = '/api/upload/avatar';
+    const url = '/api/upload/avatar/bybase64';
     const params = {
-        file: binaryFile
+        imgStr: binaryFile
     };
     return axios.post(url, params, {
         headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'application/json'
+        }
+    });
+}
+
+// 上传视频
+export const uploadVideo = function(params) {
+    const url = '/api/video/add';
+    return axios.post(url, params, {
+        headers: {
+            'Content-Type': 'application/json'
         }
     });
 }

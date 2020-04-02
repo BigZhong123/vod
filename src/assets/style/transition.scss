@@ -7,3 +7,18 @@
 .nav-enter-active, .nav-leave-active{
   transition: all .2s linear;
 }
+
+ // 定义进入前与离开后状态
+.fade-enter, .fade-leave-to {
+  // transform: translate3d(0, 100%, 0);
+  opacity: 0;
+}
+// 定义离开前与进入后状态
+.fade-leave, .fade-enter-to {
+  // transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+// 定义进出过程
+.fade-enter-active, .fade-leave-active {
+  transition: all .2s linear;
+}

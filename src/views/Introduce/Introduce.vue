@@ -9,7 +9,7 @@
         <Icon type="md-heart" @click="showLove" :class="{'animation': isShowLove, 'isPink': isShowLove}" size="30" />
         <Icon type="ios-star" @click="showCollect" :class="{'animation': isShowCollect, 'isPink': isShowCollect}" size="30" />
         <div class="order-btn">
-          <span>+ 关注</span>
+          <span>+ {{$t('introduce.follow')}}</span>
         </div>
       </div>
     </div>
