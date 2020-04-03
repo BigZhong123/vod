@@ -16,6 +16,7 @@
         </div>
         <div class="right-wrapper">
           <Icon
+            v-show="isHome"
             type="md-search"
             size="30"
             @click="search"

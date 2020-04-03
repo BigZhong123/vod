@@ -46,7 +46,7 @@ export default {
   display: flex;
   align-items: center;
   height: 100px;
-  padding-left: 100px;
+  // padding-left: 100px;
   .avatar-wrapper {
     width: 50px;
     height: 50px;

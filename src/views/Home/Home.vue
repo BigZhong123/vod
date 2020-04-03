@@ -34,9 +34,12 @@
         <Input v-model="searchContent"
                placeholder="在SUNTV中搜索..."
                class="search-ipt"
-               clearable />
+               @keyup.enter.native="search"
+        />
         <Icon type="ios-search"
-              size="20" />
+              size="20"
+              @click="search"
+        />
       </div>
       <div class="search-history"
            v-if="historySearch.length > 0">
@@ -60,17 +63,22 @@
 <script>
 import VideoCard from '@/components/Video/Video.vue';
 import mixins from '@/utils/mixins';
-import { getVideoLists, baseUrl } from '@/api/home.js';
+import { getVideoLists, baseUrl, search } from '@/api/home.js';
 import { clickVideo } from '@/api/base.js';
 export default {
   data () {
     return {
       videoLists: [],
-      historySearch: ['目击者之追凶', '李子柒', '华农兄弟', '唐人街探案', '科比坠机'],
+      historySearch: [],
       searchContent: '',
       page: 1,
       pageSize: 10,
-      isBottomLoading: true
+      isBottomLoading: true,
+      // 请求默认一页，大小为10
+      video_current_page: 1,
+      video_page_size: 10,
+      user_current_page: 1,
+      user_page_size: 10,
     }
   },
   mixins: [mixins],
@@ -89,6 +97,12 @@ export default {
   created() {
     this.getVideoLists(this.page, this.pageSize);
     this.page++;
+    const history = localStorage.getItem('searchHistory');
+    if(!history || history === null) {
+      return
+    } else {
+      this.historySearch = JSON.parse(history);
+    }
   },
   methods: {
     getVideoLists(page, pageSize) {
@@ -109,6 +123,7 @@ export default {
     },
     removeHistory (index) {
       this.historySearch.splice(index, 1)
+      localStorage.setItem('searchHistory', JSON.stringify(this.historySearch));
     },
     cancelSearch () {
       this.setIsSearch(false)
@@ -120,6 +135,46 @@ export default {
       localStorage.setItem('videoPath', path);
       this.$router.push({
         path: '/watch'
+      })
+    },
+    // 数组去重
+    unique(arr) {
+      return arr.filter(function(item, index, arr) {
+        return arr.indexOf(item, 0) === index;
+      });
+    },
+    search() {
+      if(this.searchContent === '' || this.searchContent.length === 0) {
+        return
+      }
+      search(this.searchContent, this.video_current_page, this.video_page_size, this.user_current_page, this.user_page_size).then(res => {
+        if(res.data.status === 1) {
+          const userLists = res.data.data.userReturnView.userEntities;
+          const videoLists = res.data.data.videoReturnView.videoView;
+          userLists.forEach((item, i) => {
+            userLists[i]['avatar'] = baseUrl + userLists[i]['avatar']
+          });
+          videoLists.forEach((item, index) => {
+            videoLists[index]['savePath'] = baseUrl + videoLists[index]['savePath'];
+            videoLists[index]['img'] = baseUrl + videoLists[index]['img']
+          });
+          this.setUserResult(userLists);
+          this.setVideoResult(videoLists);
+        }
+        this.$router.push('/search');
+        this.setIsSearch(false);
+        let history = localStorage.getItem('searchHistory');
+        if(history && history !== null) {
+          history = JSON.parse(history);
+          history.unshift(this.searchContent);
+          history = this.unique(history);
+          if(history.length > 5) {
+            history.pop()
+          }
+          localStorage.setItem('searchHistory', JSON.stringify(history));
+        } else {
+          localStorage.setItem('searchHistory', JSON.stringify([this.searchContent]));
+        }
       })
     }
   }

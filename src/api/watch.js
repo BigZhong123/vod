@@ -79,3 +79,23 @@ export const getUserOperation = function(userId, videoId) {
         params
     })
 }
+
+// 订阅
+export const addFollow = function(followerId, followedId) {
+    const url = '/api/follow/add';
+    const params = {
+        followedId,
+        followerId
+    }
+    return axios.post(url, params);
+}
+
+// 取消订阅
+export const cancelFollow = function(followerId, followedId) {
+    const url = '/api/follow/cancel';
+    const params = {
+        followedId,
+        followerId
+    }
+    return axios.post(url, params);
+}

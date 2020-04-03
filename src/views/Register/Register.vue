@@ -1,3 +1,4 @@
+## 邮箱注册改为手机号码注册
 <template>
   <div class="register">
     <div class="form-wrapper">
@@ -17,9 +18,9 @@
           <div
             class="move-label"
             :class="{'is-move': focusInput === 'email' || registerInfo.email.length > 0}"
-          >{{$t('register.email')}}</div>
-          <div class="tip" v-if="isEmailNone">{{$t('register.emailEmpty')}}</div>
-          <div class="tip" v-if="!isEmailRight">{{$t('register.emailError')}}</div>
+          >{{$t('register.phone')}}</div>
+          <div class="tip" v-if="isEmailNone">{{$t('register.phoneEmpty')}}</div>
+          <div class="tip" v-if="!isEmailRight">{{$t('register.phoneError')}}</div>
         </div>
         <div class="item">
           <input
@@ -124,7 +125,7 @@ export default {
     },
     validateEmail() {
       this.focusInput = '';
-      const reg = /^([a-zA-Z]|[0-9])(\w|\\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+      const reg = /^1[3456789]\d{9}$/;
       if (this.registerInfo.email === '') {
         this.isEmailNone = true;
         this.isEmailRight = true;

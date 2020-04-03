@@ -1,13 +1,24 @@
 import axios from 'axios';
 import { Base64 } from 'js-base64';
 
-// 获取验证码
-export const getCode = function (email) {
+// 获取邮箱验证码
+// export const getCode = function (email) {
+//   return axios({
+//     methods: 'GET',
+//     url: '/api/get_email_check_code',
+//     params: {
+//       email
+//     }
+//   })
+// }
+
+// 获取手机验证码
+export const getCode = function (phone_number) {
   return axios({
     methods: 'GET',
-    url: '/api/get_email_check_code',
+    url: '/api/get_phone_check_code',
     params: {
-      email
+      phone_number
     }
   })
 }
@@ -17,12 +28,11 @@ export const toRegister = function (params) {
   const { passwd, email, code } = params;
   const password = Base64.encode(passwd);
   const data = {
-    email,
-    emailCheckCode: code,
+    phoneNumber: email,
+    checkCode: code,
     password
   };
   const url = '/api/register';
-  // return axios.post(url, data)
   return axios({
     url,
     method: 'post',

@@ -39,3 +39,29 @@ export const updateUserInfo = function(params) {
     const url = '/api/update_user_info';
     return axios.post(url, params)
 }
+
+// 获取用户上传的视频
+export const getUserVideo = function(userId, page, pageSize) {
+    const url = '/api/video/get_user_videos';
+    const params = {
+        user_id: userId,
+        current_page: page,
+        page_size: pageSize
+    };
+    return axios.get(url, {
+        params
+    });
+}
+
+// 获取用户收藏的视频
+export const getUserCollect = function(userId, page, pageSize) {
+    const url = '/api/video/collect/get';
+    const params = {
+        user_id: userId,
+        current_page: page,
+        page_size: pageSize
+    };
+    return axios.get(url, {
+        params
+    });
+}

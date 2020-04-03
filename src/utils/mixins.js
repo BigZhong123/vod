@@ -16,6 +16,9 @@ const mixins = {
       'currentPartId',
       'isSlider',
       'isNav',
+      'isHome',
+      'userResult',
+      'videoResult'
     ])
   },
   methods: {
@@ -32,7 +35,10 @@ const mixins = {
       'setCurrentVideoId',
       'setCurrentPartId',
       'setIsSlider',
-      'setIsNav'
+      'setIsNav',
+      'setIsHome',
+      'setUserResult',
+      'setVideoResult',
     ])
   }
 }

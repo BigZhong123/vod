@@ -184,7 +184,7 @@ import mixins from '@/utils/mixins.js';
                 img {
                     width: 33.3%;
                     padding: 5px;
-                    transition: all .5s linear;
+                    transition: all .2s linear;
                 }
                 .selected {
                     border: 1px solid #001fff;

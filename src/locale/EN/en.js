@@ -24,6 +24,9 @@ const messages = {
   },
   register: {
     title: 'Register',
+    phone: 'phone',
+    phoneEmpty: 'The phone number cannot be empty',
+    phoneError: 'Please enter the correct mobile phone number',
     email: 'Email',
     emailEmpty: 'The email account cannot be empty',
     emailError: 'Please enter the correct email account!',
@@ -62,7 +65,7 @@ const messages = {
     name: 'Name',
     instroduction: 'Instroduction',
     uploadVideo: 'Upload Video',
-    myCollect: 'Collect',
+    myPage: 'My Page',
     confirm: 'Confirm',
     newName: 'Please enter new name',
     newInstroduction: 'Please enter a new instroduction',

@@ -17,7 +17,7 @@
       <div class="current-type" :style="{'left': moveLeft}"></div>
     </div>
     <div class="spin" v-if="isLoading">
-      <Spin size="large" fix></Spin>
+      <Spin size="large"></Spin>
     </div>
     <div v-else>
       <div class="video-card" v-for="(item, i) in videoLists" :key="i" @click="toWatch(item.savePath, item.id, item.partitionId)">
@@ -151,7 +151,10 @@ export default {
     }
   }
   .spin {
-    height: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .ivu-spin-large .ivu-spin-dot {

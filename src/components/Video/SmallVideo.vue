@@ -24,6 +24,10 @@ export default {
     }
   },
   props: {
+    isClick: {
+      type: Boolean,
+      default: true
+    },
     imgPath: {
       type: String,
       default: ''
@@ -53,6 +57,9 @@ export default {
   },
   methods: {
     switchVideo() {
+      if(!this.isClick) {
+        return;
+      }
       this.$emit('switchVideo', this.videoPath, this.videoId, this.partId);
       localStorage.setItem('videoPath', this.videoPath)
     }

@@ -65,6 +65,7 @@ export default {
   }
   .author-wrapper {
     padding: 20px;
+    padding-left: 110px;
   }
 }
 </style>

@@ -11,8 +11,9 @@
       <div class="info-right">
         <Icon type="md-heart" @click="showLove" :class="{'animation': isShowLove, 'isPink': isShowLove}" size="30" />
         <Icon type="ios-star" @click="showCollect" :class="{'animation': isShowCollect, 'isPink': isShowCollect}" size="30" />
-        <div class="order-btn">
-          <span>+ {{$t('introduce.follow')}}</span>
+        <div class="order-btn" :style="{'background': isSubscribe ? '#ccc' : '#f98c8c'}">
+          <span v-if="!isSubscribe" @click="addFollow">+ {{$t('introduce.follow')}}</span>
+          <span v-else @click="cancelFollow">{{$t('introduce.followed')}}</span>
         </div>
       </div>
     </div>
@@ -47,6 +48,7 @@ import SmallVideo from '@/components/Video/SmallVideo.vue';
 import { getVideoInfo, collectVideo, cancelCollectVideo, likeVideo, cancelLikeVideo, getUserOperation, getPartitionVideo} from '@/api/watch.js';
 import mixins from '@/utils/mixins.js';
 import { baseUrl } from '@/api/home.js';
+import { addFollow, cancelFollow } from '@/api/watch.js';
 export default {
   mixins: [mixins],
   data() {
@@ -61,6 +63,8 @@ export default {
       title: '',
       videoInstr: '',
       clickCount: '',
+      isSubscribe: false,
+      upId: -1,
     }
   },
   components: {
@@ -78,6 +82,7 @@ export default {
           const info = res.data.data;
           this.isShowLove = info.isLike > 0;
           this.isShowCollect = info.isCollect > 0;
+          this.isSubscribe = info.isSubscribe > 0;
         }
       })
     },
@@ -95,13 +100,13 @@ export default {
     },
     getVideoInfo() {
       getVideoInfo(this.currentVideoId).then(res => {
-        // console.log(res)
         const data = res.data.data;
         this.videoInstr = data.introduction;
         this.upName = data.userEntity.nickname;
         this.title = data.title;
         this.upAvatar = baseUrl + data.userEntity.img;
         this.clickCount = data.videoOperationEntity.clickCount;
+        this.upId = data.upId;
       })
     },
     showLove() {
@@ -129,6 +134,22 @@ export default {
       this.setCurrentPartId(randomPart);
       this.getPartitionVideo(randomPart);
       this.getVideoInfo();
+    },
+    addFollow() {
+      this.isSubscribe = true;
+      addFollow(this.userId, this.upId).then(res => {
+        if(res.status === 0) {
+          this.isSubscribe = false;
+        }
+      })
+    },
+    cancelFollow() {
+      this.isSubscribe = false;
+      cancelFollow(this.userId, this.upId).then(res => {
+        if (res.status === 0) {
+          this.isSubscribe = true;
+        }
+      })
     }
   }
 }
@@ -164,7 +185,7 @@ export default {
       display: flex;
       align-items: center;
       .order-btn {
-        background: #f98c8c;
+        // background: #f98c8c;
         color: white;
         font-size: 12px;
         padding: 5px 10px;

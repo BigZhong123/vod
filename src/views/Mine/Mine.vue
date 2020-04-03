@@ -49,11 +49,12 @@
       <Icon type="ios-arrow-forward" size="20" />
     </div>
     <div class="line"
+      @click="toMyPage"
       style="margin-top: 10px;">
       <div class="line-left">
         <Icon type="logo-youtube"
             size="25" />
-        <span class="line-text">{{$t('mine.myCollect')}}</span>
+        <span class="line-text">{{$t('mine.myPage')}}</span>
       </div>
       <Icon type="ios-arrow-forward" size="20" />
     </div>
@@ -74,7 +75,6 @@
 </template>
 
 <script>
-// import ModalBg from '@/components/Base/ModalBg.vue';
 import CropperBg from '@/components/Image/Cropper.vue';
 import Update from './component/Update.vue';
 import ClickOutside from 'vue-click-outside';
@@ -99,14 +99,23 @@ export default {
     }
   },
   components: {
-    // ModalBg,
     CropperBg,
     Update
   },
   created() {
-    this.getUserInfo(this.userId)
+    this.getUserInfo(this.userId);
+    this.setIsNav(true);
+    this.setIsSlider(true);
   },
   methods: {
+    toMyPage() {
+      this.$router.push({
+        name: 'centerInfo',
+        params: {
+          id: this.userId
+        }
+      })
+    },
     getUserInfo(id) {
       getUserInfo(id).then(res => {
         this.userInfo = res.data.data;

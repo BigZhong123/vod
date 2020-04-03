@@ -21,10 +21,10 @@ export default {
 <style lang="scss" scoped>
 .logo {
   width: 100%;
-  height: 80px;
+  height: 50px;
   font-size: 28px;
   text-align: center;
-  line-height: 80px;
+  line-height: 50px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   .logo-s {

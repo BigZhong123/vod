@@ -23,7 +23,12 @@ export default {
     NavBar
   },
   watch: {
-    $route: function() {
+    $route: function(to) {
+      if(to.name === 'home') {
+        this.setIsHome(true);
+      } else {
+        this.setIsHome(false);
+      }
       getNotRead(this.userId).then(res => {
         const unRead = res.data.data.unreadCount;
         this.setNotRead(unRead);

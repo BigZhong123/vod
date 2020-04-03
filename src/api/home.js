@@ -15,3 +15,17 @@ export const getVideoLists = function(page, pageSize) {
         }
     })
 }
+
+export const search = function(content, video_current_page, video_page_size, user_current_page, user_page_size) {
+    const url = '/api/search/get';
+    const params = {
+        search_content: content,
+        video_current_page,
+        video_page_size,
+        user_current_page,
+        user_page_size,
+    };
+    return axios.get(url, {
+        params
+    })
+}

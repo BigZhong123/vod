@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Instroduce from '../views/Introduce/Introduce.vue';
-import Comment from '../views/Comment/Comment.vue'
+import Comment from '../views/Comment/Comment.vue';
+import MyPage from '../views/CenterInfo/component/MyPage.vue';
+import MyCollect from '../views/CenterInfo/component/MyCollect.vue';
 
 Vue.use(VueRouter)
 
@@ -66,6 +68,26 @@ const routes = [
     path: '/cropper',
     name: 'cropper',
     component: () => import('../components/Image/Cropper.vue')
+  }, {
+    path: '/centerInfo',
+    name: 'centerInfo',
+    component: () => import('../views/CenterInfo/CenterInfo.vue'),
+    children: [
+      {
+        path: '/centerInfo/myPage/:id',
+        name: 'myPage',
+        component: MyPage,
+      }, {
+        path: '/centerInfo/myCollect/:id',
+        name: 'myCollect',
+        component: MyCollect
+      }
+    ],
+    redirect: '/centerInfo/myPage/:id'
+  }, {
+    path: '/search',
+    name: 'search',
+    component: () => import('../views/Home/SearchResult.vue')
   }
 ]
 

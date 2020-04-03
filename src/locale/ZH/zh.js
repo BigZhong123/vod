@@ -25,6 +25,9 @@ const messages = {
   register: {
     title: '注册',
     email: '邮箱',
+    phone: '手机号码',
+    phoneEmpty: '手机号码不能为空',
+    phoneError: '请输入正确的手机号码',
     emailEmpty: '邮箱账号不能为空',
     emailError: '请输入正确的邮箱账号！',
     password: '密码',
@@ -62,7 +65,7 @@ const messages = {
     name: '昵称',
     instroduction: '个人简介',
     uploadVideo: '上传视频',
-    myCollect: '我的收藏',
+    myPage: '个人主页',
     confirm: '确定',
     newName: '请输入新呢称',
     newInstroduction: '请输入新个人简介',

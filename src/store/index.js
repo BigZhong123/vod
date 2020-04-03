@@ -10,7 +10,7 @@ export default new Vuex.Store({
     isBottom: false, // 屏幕是否到达底部
     isSearch: false, // 是否搜索
     isMenu: false, // 菜单栏是否打开
-    userId: 8, // 用户id, null
+    userId: 7, // 用户id, null
     isLogin: true, // 是否登录 flase
     notRead: 0, // 订阅未阅读数
     isLoading: false, // 是否处于加载中
@@ -18,6 +18,9 @@ export default new Vuex.Store({
     currentPartId: 1, // 当前观看视频的分类 nu;;
     isSlider: true, // 是否显示底部导航条
     isNav: true, // 是否显示头部导航条
+    isHome: true, // 是否在首页，以此来判断是否显示搜索
+    userResult: [], // 搜索结果的用户
+    videoResult: [], // 搜索结果的视频
   },
   mutations: {
     SET_FROM_TOP (state, fromTop) {
@@ -58,6 +61,15 @@ export default new Vuex.Store({
     },
     SET_IS_NAV(state, isNav) {
       state.isNav = isNav;
+    },
+    SET_IS_HOME(state, isHome) {
+      state.isHome = isHome;
+    },
+    SET_SEARCH_RESULT(state, userResult) {
+      state.userResult = userResult;
+    },
+    SET_VIDEO_RESULT(state, videoResult) {
+      state.videoResult = videoResult;
     }
   },
   actions: {
@@ -99,6 +111,15 @@ export default new Vuex.Store({
     },
     setIsNav({ commit }, isNav) {
       commit('SET_IS_NAV', isNav);
+    },
+    setIsHome({ commit }, isHome) {
+      commit('SET_IS_HOME', isHome);
+    },
+    setUserResult({ commit }, userResult) {
+      commit('SET_SEARCH_RESULT', userResult);
+    },
+    setVideoResult({ commit }, videoResult) {
+      commit('SET_VIDEO_RESULT', videoResult)
     }
   },
   getters: {
@@ -114,7 +135,10 @@ export default new Vuex.Store({
     currentVideoId: state => state.currentVideoId,
     currentPartId: state => state.currentPartId,
     isSlider: state => state.isSlider,
-    isNav: state => state.isNav
+    isNav: state => state.isNav,
+    isHome: state => state.isHome,
+    userResult: state => state.userResult,
+    videoResult: state => state.videoResult
   },
   modules: {
   }
