@@ -25,7 +25,7 @@ import Replay from '@/components/Message/Replay.vue'
         this.show = true
       },
       send() {
-        console.log(this.value)
+        // console.log(this.value)
         this.show = false
       }
     }
