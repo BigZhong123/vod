@@ -65,3 +65,25 @@ export const getUserCollect = function(userId, page, pageSize) {
         params
     });
 }
+
+// 获取我的关注列表
+export const getMySubscribe = function(userId) {
+    const url = '/api/get_subscribes';
+    const params = {
+        user_id: userId
+    };
+    return axios.get(url, {
+        params
+    })
+}
+
+// 获取我的粉丝列表
+export const getMyFollow = function(userId) {
+    const url = '/api/get_follows';
+    const params = {
+        user_id: userId
+    };
+    return axios.get(url, {
+        params
+    })
+}

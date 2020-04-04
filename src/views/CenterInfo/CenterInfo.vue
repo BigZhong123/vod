@@ -8,11 +8,15 @@
         <img src="http://101.133.165.169:8000/res/img/avatar/20200403165122_10.png">
       </div>
       <div class="info-text">
-        <div class="name">bobbo</div>
-        <div class="introduce">我是等哈说的话</div>
+        <div class="name">{{name}}</div>
+        <div class="introduce">{{introduction}}</div>
         <div class="follow-wrapper">
-          <span>18</span>粉丝
-          <span>15</span>关注
+          <div @click="toMyFollow">
+            <span>{{followCount}}</span>粉丝
+          </div>
+          <div @click="toMySubscribe">
+            <span style="margin-left: 10px;">{{subscribeCount}}</span>关注
+          </div>
         </div>
       </div>
     </div>
@@ -26,27 +30,58 @@
       <div class="slider" :class="{'right': type === 2}"></div>
     </div>
     <div style="margin: 10px 0;">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
+import { getUserInfo } from '@/api/mine.js';
+import { baseUrl } from '@/api/home.js';
 export default {
   data () {
     return {
       type: 1,
-      minHeight: 0
+      minHeight: 0,
+      id: this.$route.params.id,
+      avatar: '',
+      name: '',
+      introduction: '',
+      followCount: 0,
+      subscribeCount: 0
     }
-  },
-  components: {
-
   },
   created() {
     const height = document.documentElement.clientHeight || document.body.clientHeight;
     this.minHeight = height - 100;
+    getUserInfo(this.id).then(res => {
+      if(res.data.status === 1) {
+        const data = res.data.data;
+        this.avatar = baseUrl + data.avatar;
+        this.name = data.nickname;
+        this.introduction = data.introduction;
+        this.followCount = data.followCount;
+        this.subscribeCount = data.subscribeCount;
+      }
+    })
+  },
+  methods: {
+    toMySubscribe() {
+      this.$router.push({
+        name: 'mySubscribe',
+        params: {
+          id: this.id
+        }
+      })
+    },
+    toMyFollow() {
+      this.$router.push({
+        name: 'myFollow',
+        params: {
+          id: this.id
+        }
+      })
+    }
   }
 }
 </script>
@@ -75,7 +110,7 @@ export default {
     }
     .info-text {
       position: relative;
-      top: -10px;
+      top: -15px;
       .name {
         color: black;
         font-size: 14px;
@@ -85,7 +120,7 @@ export default {
         font-size: 14px;
       }
       .follow-wrapper {
-
+        display: flex;
       }
     }
   }

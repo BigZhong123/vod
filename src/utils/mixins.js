@@ -18,7 +18,9 @@ const mixins = {
       'isNav',
       'isHome',
       'userResult',
-      'videoResult'
+      'videoResult',
+      'myFollow',
+      'mySubscribe',
     ])
   },
   methods: {
@@ -39,6 +41,8 @@ const mixins = {
       'setIsHome',
       'setUserResult',
       'setVideoResult',
+      'setMyFollow',
+      'setMySubscribe',
     ])
   }
 }

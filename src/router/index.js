@@ -4,6 +4,8 @@ import Instroduce from '../views/Introduce/Introduce.vue';
 import Comment from '../views/Comment/Comment.vue';
 import MyPage from '../views/CenterInfo/component/MyPage.vue';
 import MyCollect from '../views/CenterInfo/component/MyCollect.vue';
+import MyFollow from '../views/CenterInfo/MyFollow.vue';
+import MySubscribe from '../views/CenterInfo/MySubscribe.vue';
 
 Vue.use(VueRouter)
 
@@ -12,6 +14,7 @@ const routes = [
     path: '*',
     name: 'home',
     component: () => import('../views/Home/Home.vue')
+    // component: Home
   },
   {
     path: '/registration',
@@ -88,6 +91,14 @@ const routes = [
     path: '/search',
     name: 'search',
     component: () => import('../views/Home/SearchResult.vue')
+  }, {
+    path: '/myFollow/:id',
+    name: 'myFollow',
+    component: MyFollow
+  }, {
+    path: '/mySubscribe/:id',
+    name: 'mySubscribe',
+    component: MySubscribe
   }
 ]
 

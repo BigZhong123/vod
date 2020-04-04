@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav-bar v-if="isNav"></nav-bar>
-    <router-view />
+    <!-- <keep-alive> -->
+      <router-view />
+    <!-- </keep-alive> -->
     <slider v-if="isSlider"></slider>
   </div>
 </template>

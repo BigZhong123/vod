@@ -6,7 +6,7 @@
       <div class="info-wrapper">
           <div class="name">{{name}}</div>
           <div class="introduction">{{introduction}}</div>
-          <div class="follow-count">{{count}}w</div>
+          <div class="follow-count">{{count}}w粉丝</div>
       </div>
   </div>
 </template>

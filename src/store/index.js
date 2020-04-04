@@ -21,6 +21,8 @@ export default new Vuex.Store({
     isHome: true, // 是否在首页，以此来判断是否显示搜索
     userResult: [], // 搜索结果的用户
     videoResult: [], // 搜索结果的视频
+    myFollow: [], // 用户的关注
+    mySubscribe: [], // 用户的粉丝
   },
   mutations: {
     SET_FROM_TOP (state, fromTop) {
@@ -70,6 +72,12 @@ export default new Vuex.Store({
     },
     SET_VIDEO_RESULT(state, videoResult) {
       state.videoResult = videoResult;
+    },
+    SET_MY_FOLLOW(state, myFollow) {
+      state.myFollow = myFollow;
+    },
+    SET_MY_SUBSCRIBE(state, mySubscribe) {
+      state.mySubscribe = mySubscribe;
     }
   },
   actions: {
@@ -120,6 +128,12 @@ export default new Vuex.Store({
     },
     setVideoResult({ commit }, videoResult) {
       commit('SET_VIDEO_RESULT', videoResult)
+    },
+    setMyFollow({ commit }, myFollow) {
+      commit('SET_MY_FOLLOW', myFollow);
+    },
+    SET_MY_SUBSCRIBE({ commit }, mySubscribe) {
+      commit('SET_MY_SUBSCRIBE', mySubscribe);
     }
   },
   getters: {
@@ -138,7 +152,9 @@ export default new Vuex.Store({
     isNav: state => state.isNav,
     isHome: state => state.isHome,
     userResult: state => state.userResult,
-    videoResult: state => state.videoResult
+    videoResult: state => state.videoResult,
+    myFollow: state => state.myFollow,
+    muSubscribe: state => state.muSubscribe,
   },
   modules: {
   }

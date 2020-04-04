@@ -8,7 +8,7 @@
         :imgPath="item.avatar"
         :name="item.nickname"
         :introduction="item.introduction"
-        :count="item.subscribeCoune"
+        :count="item.subscribeCount"
         @click.native="toCenterInfo(item.id)"
       ></author>
     </div>

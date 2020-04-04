@@ -26,14 +26,15 @@ import { computedTime } from '@/utils/util.js';
       return {
         userVideoLists: [],
         currentPage: 1,
-        pageSize: 20
+        pageSize: 20,
+        id: this.$route.params.id
       }
     },
     components: {
       TinyVideo
     },
     created() {
-      getUserVideo(this.userId, this.currentPage, this.pageSize).then(res => {
+      getUserVideo(this.id, this.currentPage, this.pageSize).then(res => {
         if (res.data.status === 1) {
           let data = res.data.data.videoView;
           data.forEach((item, index) => {
