@@ -8,15 +8,21 @@
     <replay
       v-model="value"
       :focus-type.sync="show"
+      :tips="tips"
       @send="send"></replay>
+    <div class="take-reply">
+      <Input v-model="replyMsg" placeholder="说点什么把~" @on-enter="replyVideo"/>
+      <span class="send-text" @on-enter="replyVideo">发送</span>
+    </div>
     <div style="padding: 10px 0 0 20px;">热门评论</div>
-    <div class="comment-wrapper">
+    <div style="padding-left: 10px;" v-if="firstComment.length === 0">暂无评论噢，快去评论吧~</div>
+    <div class="comment-wrapper" v-else>
       <div
         v-for="(item, index) in firstComment"
         :key="index"
         style="border-bottom: 1px solid #ccc; padding: 10px 0"
       >
-        <div class="s-comment" @click="showReplay">
+        <div class="s-comment" @click="showReplay(item.name, item.pid, item.id, $event)">
           <div class="img-wrapper">
             <img :src="item.avatar">
           </div>
@@ -49,7 +55,10 @@
     <div class="second-comment-wrapper" :class="{'is-show': isSecond}">
       <div class="second-comment">
         <div class="overflow-wrapper">
-          <div style="display: flex; padding: 0 10px 10px; border-bottom: 1px solid #ccc;">
+          <div
+            style="display: flex; padding: 0 10px 10px; border-bottom: 1px solid #ccc;"
+            @click="showReplay(secondComment.name, secondComment.pid, secondComment.id, $event)"
+          >
             <div class="b-img-wrapper">
               <img :src="secondComment.avatar">
             </div>
@@ -60,7 +69,12 @@
               <div class="b-msg">{{secondComment.msg}}</div>
             </div>
           </div>
-          <div class="b-other" v-for="(item, index) in secondComment.children" :key="index">
+          <div
+            class="b-other"
+            v-for="(item, index) in secondComment.children"
+            :key="index"
+            @click="showReplay(item.name, item.pid, item.id, $event)"
+          >
             <div class="other-img">
               <img :src="item.avatar">
             </div>
@@ -87,7 +101,7 @@
 
 <script>
 import Replay from '@/components/Message/Replay.vue';
-import { getComment } from '@/api/comment.js';
+import { getComment, addComment } from '@/api/comment.js';
 import mixins from '@/utils/mixins.js';
 import { timeago } from '@/utils/util.js';
 import { baseUrl } from '@/api/home.js';
@@ -102,10 +116,14 @@ import ClickOutside from 'vue-click-outside';
         value: '',
         show: false,
         currentPage: 1,
+        tips: '',
         pageSize: 50,
         firstComment: [],
         secondComment: [],
         isSecond: false, // 是否显示第二层回复
+        pid: -1, // 回复的 pid
+        replyId: -1, // 被回复者的id
+        replyMsg: '' // 回复视频的内容
       }
     },
     components: {
@@ -128,12 +146,14 @@ import ClickOutside from 'vue-click-outside';
     },
     methods: {
       getComment(videoId, currentPage, pageSize) {
+        this.firstComment = [];
         getComment(videoId, currentPage, pageSize).then(res => {
           if(res.data.status === 1) {
             let first = res.data.data.firstCommentViews;
             // console.log('first', first)
             first.forEach((item) => {
               let obj = {
+                id: item.userId,
                 pid: item.id,
                 avatar: baseUrl + item.userEntity.avatar,
                 name: item.userEntity.nickname,
@@ -146,6 +166,7 @@ import ClickOutside from 'vue-click-outside';
               for(let i = 0; i < item.commentViews.length; i++) {
                 let second = item.commentViews[i];
                 let subObj = {
+                  id: item.userId,
                   pid: ppid,
                   avatar: baseUrl + second.userEntity.avatar,
                   name: second.userEntity.nickname,
@@ -165,22 +186,52 @@ import ClickOutside from 'vue-click-outside';
       closeCommentModal() {
         this.isSecond = false;
         this.setCommentModal(false);
+        if(this.fromTop === 0) {
+          this.setIsNav(false)
+          setTimeout(() => {
+            this.setIsNav(true)
+          }, 0);
+        }
       },
       showSecond(index, e) {
         const data = this.firstComment[index];
         this.secondComment = data;
+        // console.log('second comment', this.secondComment);
         this.isSecond = true;
         this.setCommentModal(true);
+        const top = this.fromTop;
+        this.setBackTop(top);
         e.preventDefault();
         e.stopPropagation();
       },
-      showReplay(e) {
+      showReplay(name, pid, replyId, e) {
+        this.tips = `回复${name}`;
+        this.pid = pid;
+        this.replyId = replyId;
         this.show = true;
         e.preventDefault();
         e.stopPropagation();
       },
+      replyVideo() {
+        addComment(this.replyMsg, 0, 0, this.userId, this.currentVideoId).then(res => {
+          if(res.data.status === 1) {
+            this.$Message.success('回复成功');
+            this.getComment(this.currentVideoId, this.currentPage, this.pageSize);
+            this.replyMsg = '';
+          }
+        })
+      },
       send() {
-        window.console.log(this.value)
+        if(this.value === '') {
+          return;
+        }
+        addComment(this.value, this.pid, this.replyId, this.userId, this.currentVideoId).then(res => {
+          if(res.data.status === 1) {
+            this.$Message.success('回复成功');
+            this.value = '';
+            this.getComment(this.currentVideoId, this.currentPage, this.pageSize);
+          }
+        })
         this.show = false
       },
     }
@@ -190,6 +241,24 @@ import ClickOutside from 'vue-click-outside';
 <style lang="scss">
 .comment {
   font-size: 12px;
+  .take-reply {
+    padding: 0 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    .send-text {
+      font-size: 12px;
+      color: #515a6e;
+      flex: 0 0 30px;
+      margin-left: 10px;
+    }
+    .ivu-input {
+      border-radius: 15px;
+      border: 1px solid #f3f3f3;
+      color: #515a6e;
+      background-color: #f3f3f3;
+    }
+  }
   .comment-wrapper {
     padding-top: 10px;
     .s-comment {

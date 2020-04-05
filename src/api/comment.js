@@ -14,12 +14,12 @@ export const getComment = function(videoId, page, pageSize) {
 }
 
 // 评论
-export const addComment = function(commentMsg, pId, replayUserId, userId, videoId) {
+export const addComment = function(commentMsg, pId, replyUserId, userId, videoId) {
     const url = '/api/comment/add';
     const params = {
         commentMsg,
         pId,
-        replayUserId,
+        replyUserId,
         userId,
         videoId
     };

@@ -155,9 +155,7 @@ export default {
         padding: 4px 7px;
         font-size: 14px;
         border: 1px solid #dcdee2;
-        border-radius: 4px;
         color: #515a6e;
-        background-color: #fff;
         background-image: none;
         z-index: 999999999;
         position: relative;

@@ -24,6 +24,7 @@ export default new Vuex.Store({
     myFollow: [], // 用户的关注
     mySubscribe: [], // 用户的粉丝
     commentModal: false, //评论弹窗是否打开
+    backTop: 0, // 弹出全部回复框时记录滚动的距离
   },
   mutations: {
     SET_FROM_TOP (state, fromTop) {
@@ -82,6 +83,9 @@ export default new Vuex.Store({
     },
     SET_COMMENT_MODAL(state, commentModal) {
       state.commentModal = commentModal;
+    },
+    SET_BACK_TOP(state, backTop) {
+      state.backTop = backTop;
     }
   },
   actions: {
@@ -141,6 +145,9 @@ export default new Vuex.Store({
     },
     setCommentModal({ commit }, commentModal) {
       commit('SET_COMMENT_MODAL', commentModal);
+    },
+    setBackTop({ commit }, backTop) {
+      commit('SET_BACK_TOP', backTop);
     }
   },
   getters: {
@@ -162,7 +169,8 @@ export default new Vuex.Store({
     videoResult: state => state.videoResult,
     myFollow: state => state.myFollow,
     mySubscribe: state => state.muSubscribe,
-    commentModal: state => state.commentModal
+    commentModal: state => state.commentModal,
+    backTop: state => state.backTop,
   },
   modules: {
   }

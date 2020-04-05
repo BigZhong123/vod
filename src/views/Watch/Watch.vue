@@ -41,6 +41,21 @@ export default {
   mounted () {
     this.initVideo();
   },
+  watch: {
+    commentModal(newVal) {
+      this.$nextTick(() => {
+        if(newVal) {
+          this.hiddenClass = {
+            position: 'fixed',
+            top: `-${this.fromTop}px`,
+            zIndex: 1000
+          }
+        } else {
+          window.scrollTo(0,this.backTop);
+        }
+      })
+    }
+  },
   methods: {
     initVideo() {
       const url = localStorage.getItem('videoPath');

@@ -1,4 +1,5 @@
-import Vue from 'vue';
+// import Vue from 'vue';
+import moment from 'moment';
 
 export const computedTime = function(time) {
     let timeString = '';
@@ -54,7 +55,7 @@ export const timeago = function(dateTimeStamp) {
     } else if (diffValue >= 0 && diffValue <= minute) {
         result = "刚刚"
     } else {
-        result = Vue.$moment(dateTimeStamp).format('YYYY-MM-DD')
+        result = moment(dateTimeStamp).format('YYYY-MM-DD')
     }
     return result;
 }
