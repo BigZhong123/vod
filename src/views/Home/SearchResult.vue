@@ -1,5 +1,5 @@
 <template>
-  <div class="search-result">
+  <div class="search-result" :style="{'min-height': minHeight + 'px'}">
     <div class="user-lists" v-if="userResult.length > 0">
       <div style="padding-left: 10px;">用户</div>
       <author
@@ -39,8 +39,12 @@ import mixins from '@/utils/mixins.js';
     mixins: [mixins],
     data() {
       return {
-
+        minHeight: 0,
       }
+    },
+    created() {
+      const height = (document.documentElement.clientHeight || document.body.clientHeight) - 100
+      this.minHeight = height
     },
     components: {
       Author,
@@ -78,6 +82,7 @@ import mixins from '@/utils/mixins.js';
 <style lang="scss">
 .search-result {
   margin: 50px 0;
+  @include color_primary($bg-color-light);
   .user-lists {
     padding-top: 10px;
   }

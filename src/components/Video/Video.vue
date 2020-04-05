@@ -87,6 +87,7 @@ export default {
 
 <style lang="scss" scoped>
 .video {
+  border-bottom: 1px solid #cccccc;
   .video-wrapper {
     .img-wrapper {
     }

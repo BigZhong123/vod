@@ -46,9 +46,10 @@
            v-if="historySearch.length > 0">
         <div v-for="(item, index) in historySearch"
              :key="index"
+             @click="toSearch(item)"
              class="history">
           <div>{{item}}</div>
-          <div @click="removeHistory(index)">移除</div>
+          <div @click="removeHistory(index, $event)">移除</div>
         </div>
       </div>
       <div class="search-history"
@@ -122,9 +123,11 @@ export default {
         this.videoLists.push(...lists);
       })
     },
-    removeHistory (index) {
+    removeHistory (index, e) {
       this.historySearch.splice(index, 1)
       localStorage.setItem('searchHistory', JSON.stringify(this.historySearch));
+      e.stopPropagation();
+      e.preventDefault();
     },
     cancelSearch () {
       this.setIsSearch(false)
@@ -144,11 +147,17 @@ export default {
         return arr.indexOf(item, 0) === index;
       });
     },
+    toSearch(searchText) {
+      this.doSearch(searchText, this.video_current_page, this.video_page_size, this.user_current_page, this.user_page_size)
+    },
     search() {
       if(this.searchContent === '' || this.searchContent.length === 0) {
         return
       }
-      search(this.searchContent, this.video_current_page, this.video_page_size, this.user_current_page, this.user_page_size).then(res => {
+      this.doSearch(this.searchContent, this.video_current_page, this.video_page_size, this.user_current_page, this.user_page_size)
+    },
+    doSearch(searchContent, video_current_page, video_page_size, user_current_page, user_page_size) {
+      search(searchContent, video_current_page, video_page_size, user_current_page, user_page_size).then(res => {
         if(res.data.status === 1) {
           const userLists = res.data.data.userReturnView.userEntities;
           const videoLists = res.data.data.videoReturnView.videoView;
@@ -227,6 +236,7 @@ export default {
       padding: 0 10px;
       background-color: white;
       border-bottom: 1px solid black;
+      @include color_primary($bg-color-light);
       .history {
         font-size: 12px;
         color: #6666ff;

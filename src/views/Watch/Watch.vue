@@ -1,5 +1,5 @@
 <template>
-  <div class="watch" :style="[commentModal ? hiddenClass : '']">
+  <div class="watch" :style="[commentModal ? hiddenClass : '', minHeight]">
     <div class="video-wrapper">
       <div id="dplayer"></div>
     </div>
@@ -27,16 +27,20 @@ export default {
       type: 1, // 1为简介，2为评论
       hiddenClass: {},
       clientHeight: 0,
+      minHeight: {}
     }
   },
   created() {
     const clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
     this.clientHeight = clientHeight
     const height = clientHeight - 100;
+    this.minHeight = {
+      'min-height': height + 'px'
+    };
     this.hiddenClass = {
       height: height + 'px',
       overflow: 'hidden'
-    }
+    };
   },
   mounted () {
     this.initVideo();
@@ -98,12 +102,14 @@ export default {
 
 <style lang="scss" scoped>
 .watch {
+  @include color_primary($bg-color-light);
   margin: 50px 0;
   .video-wrapper {
 
   }
   .classification {
     position: relative;
+    @include color_primary($bg-color-light);
     .class-type {
       a {
         display: inline-block;

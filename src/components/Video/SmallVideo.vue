@@ -7,7 +7,7 @@
     </div>
     <div class="info-wrapper">
       <div class="name-instr">
-        <div class="introduce">{{title}}</div>
+        <div class="small-introduce">{{title}}</div>
         <div class="up-name">{{name}}</div>
       </div>
       <div class="watch-num">{{count}}w观看</div>
@@ -95,7 +95,7 @@ export default {
     padding-right: 10px;
     .name-instr {
       width: 100%;
-      .introduce {
+      .small-introduce {
         width: 100%;
         display: -webkit-box;
         -webkit-box-orient: vertical;

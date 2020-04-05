@@ -19,7 +19,7 @@
     <div class="spin" v-if="isLoading">
       <Spin size="large"></Spin>
     </div>
-    <div v-else>
+    <div v-else :style="{'min-height': minHeight + 'px'}" class="video-wrapper">
       <div class="video-card" v-for="(item, i) in videoLists" :key="i" @click="toWatch(item.savePath, item.id, item.partitionId)">
         <video-card
           :cover="item.img"
@@ -48,7 +48,8 @@ export default {
       iconLists: iconLists,
       videoLists: [],
       currentPage: 1,
-      currentType: 0
+      currentType: 0,
+      minHeight: 0
     }
   },
   components: {
@@ -58,6 +59,8 @@ export default {
     const id = this.$route.params.id || 1;
     this.currentType = id;
     this.getVideolIsts(id);
+    const clientHeight = (document.documentElement.clientHeight || document.body.clientHeight) - 180
+    this.minHeight = clientHeight
   },
   watch: {
     '$route' () {
@@ -114,6 +117,7 @@ export default {
     align-items: center;
     overflow-x: auto;
     height: 80px;
+    @include color_primary($bg-color-light);
     &::-webkit-scrollbar {
       display:none
     }
@@ -123,12 +127,12 @@ export default {
       width: 60px;
       left: 0;
       top: 0;
-      background: #c8edff;
-      z-index: -1;
+      background: #c8edff52!important;
       transition: left .2s linear;
     }
     .opt-box {
       width: 100px;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -148,7 +152,6 @@ export default {
         height: 30px;
         line-height: 30px;
         text-align: center;
-        color: black;
       }
     }
   }
@@ -157,6 +160,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .video-wrapper {
+    @include color_primary($bg-color-light);
   }
 }
 .ivu-spin-large .ivu-spin-dot {

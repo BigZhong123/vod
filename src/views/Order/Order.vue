@@ -120,6 +120,7 @@ export default {
 .order {
   margin: 50px 0;
   height: 100%;
+  @include color_primary($bg-color-light);
   .bg-wrapper {
     position: relative;
     background-color: #e8e8e8;

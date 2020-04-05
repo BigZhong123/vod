@@ -1,5 +1,5 @@
 <template>
-  <div class="mine">
+  <div class="mine" :style="{'min-height': minHeight + 'px'}">
     <div class="line"
       @click="handleShowavatar"
       style="margin-top: 10px;">
@@ -95,7 +95,8 @@ export default {
       newIntroduction: '',
       videoInfo: '',
       avatarInfo: '',
-      type: 'name'
+      type: 'name',
+      minHeight: 0
     }
   },
   components: {
@@ -106,6 +107,8 @@ export default {
     this.getUserInfo(this.userId);
     this.setIsNav(true);
     this.setIsSlider(true);
+    const height = (document.documentElement.clientHeight || document.body.clientHeight) - 100
+    this.minHeight = height
   },
   methods: {
     toMyPage() {
@@ -183,6 +186,7 @@ export default {
 .mine {
   margin: 50px 0;
   position: relative;
+  @include color_primary($bg-color-light);
   .line {
     padding: 5px 10px;
     box-sizing: content-box;

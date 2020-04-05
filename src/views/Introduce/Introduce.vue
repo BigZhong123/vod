@@ -100,13 +100,17 @@ export default {
     },
     getVideoInfo() {
       getVideoInfo(this.currentVideoId).then(res => {
-        const data = res.data.data;
-        this.videoInstr = data.introduction;
-        this.upName = data.userEntity.nickname;
-        this.title = data.title;
-        this.upAvatar = baseUrl + data.userEntity.img;
-        this.clickCount = data.videoOperationEntity.clickCount;
-        this.upId = data.upId;
+        console.log(res);
+        if(res.data.status === 1) {
+          const data = res.data.data;
+          this.videoInstr = data.introduction;
+          this.upName = data.userEntity.nickname;
+          this.title = data.title;
+          this.upAvatar = baseUrl + data.userEntity.img;
+          this.clickCount = data.videoOperationEntity.clickCount;
+          this.upId = data.upId;
+          // this.
+        }
       })
     },
     showLove() {
@@ -158,6 +162,8 @@ export default {
 
 <style lang="scss">
 .introduce {
+  border-bottom: 1px solid #ccc;
+  @include color_primary($bg-color-light);
   .up-info {
     display: flex;
     justify-content: space-between;

@@ -9,7 +9,7 @@
       </div>
       <div class="info-text">
         <div class="name">{{name}}</div>
-        <div class="introduce">{{introduction}}</div>
+        <div class="center-introduce">{{introduction}}</div>
         <div class="follow-wrapper">
           <div @click="toMyFollow">
             <span>{{followCount}}</span>粉丝
@@ -98,7 +98,8 @@ export default {
   }
   .info-wrapper {
     padding: 0 15px;
-    background-color: white;
+    // background-color: white;
+    @include color_primary($bg-color-light);
     .avatar-wrapper {
       position: relative;
       top: -25px;
@@ -125,7 +126,8 @@ export default {
     }
   }
   .router-opts {
-    background-color: white;
+    // background-color: white;
+    @include color_primary($bg-color-light);
     position: relative;
     .opt {
       display: inline-block;

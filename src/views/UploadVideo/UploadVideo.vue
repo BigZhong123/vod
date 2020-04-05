@@ -1,5 +1,5 @@
 <template>
-    <div class="upload-video">
+    <div class="upload-video" :style="{'min-height': minHeight + 'px'}">
         <div class="form">
             <input type="text" v-model="title" class="item-input" placeholder="请输入视频标题">
             <input type="text" v-model="instroduction" class="item-input" placeholder="请输入视频介绍">
@@ -57,8 +57,13 @@ import mixins from '@/utils/mixins.js';
           noneImg: false,
           title: '',
           instroduction: '',
-          realCover: -1
+          realCover: -1,
+          minHeight: 0
       }
+    },
+    created() {
+        const height = (document.documentElement.clientHeight || document.body.clientHeight) - 100
+        this.minHeight = height
     },
     methods: {
         handleVideoSuccess(res) {
@@ -124,6 +129,7 @@ import mixins from '@/utils/mixins.js';
 
 <style lang="scss">
 .upload-video {
+    @include color_primary($bg-color-light);
     margin: 50px 0 50px 0;
     .form {
         width: 95%;
@@ -134,6 +140,7 @@ import mixins from '@/utils/mixins.js';
             border-right: none;
             margin-top: 10px;
             font-size: 16px;
+            @include color_primary($bg-color-light);
         }
         .upload-btn {
             width: 100%;
@@ -142,6 +149,7 @@ import mixins from '@/utils/mixins.js';
                 width: 100%;
                 padding: 5px 0;
                 color: #001fff;
+                @include color_primary($bg-color-light);;
             }
             .ivu-upload {
                 width: 100%;
@@ -164,7 +172,8 @@ import mixins from '@/utils/mixins.js';
             flex-wrap: wrap;
             margin-top: 10px;
             .type-btn {
-                background: white;
+                // background: white;
+                @include color_primary($bg-color-light);
                 color: #5f4b4b;
                 border: 1px solid #5f4b4b;
                 margin: 3px;
