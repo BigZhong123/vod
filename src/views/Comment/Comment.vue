@@ -6,8 +6,9 @@
       :focus-type.sync="show"
       @send="send"></replay> -->
     <replay
-    :focus-type.sync="show"
-    @send="send"></replay>
+      v-model="value"
+      :focus-type.sync="show"
+      @send="send"></replay>
     <div style="padding: 10px 0 0 20px;">热门评论</div>
     <div class="comment-wrapper">
       <div
