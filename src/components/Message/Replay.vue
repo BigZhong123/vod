@@ -15,10 +15,10 @@
         <span>发送</span>
       </div>
     </div>
-    <!-- <div
+    <div
       v-show="focusType"
       class="mask"
-      @click="active($event)" /> -->
+      @click="active($event)" />
   </div>
 </template>
 
@@ -96,23 +96,24 @@ export default {
   methods: {
     // 隐藏组件
     active() {
-      this.$emit('update:focusType', false)
+      this.$emit('update:focusType', false);
     },
     // 发送回调函数
     send() {
-      this.$emit('send')
+      this.active();
+      this.$emit('send');
     },
     // 兼容ios手机 滚动
     ios() {
       setTimeout(function() {
-        this.height = document.body.scrollTop
-        document.body.scrollTop = document.body.scrollHeight
-        document.documentElement.scrollTop = document.body.scrollHeight
+        this.height = document.body.scrollTop;
+        document.body.scrollTop = document.body.scrollHeight;
+        document.documentElement.scrollTop = document.body.scrollHeight;
       }, 300)
     },
     // 同步父级 input 输入 value值
     handleChange(event) {
-      this.$emit('input', event.target.value)
+      this.$emit('input', event.target.value);
     }
   }
 }
@@ -140,7 +141,7 @@ export default {
   .box{
     padding: 0 10px;
     position: relative;
-    z-index: 9999999;
+    z-index: 999999999;
     display: flex;
     align-items: center;
     .left{
@@ -158,6 +159,7 @@ export default {
         color: #515a6e;
         background-color: #fff;
         background-image: none;
+        z-index: 999999999;
         position: relative;
         cursor: text;
         border: none;
@@ -179,13 +181,14 @@ export default {
   }
 }
 .mask{
-    z-index: 99999999;
+    z-index: 99999;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    opacity: 0;
+    // background: rgba(0, 0, 0, 0.8);
+    background: black;
+    opacity: .5;
 }
 </style>

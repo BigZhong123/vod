@@ -113,11 +113,11 @@ import ClickOutside from 'vue-click-outside';
     },
     created() {
       this.getComment(this.currentVideoId, this.currentPage, this.pageSize);
-      document.addEventListener('click', (e) => {
-        if(e.target.name !== 'sendReport') {
-          this.show = false;
-        }
-      })
+      // document.addEventListener('click', (e) => {
+      //   if(e.target.name !== 'sendReport') {
+      //     this.show = false;
+      //   }
+      // })
       // const clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
       // this.clientHeight = clientHeight
       // const height = clientHeight - 100;
@@ -180,7 +180,7 @@ import ClickOutside from 'vue-click-outside';
         e.stopPropagation();
       },
       send() {
-        // console.log(this.value)
+        window.console.log(this.value)
         this.show = false
       },
     }
