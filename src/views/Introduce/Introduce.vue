@@ -121,7 +121,6 @@ export default {
       getVideoInfo(this.currentVideoId).then(res => {
         if(res.data.status === 1) {
           const data = res.data.data;
-          console.log(data)
           this.videoInstr = data.introduction;
           this.upName = data.userEntity.nickname;
           this.title = data.title;
