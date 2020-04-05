@@ -5,7 +5,7 @@
     class="answer">
     <div class="box clearfix">
       <div class="left">
-        <Input
+        <input
           v-focus="focusType"
           name="sendReport"
           :value="value"
