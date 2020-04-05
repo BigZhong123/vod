@@ -15,12 +15,13 @@
         <span>发送</span>
       </div>
     </div>
-    <div
+    <!-- <div
       v-show="focusType"
       class="mask"
-      @click="active()" />
+      @click="active($event)" /> -->
   </div>
 </template>
+
 <script>
 export default {
   name: 'vueReport',
