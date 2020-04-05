@@ -22,9 +22,19 @@
       <div class="instroduction">
         {{videoInstr}}
       </div>
-      <div class="click-count">
-        <Icon type="logo-youtube" size="10" />
-        {{clickCount}}观看
+      <div style="display: flex; align-items: center">
+        <div class="click-count">
+          <Icon type="logo-youtube" size="10" />
+          {{clickCount}}观看
+        </div>
+        <div class="click-count" style="margin-left: 8px;">
+          <Icon type="md-heart" size="10" />
+          {{loveCount}}点赞
+        </div>
+        <div class="click-count" style="margin-left: 8px;">
+          <Icon type="ios-star" size="10" />
+          {{collectCount}}收藏
+        </div>
       </div>
     </div>
     <div class="small-video-wrapper">
@@ -64,6 +74,8 @@ export default {
       title: '',
       videoInstr: '',
       clickCount: '',
+      loveCount: 0,
+      collectCount: 0,
       isSubscribe: false,
       upId: -1,
       followCount: 0
@@ -109,11 +121,14 @@ export default {
       getVideoInfo(this.currentVideoId).then(res => {
         if(res.data.status === 1) {
           const data = res.data.data;
+          console.log(data)
           this.videoInstr = data.introduction;
           this.upName = data.userEntity.nickname;
           this.title = data.title;
           this.upAvatar = baseUrl + data.userEntity.avatar;
           this.clickCount = data.videoOperationEntity.clickCount;
+          this.loveCount = data.videoOperationEntity.likeCount;
+          this.collectCount = data.videoOperationEntity.collectCount;
           this.upId = data.upId;
           this.followCount = data.userEntity.followCount;
         }
@@ -223,7 +238,7 @@ export default {
         animation: scale .5s;
       }
       .isPink {
-        color: #f98c8c;
+        color: #ff5c5c;
       }
     }
   }
@@ -234,6 +249,8 @@ export default {
   }
   .click-count {
     font-size: 12px;
+    display: flex;
+    align-items: center;
   }
   .small-video-wrapper {
     margin-top: 10px;
