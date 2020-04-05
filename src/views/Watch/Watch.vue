@@ -37,7 +37,6 @@ export default {
       height: height + 'px',
       overflow: 'hidden'
     }
-    console.log(this.hiddenClass)
   },
   mounted () {
     this.initVideo();

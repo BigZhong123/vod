@@ -125,7 +125,7 @@ import ClickOutside from 'vue-click-outside';
         getComment(videoId, currentPage, pageSize).then(res => {
           if(res.data.status === 1) {
             let first = res.data.data.firstCommentViews;
-            console.log('first', first)
+            // console.log('first', first)
             first.forEach((item) => {
               let obj = {
                 pid: item.id,
@@ -152,7 +152,7 @@ import ClickOutside from 'vue-click-outside';
               }
               this.firstComment.push(obj);
             })
-            console.log('first comment', this.firstComment);
+            // console.log('first comment', this.firstComment);
           }
         })
       },
@@ -171,8 +171,9 @@ import ClickOutside from 'vue-click-outside';
       showReplay() {
         this.show = true;
       },
-      send(value) {
-        console.log(888, value)
+      // send(value) {
+      send() {
+        // console.log(888, value)
         this.show = false
       },
     }
