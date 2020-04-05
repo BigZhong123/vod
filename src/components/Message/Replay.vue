@@ -145,10 +145,27 @@ export default {
     .left{
       text-align: center;
       flex: 1;
-      .ivu-input {
+      input {
+        display: inline-block;
+        width: 100%;
+        height: 32px;
+        line-height: 1.5;
+        padding: 4px 7px;
+        font-size: 14px;
+        border: 1px solid #dcdee2;
+        border-radius: 4px;
+        color: #515a6e;
+        background-color: #fff;
+        background-image: none;
+        position: relative;
+        cursor: text;
         border: none;
         border-radius: 15px;
         background-color: #ccc;
+        transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
+        &:focus {
+          outline-style: none;
+        }
       }
     }
     .right{
