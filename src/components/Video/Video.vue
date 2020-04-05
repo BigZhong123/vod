@@ -90,6 +90,8 @@ export default {
   border-bottom: 1px solid #cccccc;
   .video-wrapper {
     .img-wrapper {
+      max-height: 260px;
+      overflow: hidden;
     }
     .desc-wrapper {
       display: flex;

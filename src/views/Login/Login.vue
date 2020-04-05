@@ -1,15 +1,23 @@
+## 邮箱登录会统一换成手机号码登录
 <template>
   <div class="login">
     <div class="form-wrapper">
       <p>{{$t('login.title')}}</p>
       <form>
         <div class="item">
-          <input
+          <!-- <input
             class="item-input"
             :style="{'border-color': !isEmailRight || isEmailNone ? 'red' : ''}"
             v-model.trim="loginInfo.email"
             @focus="inputEmail"
             @blur="validateEmail"
+          /> -->
+          <!-- 先去除邮箱限制 -->
+          <input
+            class="item-input"
+            :style="{'border-color': !isEmailRight || isEmailNone ? 'red' : ''}"
+            v-model.trim="loginInfo.email"
+            @focus="inputEmail"
           />
           <div class="input-icon">
             <Icon type="ios-mail" size="30" />
@@ -17,7 +25,7 @@
           <div
             class="move-label"
             :class="{'is-move': focusInput === 'email' || loginInfo.email.length > 0}"
-          >{{$t('login.email')}}</div>
+          >{{$t('login.phone')}}</div>
           <div class="tip" v-if="isEmailNone">{{$t('login.emailEmpty')}}</div>
           <div class="tip" v-if="!isEmailRight">{{$t('login.emailError')}}</div>
         </div>
@@ -121,6 +129,7 @@ export default {
         toLogin(this.loginInfo).then(res => {
           if (res.data.status === 1) {
             const data = res.data.data;
+            console.log(res);
             const userId = data.id;
             this.setUserId(userId);
             this.setIsLogin(true);

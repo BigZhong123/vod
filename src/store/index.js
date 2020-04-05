@@ -10,8 +10,8 @@ export default new Vuex.Store({
     isBottom: false, // 屏幕是否到达底部
     isSearch: false, // 是否搜索
     isMenu: false, // 菜单栏是否打开
-    userId: 7, // 用户id, null
-    isLogin: true, // 是否登录 flase
+    userId: null, // 用户id, null
+    isLogin: false, // 是否登录 flase
     notRead: 0, // 订阅未阅读数
     isLoading: false, // 是否处于加载中
     currentVideoId: 1, //当前观看的视频id null

@@ -31,12 +31,14 @@ export default {
       } else {
         this.setIsHome(false);
       }
-      getNotRead(this.userId).then(res => {
-        const unRead = res.data.data.unreadCount;
-        this.setNotRead(unRead);
-      }).catch(() => {
-        // console.log(err)
-      })
+      if(this.isLogin) {
+        getNotRead(this.userId).then(res => {
+          const unRead = res.data.data.unreadCount;
+          this.setNotRead(unRead);
+        }).catch(() => {
+          // console.log(err)
+        })
+        }
     }
   },
   mounted () {

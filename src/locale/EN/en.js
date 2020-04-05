@@ -45,6 +45,7 @@ const messages = {
   login: {
     title: 'Login',
     email: 'Email',
+    phone: 'Phone',
     emailEmpty: 'The email account cannot be empty',
     emailError: 'Please enter the correct email account!',
     password: 'Password',
@@ -52,7 +53,7 @@ const messages = {
     noneAccount: 'No SUNTV account?',
     toRegister: 'To register',
     errTip: 'Email or password error',
-    keepStatus: 'Keep login status'
+    keepStatus: 'Keep login status',
   },
   home: {
     slogan: 'SUNTV, A freewheeling video site'

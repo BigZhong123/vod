@@ -79,6 +79,9 @@ export default {
   },
   methods: {
     getUserOperation() {
+      if(!this.isLogin) {
+        return
+      }
       getUserOperation(this.userId, this.currentVideoId).then(res => {
         if(res.data.status === 1) {
           const info = res.data.data;
@@ -86,6 +89,8 @@ export default {
           this.isShowCollect = info.isCollect > 0;
           this.isSubscribe = info.isSubscribe > 0;
         }
+      }).catch(() => {
+        //
       })
     },
     getPartitionVideo(partId) {
@@ -115,6 +120,10 @@ export default {
       })
     },
     showLove() {
+      if(!this.isLogin) {
+        this.$router.push('/login');
+        return;
+      }
       this.isShowLove = !this.isShowLove;
       if (this.isShowLove) {
         likeVideo(this.userId, this.currentVideoId);
@@ -123,6 +132,10 @@ export default {
       }
     },
     showCollect() {
+      if(!this.isLogin) {
+        this.$router.push('/login');
+        return;
+      }
       this.isShowCollect = !this.isShowCollect;
       if (this.isShowCollect) {
         collectVideo(this.userId, this.currentVideoId);
@@ -142,6 +155,10 @@ export default {
       this.getVideoInfo();
     },
     addFollow() {
+      if(!this.isLogin) {
+        this.$router.push('/login');
+        return;
+      }
       this.isSubscribe = true;
       addFollow(this.userId, this.upId).then(res => {
         if(res.status === 0) {

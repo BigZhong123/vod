@@ -1,5 +1,5 @@
 <template>
-  <div class="order">
+  <div class="order" :style="{'min-height': minHeight + 'px'}">
     <div v-if="!isLogin">
       <div class="bg-wrapper">
         <img src="@/assets/images/order-bg.png" width="80%">
@@ -47,9 +47,8 @@ export default {
       hasSubscribes: true,
       recommendUp: [],
       // orderUp: [],
+      minHeight: 0
     }
-  },
-  computed: {
   },
   components: {
     NoneOrder,
@@ -60,6 +59,8 @@ export default {
     if (this.isLogin) {
       this.getSubscribes(this.userId);
     }
+    const height = (document.documentElement.clientHeight || document.body.clientHeight)
+    this.minHeight = height - 100
   },
   methods: {
     getSubscribes(userId) {
@@ -124,7 +125,7 @@ export default {
     position: relative;
     background-color: #e8e8e8;
     width: 100%;
-    height: 600px;
+    height: 280px;
     text-align: center;
     overflow: hidden;
   }

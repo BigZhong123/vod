@@ -1,62 +1,65 @@
 <template>
   <div class="mine" :style="{'min-height': minHeight + 'px'}">
-    <div class="line"
-      @click="handleShowavatar"
-      style="margin-top: 10px;">
-      <div class="line-left">
-        <Icon type="md-person" size="25" />
-        <span class="line-text">{{$t('mine.avatar')}}</span>
+    <div v-if="!isLogin" style="padding: 10px">还未登录，赶紧去登录吧~</div>
+    <div v-else>
+      <div class="line"
+        @click="handleShowavatar"
+        style="margin-top: 10px;">
+        <div class="line-left">
+          <Icon type="md-person" size="25" />
+          <span class="line-text">{{$t('mine.avatar')}}</span>
+        </div>
+        <div class="line-right">
+          <img :src="userInfo.avatar">
+          <Icon type="ios-arrow-forward" size="20" />
+        </div>
       </div>
-      <div class="line-right">
-        <img :src="userInfo.avatar">
+      <div class="line"
+        @click="handleShowName"
+        style="margin-top: 10px;">
+        <div class="line-left">
+          <Icon type="ios-time-outline"
+              size="25" />
+          <span class="line-text">{{$t('mine.name')}}</span>
+        </div>
+        <div class="line-right">
+          <span>{{userInfo.nickname}}</span>
+          <Icon type="ios-arrow-forward" size="20" />
+        </div>
+      </div>
+      <div class="line"
+        @click="handleShowInstro"
+        style="margin-top: 10px;">
+        <div class="line-left">
+          <Icon type="ios-bookmark"
+              size="25" />
+          <span class="line-text">{{$t('mine.instroduction')}}</span>
+        </div>
+        <div class="line-right">
+          <span>{{userInfo.introduction}}</span>
+          <Icon type="ios-arrow-forward" size="20" />
+        </div>
+      </div>
+      <div class="line"
+        style="margin-top: 10px;"
+        @click="handleShowVideo">
+        <div class="line-left">
+          <Icon type="md-cloud-upload"
+              size="25" />
+          <span class="line-text">{{$t('mine.uploadVideo')}}</span>
+        </div>
         <Icon type="ios-arrow-forward" size="20" />
       </div>
-    </div>
-    <div class="line"
-      @click="handleShowName"
-      style="margin-top: 10px;">
-      <div class="line-left">
-        <Icon type="ios-time-outline"
-            size="25" />
-        <span class="line-text">{{$t('mine.name')}}</span>
-      </div>
-      <div class="line-right">
-        <span>{{userInfo.nickname}}</span>
+      <div class="line"
+        @click="toMyPage"
+        style="margin-top: 10px;">
+        <div class="line-left">
+          <Icon type="logo-youtube"
+              size="25" />
+          <span class="line-text">{{$t('mine.myPage')}}</span>
+        </div>
         <Icon type="ios-arrow-forward" size="20" />
       </div>
-    </div>
-    <div class="line"
-      @click="handleShowInstro"
-      style="margin-top: 10px;">
-      <div class="line-left">
-        <Icon type="ios-bookmark"
-            size="25" />
-        <span class="line-text">{{$t('mine.instroduction')}}</span>
-      </div>
-      <div class="line-right">
-        <span>{{userInfo.introduction}}</span>
-        <Icon type="ios-arrow-forward" size="20" />
-      </div>
-    </div>
-    <div class="line"
-      style="margin-top: 10px;"
-      @click="handleShowVideo">
-      <div class="line-left">
-        <Icon type="md-cloud-upload"
-            size="25" />
-        <span class="line-text">{{$t('mine.uploadVideo')}}</span>
-      </div>
-      <Icon type="ios-arrow-forward" size="20" />
-    </div>
-    <div class="line"
-      @click="toMyPage"
-      style="margin-top: 10px;">
-      <div class="line-left">
-        <Icon type="logo-youtube"
-            size="25" />
-        <span class="line-text">{{$t('mine.myPage')}}</span>
-      </div>
-      <Icon type="ios-arrow-forward" size="20" />
     </div>
     <cropper-bg
       v-if="showavatar"
@@ -104,7 +107,9 @@ export default {
     Update
   },
   created() {
-    this.getUserInfo(this.userId);
+    if(this.isLogin) {
+      this.getUserInfo(this.userId);
+    }
     this.setIsNav(true);
     this.setIsSlider(true);
     const height = (document.documentElement.clientHeight || document.body.clientHeight) - 100

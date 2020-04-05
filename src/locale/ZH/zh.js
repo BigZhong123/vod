@@ -45,6 +45,7 @@ const messages = {
   login: {
     title: '登录',
     email: '邮箱',
+    phone: '手机',
     emailEmpty: '邮箱账号不能为空',
     emailError: '请输入正确的邮箱账号！',
     password: '密码',

@@ -1,3 +1,4 @@
+## 这里的头像后面记得加上去
 <template>
   <div class="nav-wrapper">
     <transition name="nav">
@@ -22,10 +23,10 @@
             @click="search"
             style="margin-right: 10px;"
           />
-          <img
+          <!-- <img
             src="@/assets/images/avatar.jpg"
             class="image"
-          >
+          > -->
           <div
             @click="showMenu"
             :class="['more', { 'active': isMenu }]"

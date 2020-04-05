@@ -37,6 +37,7 @@ import { getMySubscribe } from "@/api/mine.js";
       getMySubscribe() {
         getMySubscribe(this.id).then(res => {
           if(res.data.status === 1) {
+            console.log(res);
             const lists = res.data.data.userEntities;
             lists.forEach((item, index) => {
               lists[index].avatar = baseUrl + lists[index].avatar

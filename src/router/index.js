@@ -6,6 +6,7 @@ import MyPage from '../views/CenterInfo/component/MyPage.vue';
 import MyCollect from '../views/CenterInfo/component/MyCollect.vue';
 import MyFollow from '../views/CenterInfo/MyFollow.vue';
 import MySubscribe from '../views/CenterInfo/MySubscribe.vue';
+import Login from '../views/Login/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -24,7 +25,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/Login/Login.vue')
+    component: Login
   },
   {
     path: '/home',

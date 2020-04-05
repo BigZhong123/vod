@@ -36,21 +36,18 @@ import { getMyFollow } from "@/api/mine.js";
         this.getMyFollow();
     },
     methods: {
-        getMyFollow() {
-          getMyFollow(this.id).then(res => {
-            if(res.data.status === 1) {
-              const hasSubscribes = res.data.data.hasSubscribes;
-              const lists = res.data.data.userEntities;
-              if(hasSubscribes > 0) {
-                lists.forEach((item, index) => {
-                  lists[index].avatar = baseUrl + lists[index].avatar;
-                });
-                this.userLists = lists;
-              }
-            }
-          })
-        },
-        toCenterInfo(id) {
+      getMyFollow() {
+        getMyFollow(this.id).then(res => {
+          if(res.data.status === 1) {
+            const lists = res.data.data;
+            lists.forEach((item, index) => {
+              lists[index].avatar = baseUrl + lists[index].avatar;
+            });
+            this.userLists = lists;
+          }
+        })
+      },
+      toCenterInfo(id) {
         this.$router.push({
           name: 'centerInfo',
           params: {

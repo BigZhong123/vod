@@ -70,7 +70,7 @@ export default {
         screenshot: true, //开启截图，如果开启，视频和视频封面需要允许跨域
         hotkey: true, // 开启热键
         preload: 'auto', // 预加载
-        volume: 0, // 默认音量，如果用户自己设置了音量则会失效
+        volume: 0.3, // 默认音量，如果用户自己设置了音量则会失效
         // logo: 'logo.png',
         video: {
           // url: 'http://101.133.165.169:8000/res/video/1.mp4',

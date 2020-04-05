@@ -56,6 +56,8 @@
     .img-wrapper {
       position: relative;
       width: 100%;
+      height: 130px;
+      overflow: hidden;
       img {
         width: 100%;
         border-radius: 4px;
