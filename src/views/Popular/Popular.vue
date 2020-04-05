@@ -23,9 +23,10 @@
       <div class="video-card" v-for="(item, i) in videoLists" :key="i" @click="toWatch(item.savePath, item.id, item.partitionId)">
         <video-card
           :cover="item.img"
-          :avatar="item.avatar"
+          :avatar="item.userEntity.avatar"
           :title="item.title"
-          :name="item.name"
+          :name="item.userEntity.nickname"
+          :upId="item.upId"
           :num="item.videoOperationEntity.clickCount"
           :time="item.createTime"></video-card>
       </div>
@@ -84,6 +85,7 @@ export default {
           lists[i].createTime = this.$moment(lists[i].createTime).format('YYYY-MM-DD')
         });
         this.videoLists = [...lists];
+        console.log(this.videoLists)
         this.currentPage++;
         this.setIsLoading(false);
       })

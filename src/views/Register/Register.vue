@@ -98,7 +98,7 @@ export default {
   data () {
     return {
       registerInfo: {
-        email: '',
+        email: '', // 这个换成手机号码了
         passwd: '',
         passwdCheck: '',
         code: ''
@@ -222,6 +222,7 @@ export default {
       if (!isToRegister) {
         return;
       } else {
+        console.log(this.registerInfo)
         toRegister(this.registerInfo).then((res) => {
           if (res.data.status === 1) {
             this.$Message.success({

@@ -18,11 +18,12 @@
          :key="index"
          @click="toWatch(item.videoEntity.savePath, item.videoEntity.id, item.videoEntity.partitionId)">
           <video-card
+            :upId="item.upId"
             :cover="item.videoEntity.img"
             :avatar="item.userEntity.avatar"
             :title="item.videoEntity.title"
             :name="item.userEntity.nickname"
-            :num="item.partitionSubId"
+            :num="item.clickCount"
             :time="item.createTime"></video-card>
         </div>
       </div>
@@ -89,6 +90,7 @@ export default {
           lists[i].userEntity.avatar = baseUrl + lists[i].userEntity.avatar;
         }
         this.videoLists = lists;
+        // console.log(this.videoLists)
       }).finally(() => {
         this.setIsLoading(false);
       })

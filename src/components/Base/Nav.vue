@@ -5,7 +5,7 @@
         class="nav"
         v-if="fromTop === 0 || moveY > 0"
       >
-        <div class="left-wrapper">
+        <div class="left-wrapper" @click="toHome">
           <Icon
             type="logo-youtube"
             color="red"
@@ -145,6 +145,9 @@ export default {
     },
     hideMenu() {
       this.setIsMenu(false)
+    },
+    toHome() {
+      this.$router.push('/home')
     }
   },
   created() {

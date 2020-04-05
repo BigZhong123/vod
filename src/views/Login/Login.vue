@@ -40,6 +40,9 @@
           >{{$t('login.password')}}</div>
           <div class="tip" v-if="isPasswdNone" :style="{'color': isPasswdNone ? '#ed4014' : ''}">{{$t('login.passwordEmpty')}}</div>
         </div>
+        <!-- <div class="keep-status">
+          <Checkbox v-model="keppStatus">{{$t('login.keepStatus')}}</Checkbox>
+        </div> -->
         <div class="register-btn-wrapper">
           <div class="register-btn" @click="toLogin">{{$t('login.title')}}</div>
         </div>
@@ -68,6 +71,7 @@ export default {
       isEmailRight: true,
       isEmailNone: false,
       isPasswdNone: false,
+      keppStatus: false,
     }
   },
   components: {
@@ -120,7 +124,12 @@ export default {
             const userId = data.id;
             this.setUserId(userId);
             this.setIsLogin(true);
-            this.$router.push('/home');  
+            // if(this.keppStatus) {
+            //   const pp = {
+            //     phone: this.loginInfo.email
+            //   }
+            // }
+            this.$router.push('/home');
           } else {
             return new Promise((resolve, reject) => {
               reject()

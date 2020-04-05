@@ -260,6 +260,10 @@ import ClickOutside from 'vue-click-outside';
       border: 1px solid #f3f3f3;
       color: #515a6e;
       background-color: #f3f3f3;
+      &:focus {
+        outline-style: none;
+        box-shadow: none;
+      }
     }
   }
   .comment-wrapper {

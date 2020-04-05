@@ -14,6 +14,7 @@
         :avatar="item.userEntity.avatar"
         :title="item.title"
         :name="item.userEntity.nickname"
+        :upId="item.upId"
         :num="item.videoOperationEntity.clickCount"
         :time="item.createTime"></video-card>
     </div>

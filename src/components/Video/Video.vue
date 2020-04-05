@@ -8,7 +8,7 @@
              style="display: block;">
       </div>
       <div class="desc-wrapper">
-        <div class="avatar-wrapper">
+        <div class="avatar-wrapper" @click="toCenterInfo">
           <img :src="avatar"
                class="avatar">
         </div>
@@ -64,6 +64,22 @@ export default {
     time: {
       type: String,
       default: ''
+    },
+    upId: {
+      type: Number,
+      default: -1
+    }
+  },
+  methods:{
+    toCenterInfo(e) {
+      this.$router.push({
+        name: 'centerInfo',
+        params: {
+          id: this.upId
+        }
+      })
+      e.preventDefault();
+      e.stopPropagation();
     }
   }
 }

@@ -5,7 +5,7 @@
     </div>
     <div class="info-wrapper">
       <div class="avatar-wrapper">
-        <img src="http://101.133.165.169:8000/res/img/avatar/20200403165122_10.png">
+        <img :src="avatar">
       </div>
       <div class="info-text">
         <div class="name">{{name}}</div>

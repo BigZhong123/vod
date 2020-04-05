@@ -51,7 +51,8 @@ const messages = {
     passwordEmpty: 'Please enter your password',
     noneAccount: 'No SUNTV account?',
     toRegister: 'To register',
-    errTip: 'Email or password error'
+    errTip: 'Email or password error',
+    keepStatus: 'Keep login status'
   },
   home: {
     slogan: 'SUNTV, A freewheeling video site'

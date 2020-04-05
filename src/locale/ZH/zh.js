@@ -51,7 +51,8 @@ const messages = {
     passwordEmpty: '请输入密码',
     noneAccount: '没有SUNTV账号？',
     toRegister: '去注册',
-    errTip: '邮箱或密码错误'
+    errTip: '邮箱或密码错误',
+    keepStatus: '保持登录状态'
   },
   home: {
     slogan: 'SUNTV，一个随心所欲的视频网站',
