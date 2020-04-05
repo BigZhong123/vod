@@ -172,9 +172,8 @@ import ClickOutside from 'vue-click-outside';
       showReplay() {
         this.show = true;
       },
-      // send(value) {
       send() {
-        // console.log(888, value)
+        console.log(this.value)
         this.show = false
       },
     }
