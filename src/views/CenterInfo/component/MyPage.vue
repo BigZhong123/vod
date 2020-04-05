@@ -9,6 +9,7 @@
           :length="item.length"
           :introduction="item.introduction"
           :clickCount="item.videoOperationEntity.clickCount"
+          @click.native="toWatch(item.savePath, item.id, item.partitionId)"
         ></tiny-video>
       </div>
   </div>
@@ -45,6 +46,17 @@ import { computedTime } from '@/utils/util.js';
           this.userVideoLists = data;
         }
       })
+    },
+    methods: {
+      toWatch(path, videoId, partId) {
+        this.clickVideo(this.userId, videoId);
+        this.setCurrentVideoId(videoId);
+        this.setCurrentPartId(partId);
+        localStorage.setItem('videoPath', path);
+        this.$router.push({
+          path: '/watch'
+        })
+      }
     }
   }
 </script>

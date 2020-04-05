@@ -12,7 +12,7 @@
         @click.native="toCenterInfo(item.id)"
       ></author>
     </div>
-    <div class="video-lists" v-else-if="videoResult.length > 0">
+    <div class="video-lists" v-if="videoResult.length > 0">
       <div style="padding-left: 10px;">视频</div>
       <small-video
         v-for="(item, i) in videoResult"
@@ -22,10 +22,10 @@
         :title="item.title"
         :name="item.userEntity.nickname"
         :count="item.videoOperationEntity.clickCount"
-        @click.native="toWatch(item.savePath)"
+        @click.native="toWatch(item.savePath, item.id, item.partitionId)"
       ></small-video>
     </div>
-    <div v-else style="padding: 10px">
+    <div v-if="userResult.length === 0 && videoResult.length === 0" style="padding: 10px">
       暂无搜索结果
     </div>
   </div>
@@ -46,6 +46,9 @@ import mixins from '@/utils/mixins.js';
       Author,
       SmallVideo
     },
+    // mounted() {
+    //   console.log(this.videoResult)
+    // },
     methods: {
       toCenterInfo(id) {
         this.$router.push({
@@ -55,9 +58,18 @@ import mixins from '@/utils/mixins.js';
           }
         })
       },
-      toWatch(savePath) {
-        localStorage.setItem('videoPath', savePath)
-        this.$router.push('/watch')
+      // toWatch(savePath) {
+      //   localStorage.setItem('videoPath', savePath)
+      //   this.$router.push('/watch')
+      // }
+      toWatch(path, videoId, partId) {
+        this.clickVideo(this.userId, videoId);
+        this.setCurrentVideoId(videoId);
+        this.setCurrentPartId(partId);
+        localStorage.setItem('videoPath', path);
+        this.$router.push({
+          path: '/watch'
+        })
       }
     }
   }

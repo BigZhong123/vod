@@ -1,4 +1,5 @@
 import { mapActions, mapGetters } from 'vuex';
+import { clickVideo } from '@/api/base.js';
 
 const mixins = {
   computed: {
@@ -21,6 +22,7 @@ const mixins = {
       'videoResult',
       'myFollow',
       'mySubscribe',
+      'commentModal'
     ])
   },
   methods: {
@@ -43,7 +45,9 @@ const mixins = {
       'setVideoResult',
       'setMyFollow',
       'setMySubscribe',
-    ])
+      'setCommentModal'
+    ]),
+    clickVideo
   }
 }
 

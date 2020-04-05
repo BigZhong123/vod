@@ -4,13 +4,17 @@
     class="answer">
     <div class="box clearfix">
       <div class="left">
-        <input
+        <Input
           v-focus="focusType"
           name="sendReport"
+          v-model="commentText"
           :value="value"
           :placeholder="tips"
-          @change="handleChange($event)"></div>
-      <div class="right"><button @click="send()"><span>发送</span></button></div>
+          @change="handleChange($event)"
+        /></div>
+      <div class="right" @click="send">
+        <span>发送</span>
+      </div>
     </div>
     <div
       v-show="focusType"
@@ -20,7 +24,7 @@
 </template>
 <script>
 export default {
-  name: 'vueReport',
+  name: 'Report',
   // 设置获取焦点
   directives: {
     // 自动获取焦点
@@ -62,7 +66,8 @@ export default {
   },
   data() {
     return {
-      height: null
+      height: null,
+      commentText: ''
     }
   },
   computed: {
@@ -82,7 +87,7 @@ export default {
     }
   },
   mounted() {
-    // 监听滚动条高度
+    // 监听滚动条高度,返回值为向上滑动的距离
     document.addEventListener('scroll', () => {
       if (this.status) {
         this.height = (document.documentElement.scrollTop || document.body.scrollTop)
@@ -92,11 +97,12 @@ export default {
   methods: {
     // 隐藏组件
     active() {
+      // 更新focusType
       this.$emit('update:focusType', false)
     },
     // 发送回调函数
     send() {
-      this.$emit('send')
+      this.$emit('send', this.commentText)
     },
     // 兼容ios手机 滚动
     ios() {
@@ -114,7 +120,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .clearfix:before,
 .clearfix:after {
     content: " ";
@@ -124,49 +130,36 @@ export default {
     clear: both;
     visibility: hidden;
 }
-.clearfix {
-    *zoom: 1;
-}
-/* 浮动 */
-.left{
-  float: left;
-}
-.right{
-  float: right;
-}
 .answer{
-  background-color: #f9f9f9;
+  background-color: white;
   position:fixed;
   bottom: 0;
-  right: 10px;
+  right: 0;
   width: 100%;
   height: 50px;
-  z-index: 99999999999999;
-  padding-bottom: 10px;
+  line-height: 50px;
+  z-index: 9999999;
   .box{
+    padding: 0 10px;
     position: relative;
-    z-index: 99999999999999;
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
     .left{
-        width: 82%;
-        text-align: center;
-        padding-top:8px;
-      >input{
-        margin-left:10px;
-        width: 90%;
-        height: 40px;
-        border: 1px solid #e8e8e8
+      text-align: center;
+      flex: 1;
+      .ivu-input {
+        border: none;
+        border-radius: 15px;
+        background-color: #ccc;
       }
     }
     .right{
-        width: 18%;
-        padding-top:10px;
-        >button{
-          border-radius:5px;
-          width: 100%;
-          height: 40px;
-          text-align: center;
-          background-color: #18b4ed;
-        }
+      margin-left: 10px;
+      width: 40px;
+      flex: 0 0 40px;
+      font-size: 12px;
+      color: #ccc;
     }
   }
 }

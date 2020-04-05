@@ -23,6 +23,7 @@ export default new Vuex.Store({
     videoResult: [], // 搜索结果的视频
     myFollow: [], // 用户的关注
     mySubscribe: [], // 用户的粉丝
+    commentModal: false, //评论弹窗是否打开
   },
   mutations: {
     SET_FROM_TOP (state, fromTop) {
@@ -78,6 +79,9 @@ export default new Vuex.Store({
     },
     SET_MY_SUBSCRIBE(state, mySubscribe) {
       state.mySubscribe = mySubscribe;
+    },
+    SET_COMMENT_MODAL(state, commentModal) {
+      state.commentModal = commentModal;
     }
   },
   actions: {
@@ -134,6 +138,9 @@ export default new Vuex.Store({
     },
     SET_MY_SUBSCRIBE({ commit }, mySubscribe) {
       commit('SET_MY_SUBSCRIBE', mySubscribe);
+    },
+    setCommentModal({ commit }, commentModal) {
+      commit('SET_COMMENT_MODAL', commentModal);
     }
   },
   getters: {
@@ -154,7 +161,8 @@ export default new Vuex.Store({
     userResult: state => state.userResult,
     videoResult: state => state.videoResult,
     myFollow: state => state.myFollow,
-    muSubscribe: state => state.muSubscribe,
+    mySubscribe: state => state.muSubscribe,
+    commentModal: state => state.commentModal
   },
   modules: {
   }

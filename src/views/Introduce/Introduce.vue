@@ -23,7 +23,7 @@
       </div>
       <div class="click-count">
         <Icon type="logo-youtube" size="10" />
-        {{clickCount}}w观看
+        {{clickCount}}观看
       </div>
     </div>
     <div class="small-video-wrapper">
@@ -126,6 +126,7 @@ export default {
       }
     },
     switchVideo(videoPath, videoId, partId) {
+      this.clickVideo(this.userId, videoId);
       this.$emit('switchVideo', videoPath);
       this.setCurrentVideoId(videoId);
       this.setCurrentPartId(partId);

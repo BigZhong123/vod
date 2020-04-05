@@ -1,5 +1,5 @@
 <template>
-  <div class="watch">
+  <div class="watch" :style="[commentModal ? hiddenClass : '']">
     <div class="video-wrapper">
       <div id="dplayer"></div>
     </div>
@@ -18,12 +18,26 @@
 
 <script>
 import DPlayer from 'dplayer';
+import mixins from '@/utils/mixins.js';
 export default {
+  mixins: [mixins],
   data () {
     return {
       url: '',
       type: 1, // 1为简介，2为评论
+      hiddenClass: {},
+      clientHeight: 0,
     }
+  },
+  created() {
+    const clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    this.clientHeight = clientHeight
+    const height = clientHeight - 100;
+    this.hiddenClass = {
+      height: height + 'px',
+      overflow: 'hidden'
+    }
+    console.log(this.hiddenClass)
   },
   mounted () {
     this.initVideo();

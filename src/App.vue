@@ -48,6 +48,8 @@ export default {
       var clientHeight = document.documentElement.clientHeight;
       if (totalHeight <= clientHeight + scrollTop) {
         this.setIsBottom(true); // 到达底部
+      } else {
+        this.setIsBottom(false); // 未到达底部
       }
     });
     window.addEventListener('touchstart', (e) => {

@@ -20,7 +20,7 @@
             {{name}}
           </div>
           <div class="num-time">
-            <span>{{num}}w次观看</span>
+            <span>{{num}}次观看</span>
             <span class="dot"></span>
             <span>{{time}}</span>
           </div>
