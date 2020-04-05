@@ -173,7 +173,7 @@ import ClickOutside from 'vue-click-outside';
         this.show = true;
       },
       send() {
-        console.log(this.value)
+        // console.log(this.value)
         this.show = false
       },
     }
