@@ -88,7 +88,6 @@ export default {
           lists[i].createTime = this.$moment(lists[i].createTime).format('YYYY-MM-DD')
         });
         this.videoLists = [...lists];
-        console.log(this.videoLists)
         this.currentPage++;
         this.setIsLoading(false);
       })

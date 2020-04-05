@@ -222,7 +222,6 @@ export default {
       if (!isToRegister) {
         return;
       } else {
-        console.log(this.registerInfo)
         toRegister(this.registerInfo).then((res) => {
           if (res.data.status === 1) {
             this.$Message.success({

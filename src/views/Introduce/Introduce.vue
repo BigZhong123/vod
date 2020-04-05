@@ -5,7 +5,7 @@
         <img :src="upAvatar">
         <div style="margin-left: 10px">
           <span>{{upName}}</span>
-          <div class="title">{{title}}</div>
+          <div>{{followCount}}粉丝</div>
         </div>
       </div>
       <div class="info-right">
@@ -18,6 +18,7 @@
       </div>
     </div>
     <div style="padding: 10px;">
+      <div class="title">{{title}}</div>
       <div class="instroduction">
         {{videoInstr}}
       </div>
@@ -65,6 +66,7 @@ export default {
       clickCount: '',
       isSubscribe: false,
       upId: -1,
+      followCount: 0
     }
   },
   components: {
@@ -100,16 +102,15 @@ export default {
     },
     getVideoInfo() {
       getVideoInfo(this.currentVideoId).then(res => {
-        console.log(res);
         if(res.data.status === 1) {
           const data = res.data.data;
           this.videoInstr = data.introduction;
           this.upName = data.userEntity.nickname;
           this.title = data.title;
-          this.upAvatar = baseUrl + data.userEntity.img;
+          this.upAvatar = baseUrl + data.userEntity.avatar;
           this.clickCount = data.videoOperationEntity.clickCount;
           this.upId = data.upId;
-          // this.
+          this.followCount = data.userEntity.followCount;
         }
       })
     },
@@ -212,7 +213,7 @@ export default {
   .instroduction {
     margin-top: 5px;
     font-size: 14px;
-    color: black;
+    // color: black;
   }
   .click-count {
     font-size: 12px;

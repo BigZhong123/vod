@@ -18,12 +18,12 @@
          :key="index"
          @click="toWatch(item.videoEntity.savePath, item.videoEntity.id, item.videoEntity.partitionId)">
           <video-card
-            :upId="item.upId"
-            :cover="item.videoEntity.img"
-            :avatar="item.userEntity.avatar"
-            :title="item.videoEntity.title"
-            :name="item.userEntity.nickname"
-            :num="item.clickCount"
+            :upId="item.videoView.upId"
+            :cover="item.videoView.img"
+            :avatar="item.videoView.userEntity.avatar"
+            :title="item.videoView.title"
+            :name="item.videoView.userEntity.nickname"
+            :num="item.videoView.videoOperationEntity.clickCount"
             :time="item.createTime"></video-card>
         </div>
       </div>
@@ -85,12 +85,11 @@ export default {
         const lists = res.data.data;
         for(let i = 0; i < lists.length; i++) {
           lists[i].createTime = this.$moment(lists[i].createTime).format('YYYY-MM-DD')
-          lists[i].videoEntity.img = baseUrl + lists[i].videoEntity.img;
-          lists[i].videoEntity.savePath = baseUrl + lists[i].videoEntity.savePath;
-          lists[i].userEntity.avatar = baseUrl + lists[i].userEntity.avatar;
+          lists[i].videoView.img = baseUrl + lists[i].videoView.img;
+          lists[i].videoView.savePath = baseUrl + lists[i].videoView.savePath;
+          lists[i].videoView.userEntity.avatar = baseUrl + lists[i].videoView.userEntity.avatar;
         }
         this.videoLists = lists;
-        // console.log(this.videoLists)
       }).finally(() => {
         this.setIsLoading(false);
       })
