@@ -57,7 +57,7 @@ export default {
     getUserInfo(this.id).then(res => {
       if(res.data.status === 1) {
         const data = res.data.data;
-        console.log(999, data);
+        // console.log(999, data);
         this.avatar = baseUrl + data.avatar;
         this.name = data.nickname;
         this.introduction = data.introduction;

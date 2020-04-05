@@ -129,7 +129,7 @@ export default {
         toLogin(this.loginInfo).then(res => {
           if (res.data.status === 1) {
             const data = res.data.data;
-            console.log(res);
+            // console.log(res);
             const userId = data.id;
             this.setUserId(userId);
             this.setIsLogin(true);
