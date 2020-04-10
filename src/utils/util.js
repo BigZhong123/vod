@@ -1,6 +1,7 @@
 // import Vue from 'vue';
 import moment from 'moment';
 
+// 将毫秒数转换成 hh:mm:ss 的格式
 export const computedTime = function(time) {
     let timeString = '';
     let hour = 0, min = 0, second = 0;
