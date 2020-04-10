@@ -65,6 +65,9 @@ export default {
       this.show();
       this.$emit('on-cancel');
     }
+  },
+  beforeDestroy() {
+    this.show();
   }
 }
 </script>
