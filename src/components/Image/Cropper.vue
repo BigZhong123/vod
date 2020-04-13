@@ -203,27 +203,27 @@ export default {
       return canvas;
     },
     // base64格式转换成MultipartFile
-    dataURLtoFile(base64Str, fileName) {
-      let arr = base64Str.split(',');
-      let mime = arr[0].match(/:(.*?);/)[1];
-      let suffix = mime.split('/')[1];
-      let bstr = atob(arr[1]);
-      let n = bstr.length;
-      let u8arr = new Uint8Array(n);
-      while (n--) {
-        u8arr[n] = bstr.charCodeAt(n)
-      }
-      return new File([u8arr], `${fileName}.${suffix}`, {type: mime})
-    },
+    // dataURLtoFile(base64Str, fileName) {
+    //   let arr = base64Str.split(',');
+    //   let mime = arr[0].match(/:(.*?);/)[1];
+    //   let suffix = mime.split('/')[1];
+    //   let bstr = atob(arr[1]);
+    //   let n = bstr.length;
+    //   let u8arr = new Uint8Array(n);
+    //   while (n--) {
+    //     u8arr[n] = bstr.charCodeAt(n)
+    //   }
+    //   return new File([u8arr], `${fileName}.${suffix}`, {type: mime})
+    // },
     // base64转成blob对象
-    dataURLtoBlob(dataurl) {
-      var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-      while(n--){
-        u8arr[n] = bstr.charCodeAt(n);
-      }
-      return new Blob([u8arr], {type:mime});
-    },
+    // dataURLtoBlob(dataurl) {
+    //   var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+    //     bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    //   while(n--){
+    //     u8arr[n] = bstr.charCodeAt(n);
+    //   }
+    //   return new Blob([u8arr], {type:mime});
+    // },
     //提交上传函数
     postImg() {
       uploadAvatar(this.headerImage).then((res) => {

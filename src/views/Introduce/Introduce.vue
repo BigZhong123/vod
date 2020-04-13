@@ -157,13 +157,16 @@ export default {
         cancelCollectVideo(this.userId, this.currentVideoId);
       }
     },
+    getRandomPart() {
+      return Math.floor(Math.random() * 17 + 1);
+    },
     switchVideo(videoPath, videoId, partId) {
       this.clickVideo(this.userId, videoId);
       this.$emit('switchVideo', videoPath);
       this.setCurrentVideoId(videoId);
       this.setCurrentPartId(partId);
       // 获取随机的一个分区的视频进行推荐
-      const randomPart = Math.floor(Math.random() * 17 + 1)
+      const randomPart = this.currentPartId;
       this.setCurrentPartId(randomPart);
       this.getPartitionVideo(randomPart);
       this.getVideoInfo();

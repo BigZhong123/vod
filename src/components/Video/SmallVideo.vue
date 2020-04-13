@@ -10,7 +10,7 @@
         <div class="small-introduce">{{title}}</div>
         <div class="up-name">{{name}}</div>
       </div>
-      <div class="watch-num">{{count}}w观看</div>
+      <div class="watch-num">{{count}}观看</div>
     </div>
   </div>
 </template>

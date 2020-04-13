@@ -14,8 +14,8 @@ export default new Vuex.Store({
     isLogin: false, // 是否登录 flase
     notRead: 0, // 订阅未阅读数
     isLoading: false, // 是否处于加载中
-    currentVideoId: 1, //当前观看的视频id null
-    currentPartId: 1, // 当前观看视频的分类 nu;;
+    currentVideoId: null, //当前观看的视频id null
+    currentPartId: null, // 当前观看视频的分类 null
     isSlider: true, // 是否显示底部导航条
     isNav: true, // 是否显示头部导航条
     isHome: true, // 是否在首页，以此来判断是否显示搜索

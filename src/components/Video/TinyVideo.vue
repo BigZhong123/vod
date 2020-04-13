@@ -62,6 +62,7 @@
         width: 100%;
         border-radius: 4px;
         max-height: 130px;
+        height: 130px;
       }
       .click-count {
         position: absolute;

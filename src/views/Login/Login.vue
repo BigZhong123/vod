@@ -18,6 +18,7 @@
             :style="{'border-color': !isEmailRight || isEmailNone ? 'red' : ''}"
             v-model.trim="loginInfo.email"
             @focus="inputEmail"
+            @blur="validatePhone"
           />
           <div class="input-icon">
             <Icon type="ios-mail" size="30" />
@@ -91,6 +92,22 @@ export default {
     validateEmail() {
       this.focusInput = '';
       const reg = /^([a-zA-Z]|[0-9])(\w|\\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+      if (this.loginInfo.email === '') {
+        this.isEmailNone = true;
+        this.isEmailRight = true;
+        return;
+      } else if (!reg.test(this.loginInfo.email)) {
+        this.isEmailNone = false;
+        this.isEmailRight = false;
+        return;
+      } else {
+        this.isEmailNone = false;
+        this.isEmailRight = true;
+      }
+    },
+    validatePhone() {
+      this.focusInput = '';
+      const reg = /^1[3456789]\d{9}$/;
       if (this.loginInfo.email === '') {
         this.isEmailNone = true;
         this.isEmailRight = true;

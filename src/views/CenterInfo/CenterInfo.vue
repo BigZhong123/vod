@@ -30,7 +30,9 @@
       <div class="slider" :class="{'right': type === 2}"></div>
     </div>
     <div style="margin: 10px 0;">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>

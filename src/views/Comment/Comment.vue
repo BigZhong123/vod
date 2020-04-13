@@ -218,7 +218,7 @@ import ClickOutside from 'vue-click-outside';
         }
         addComment(this.replyMsg, 0, 0, this.userId, this.currentVideoId).then(res => {
           if(res.data.status === 1) {
-            this.$Message.success('回复成功');
+            this.$Message.success('评论成功');
             this.getComment(this.currentVideoId, this.currentPage, this.pageSize);
             this.replyMsg = '';
           }
