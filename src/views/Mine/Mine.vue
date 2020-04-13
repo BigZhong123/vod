@@ -161,6 +161,7 @@ export default {
       this.avatarInfo =  data;
       this.updateUserInfo();
     },
+    // 更新用户信息
     updateUserInfo() {
       this.hideModal();
       const params = {

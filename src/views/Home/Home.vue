@@ -107,6 +107,7 @@ export default {
     }
   },
   methods: {
+    // 获取首页视频
     getVideoLists(page, pageSize) {
       getVideoLists(page, pageSize).then(res => {
         const lists = res.data.data.videoView;
@@ -123,12 +124,6 @@ export default {
         this.videoLists.push(...lists);
       })
     },
-    removeHistory (index, e) {
-      this.historySearch.splice(index, 1)
-      localStorage.setItem('searchHistory', JSON.stringify(this.historySearch));
-      e.stopPropagation();
-      e.preventDefault();
-    },
     cancelSearch () {
       this.setIsSearch(false)
     },
@@ -141,12 +136,6 @@ export default {
         path: '/watch'
       })
     },
-    // 数组去重
-    unique(arr) {
-      return arr.filter(function(item, index, arr) {
-        return arr.indexOf(item, 0) === index;
-      });
-    },
     toSearch(searchText) {
       this.doSearch(searchText, this.video_current_page, this.video_page_size, this.user_current_page, this.user_page_size)
     },
@@ -156,6 +145,20 @@ export default {
       }
       this.doSearch(this.searchContent, this.video_current_page, this.video_page_size, this.user_current_page, this.user_page_size)
     },
+    // 数组去重
+    unique(arr) {
+      return arr.filter(function(item, index, arr) {
+        return arr.indexOf(item, 0) === index;
+      });
+    },
+    // 移除历史搜索
+    removeHistory (index, e) {
+      this.historySearch.splice(index, 1)
+      localStorage.setItem('searchHistory', JSON.stringify(this.historySearch));
+      e.stopPropagation();
+      e.preventDefault();
+    },
+    // 执行搜索
     doSearch(searchContent, video_current_page, video_page_size, user_current_page, user_page_size) {
       search(searchContent, video_current_page, video_page_size, user_current_page, user_page_size).then(res => {
         if(res.data.status === 1) {

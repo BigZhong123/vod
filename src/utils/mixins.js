@@ -1,5 +1,6 @@
 import { mapActions, mapGetters } from 'vuex';
 import { clickVideo } from '@/api/base.js';
+import { renderI18nKey } from './renderI18nKey.js';
 
 const mixins = {
   computed: {
@@ -49,7 +50,8 @@ const mixins = {
       'setCommentModal',
       'setBackTop'
     ]),
-    clickVideo
+    clickVideo,
+    renderI18nKey
   }
 }
 

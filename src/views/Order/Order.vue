@@ -63,6 +63,7 @@ export default {
     this.minHeight = height - 100
   },
   methods: {
+    // 判断用户是否有关注
     getSubscribes(userId) {
       this.setIsLoading(true);
       getSubscribes(userId).then(res => {
@@ -80,6 +81,7 @@ export default {
         this.setIsLoading(false);
       })
     },
+    // 获取关注者更新的视频资源
     getOrderVideo(userId) {
       this.setIsLoading(true);
       getOrderVideo(userId).then(res => {

@@ -72,6 +72,7 @@ const messages = {
     newName: '请输入新呢称',
     newInstroduction: '请输入新个人简介',
     format: '请上传正确格式的文件',
+    size: '请选择5M以内的图片！'
   }
 }
 

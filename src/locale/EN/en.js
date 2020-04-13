@@ -72,6 +72,7 @@ const messages = {
     newName: 'Please enter new name',
     newInstroduction: 'Please enter a new instroduction',
     format: 'Please upload the correct file format',
+    size: 'Please select the picture within 5M!',
   }
 }
 

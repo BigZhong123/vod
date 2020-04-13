@@ -143,11 +143,13 @@ export default {
       let type = files[0].type; //文件的类型，判断是否是图片
       let size = files[0].size; //文件的大小，判断图片的大小
       if (this.imgCropperData.accept.indexOf(type) == -1) {
-        this.$Message.error('请上传正确格式的文件');
+        this.$Message.error(this.renderI18nKey('mine.format'));
+        this.cancel();
         return false;
       }
       if (size > 5242880) {
-        this.$Message.error("请选择5M以内的图片！");
+        this.$Message.error(this.renderI18nKey('mine.size'));
+        this.cancel();
         return false;
       }
       this.picValue = files[0];

@@ -25,6 +25,7 @@ export default {
     NavBar
   },
   watch: {
+    // 请求用户为阅读的动态数
     $route: function(to) {
       if(to.name === 'home') {
         this.setIsHome(true);

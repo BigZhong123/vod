@@ -63,6 +63,7 @@ export default {
     this.minHeight = clientHeight
   },
   watch: {
+    // 监听路由变化来请求不同分类的视频资源
     '$route' () {
       const id = this.$route.params.id || 1;
       this.currentType = id;
@@ -71,12 +72,14 @@ export default {
     }
   },
   computed: {
+    // 选择分类的滑块移动代码
     moveLeft() {
       let left = 60 * parseInt(this.currentType - 1);
       return left + 'px';
     }
   },
   methods: {
+    // 获取分类视频资源
     getVideolIsts(id) {
       this.setIsLoading(true);
       getPartVideoLists(id, this.currentPage).then(res => {
