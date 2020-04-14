@@ -1,6 +1,7 @@
 const messages = {
   base: {
     save: '保存',
+    uploadSuccess: '上传成功'
   },
   slider: {
     home: '首页',
@@ -72,7 +73,8 @@ const messages = {
     newName: '请输入新呢称',
     newInstroduction: '请输入新个人简介',
     format: '请上传正确格式的文件',
-    size: '请选择5M以内的图片！'
+    size: '请选择5M以内的图片！',
+    picOrDis: '请输入视频标题或介绍',
   }
 }
 

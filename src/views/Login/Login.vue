@@ -132,6 +132,7 @@ export default {
         this.isPasswdNone = false;
       }
     },
+    // 登录操作
     toLogin() {
       if (this.loginInfo.email.length === 0) {
         this.isEmailNone = true;

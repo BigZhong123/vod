@@ -123,6 +123,7 @@ export default {
     inputEmail() {
       this.focusInput = 'email';
     },
+    // 验证手机号码
     validateEmail() {
       this.focusInput = '';
       const reg = /^1[3456789]\d{9}$/;
@@ -142,6 +143,7 @@ export default {
     inputPwd() {
       this.focusInput = 'passwd';
     },
+    // 验证密码
     validatePwd() {
       this.focusInput = '';
       const reg = /(?![0-9A-Z]+$)(?![0-9a-z]+$)(?![a-zA-Z]+$)[0-9A-Za-z~!@#$%^&*()/\\|,.<>?"'();:_+-=\\[\]{}]{8,20}$/;
@@ -157,6 +159,7 @@ export default {
     inputPasswdCheck() {
       this.focusInput = 'passwdCheck';
     },
+    // 二次验证密码
     validatePasswdCheck() {
       this.focusInput = '';
       if (this.registerInfo.passwdCheck === '') {
@@ -183,6 +186,7 @@ export default {
         this.isCodeNone = false;
       }
     },
+    // 获取验证码
     getCode() {
       if (this.registerInfo.email.length === 0) {
         this.isEmailNone = true;
@@ -205,6 +209,7 @@ export default {
         }
       }, 1000);
     },
+    // 注册操作
     toRegister() {
       if (this.registerInfo.email.length === 0) {
         this.isEmailNone = true

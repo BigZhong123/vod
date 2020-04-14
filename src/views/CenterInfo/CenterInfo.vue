@@ -56,10 +56,10 @@ export default {
   created() {
     const height = document.documentElement.clientHeight || document.body.clientHeight;
     this.minHeight = height - 100;
+    // 获取用户信息
     getUserInfo(this.id).then(res => {
       if(res.data.status === 1) {
         const data = res.data.data;
-        // console.log(999, data);
         this.avatar = baseUrl + data.avatar;
         this.name = data.nickname;
         this.introduction = data.introduction;

@@ -145,6 +145,7 @@ import ClickOutside from 'vue-click-outside';
       // }
     },
     methods: {
+      // 获取评论信息
       getComment(videoId, currentPage, pageSize) {
         this.firstComment = [];
         getComment(videoId, currentPage, pageSize).then(res => {

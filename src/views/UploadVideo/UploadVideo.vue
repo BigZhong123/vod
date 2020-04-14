@@ -66,6 +66,7 @@ import mixins from '@/utils/mixins.js';
         this.minHeight = height
     },
     methods: {
+        // 上传视频文件
         handleVideoSuccess(res) {
             const url = 'http://101.133.165.169:8000/res/';
             this.noneImg = false;
@@ -92,10 +93,11 @@ import mixins from '@/utils/mixins.js';
             this.realCover = index;
             this.noneImg = false;
         },
+        // 上传视频
         upload() {
             if(!this.title || !this.instroduction || this.realPart === 0 || this.realCover === -1) {
                 if(!this.title || !this.instroduction) {
-                    this.$Message.error('请输入视频标题或介绍');
+                    this.$Message.error(this.renderI18nKey('mine.picOrDis'));
                 }
                 if(this.realPart === 0) {
                     this.noneType = true;
@@ -117,7 +119,7 @@ import mixins from '@/utils/mixins.js';
                 }
                 uploadVideo(params).then(res => {
                     if(res.data.status === 1) {
-                        this.$Message.success('上传成功');
+                        this.$Message.success(this.renderI18nKey('base.uploadSuccess'));
                         this.$router.push('/mine');
                     }
                 })

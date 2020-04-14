@@ -1,6 +1,7 @@
 const messages = {
   base: {
     save: 'save',
+    uploadSuccess: 'Uploaded successfully'
   },
   slider: {
     home: 'Home',
@@ -73,6 +74,7 @@ const messages = {
     newInstroduction: 'Please enter a new instroduction',
     format: 'Please upload the correct file format',
     size: 'Please select the picture within 5M!',
+    picOrDis: 'Please enter video title or introduction',
   }
 }
 
