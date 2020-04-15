@@ -197,7 +197,7 @@ import ClickOutside from 'vue-click-outside';
       showSecond(index, e) {
         const data = this.firstComment[index];
         this.secondComment = data;
-        console.log('second comment', this.secondComment);
+        // console.log('second comment', this.secondComment);
         this.isSecond = true;
         this.setCommentModal(true);
         const top = this.fromTop;
@@ -206,7 +206,7 @@ import ClickOutside from 'vue-click-outside';
         e.stopPropagation();
       },
       showReplay(name, pid, replyId, e) {
-        console.log(replyId)
+        // console.log(replyId)
         this.tips = `回复${name}`;
         this.pid = pid;
         this.replyId = replyId;
