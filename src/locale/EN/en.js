@@ -1,7 +1,9 @@
 const messages = {
   base: {
     save: 'save',
-    uploadSuccess: 'Uploaded successfully'
+    uploadSuccess: 'Uploaded successfully',
+    remove: 'Remove',
+    finish: 'Finish'
   },
   slider: {
     home: 'Home',
@@ -53,7 +55,7 @@ const messages = {
     passwordEmpty: 'Please enter your password',
     noneAccount: 'No SUNTV account?',
     toRegister: 'To register',
-    errTip: 'Email or password error',
+    errTip: 'Phone number or password error',
     keepStatus: 'Keep login status',
   },
   home: {
@@ -75,6 +77,7 @@ const messages = {
     format: 'Please upload the correct file format',
     size: 'Please select the picture within 5M!',
     picOrDis: 'Please enter video title or introduction',
+    manage: 'Manage Video'
   }
 }
 

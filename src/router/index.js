@@ -100,6 +100,14 @@ const routes = [
     path: '/mySubscribe/:id',
     name: 'mySubscribe',
     component: MySubscribe
+  }, {
+    path: '/management',
+    name: 'manageVideo',
+    component: () => import('../views/ManangeVideo/ManangeVideo.vue')
+  }, {
+    path: '/edit',
+    name: 'edit',
+    component: () => import('../views/EditVideo/EditVideo.vue')
   }
 ]
 

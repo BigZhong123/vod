@@ -24,6 +24,7 @@
                 size="20" />
           <div>{{$t('slider.order')}}</div>
         </router-link>
+        <div class="un-read" :class="{'no-un-read': notRead <= 0}">{{notRead > 0 ? notRead : ''}}</div>
       </div>
       <div class="mine-wrapper">
         <router-link :to="{ path: '/mine' }"
@@ -38,7 +39,9 @@
 </template>
 
 <script>
+import mixins from '@/utils/mixins.js';
 export default {
+  mixins: [mixins],
   data () {
     return {
       selectNum: 1
@@ -77,7 +80,25 @@ export default {
       width: 25%;
     }
     .subscribe-wrapper {
+      position: relative;
       width: 25%;
+      .un-read {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        top: -3px;
+        right: 15px;
+        color: white;
+        background: red;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+      }
+      .no-un-read {
+        display: none;
+      }
     }
     .mine-wrapper {
       width: 25%;

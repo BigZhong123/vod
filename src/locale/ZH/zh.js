@@ -1,7 +1,9 @@
 const messages = {
   base: {
     save: '保存',
-    uploadSuccess: '上传成功'
+    uploadSuccess: '上传成功',
+    remove: '删除',
+    finish: '完成'
   },
   slider: {
     home: '首页',
@@ -53,7 +55,7 @@ const messages = {
     passwordEmpty: '请输入密码',
     noneAccount: '没有SUNTV账号？',
     toRegister: '去注册',
-    errTip: '邮箱或密码错误',
+    errTip: '手机号码或密码错误',
     keepStatus: '保持登录状态'
   },
   home: {
@@ -75,6 +77,7 @@ const messages = {
     format: '请上传正确格式的文件',
     size: '请选择5M以内的图片！',
     picOrDis: '请输入视频标题或介绍',
+    manage: '管理视频'
   }
 }
 

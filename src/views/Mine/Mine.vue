@@ -60,6 +60,15 @@
         </div>
         <Icon type="ios-arrow-forward" size="20" />
       </div>
+      <div class="line"
+        @click="toManage"
+        style="margin-top: 10px;">
+        <div class="line-left">
+          <Icon type="ios-hammer" size="25"/>
+          <span class="line-text">{{$t('mine.manage')}}</span>
+        </div>
+        <Icon type="ios-arrow-forward" size="20" />
+      </div>
     </div>
     <cropper-bg
       v-if="showavatar"
@@ -123,6 +132,9 @@ export default {
           id: this.userId
         }
       })
+    },
+    toManage() {
+      this.$router.push('/management')
     },
     getUserInfo(id) {
       getUserInfo(id).then(res => {

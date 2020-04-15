@@ -24,7 +24,8 @@ const mixins = {
       'myFollow',
       'mySubscribe',
       'commentModal',
-      'backTop'
+      'backTop',
+      // 'unRead'
     ])
   },
   methods: {
@@ -48,7 +49,8 @@ const mixins = {
       'setMyFollow',
       'setMySubscribe',
       'setCommentModal',
-      'setBackTop'
+      'setBackTop',
+      // 'setUnRead'
     ]),
     clickVideo,
     renderI18nKey

@@ -10,7 +10,7 @@ export default new Vuex.Store({
     isBottom: false, // 屏幕是否到达底部
     isSearch: false, // 是否搜索
     isMenu: false, // 菜单栏是否打开
-    userId: null, // 用户id, null
+    userId: 1, // 用户id, null
     isLogin: false, // 是否登录 flase
     notRead: 0, // 订阅未阅读数
     isLoading: false, // 是否处于加载中
@@ -25,6 +25,7 @@ export default new Vuex.Store({
     mySubscribe: [], // 用户的粉丝
     commentModal: false, //评论弹窗是否打开
     backTop: 0, // 弹出全部回复框时记录滚动的距离
+    // unRead: 0 //未读数
   },
   mutations: {
     SET_FROM_TOP (state, fromTop) {
@@ -86,7 +87,10 @@ export default new Vuex.Store({
     },
     SET_BACK_TOP(state, backTop) {
       state.backTop = backTop;
-    }
+    },
+    // SET_UN_READ(state, unRead) {
+    //   state.unRead = unRead;
+    // }
   },
   actions: {
     setFromTop ({ commit }, fromTop) {
@@ -148,7 +152,10 @@ export default new Vuex.Store({
     },
     setBackTop({ commit }, backTop) {
       commit('SET_BACK_TOP', backTop);
-    }
+    },
+    // setUnRead({ commit }, unRead) {
+    //   commit('SET_UN_READ', unRead);
+    // }
   },
   getters: {
     fromTop: state => state.fromTop,
@@ -171,6 +178,7 @@ export default new Vuex.Store({
     mySubscribe: state => state.muSubscribe,
     commentModal: state => state.commentModal,
     backTop: state => state.backTop,
+    // unRead: state =>  state.unRead
   },
   modules: {
   }
