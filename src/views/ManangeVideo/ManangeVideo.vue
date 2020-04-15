@@ -86,6 +86,7 @@ import { deleteVideo } from '@/api/management.js'
                 this.selectVideoArr.push(id);
             }
         },
+        // 删除视频
         deleteVideo() {
             deleteVideo(this.userId, this.selectVideoArr).then(res => {
                 if(res.data.status === 1) {

@@ -13,7 +13,7 @@
                     class="type-btn">
                 {{item.name}}</div>
             </div>
-            <div class="confirm-btn" @click="upload">修改</div>
+            <div class="confirm-btn" @click="update">修改</div>
         </div>
     </div>
 </template>
@@ -63,8 +63,8 @@ import mixins from '@/utils/mixins.js';
             this.realPart = index;
             this.noneType = false;
         },
-        // 上传视频
-        upload() {
+        // 编辑视频
+        update() {
             if(!this.title || !this.instroduction || this.realPart === 0) {
                 if(!this.title || !this.instroduction) {
                     this.$Message.error(this.renderI18nKey('mine.picOrDis'));

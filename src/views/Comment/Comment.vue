@@ -12,7 +12,7 @@
       @send="send"></replay>
     <div class="take-reply">
       <Input v-model="replyMsg" placeholder="说点什么把~" @on-enter="replyVideo"/>
-      <span class="send-text" @on-enter="replyVideo">发送</span>
+      <span class="send-text" @click="replyVideo">发送</span>
     </div>
     <div style="padding: 10px 0 0 20px;">热门评论</div>
     <div style="padding-left: 10px;" v-if="firstComment.length === 0">暂无评论噢，快去评论吧~</div>
@@ -151,7 +151,7 @@ import ClickOutside from 'vue-click-outside';
         getComment(videoId, currentPage, pageSize).then(res => {
           if(res.data.status === 1) {
             let first = res.data.data.firstCommentViews;
-            // console.log('first', first)
+            console.log('first', first)
             first.forEach((item) => {
               let obj = {
                 id: item.userId,
@@ -162,7 +162,7 @@ import ClickOutside from 'vue-click-outside';
                 msg: item.commentMsg,
                 children: []
               }
-              let flagId = item.userId;
+              // let flagId = item.userId;
               let ppid = item.id;
               for(let i = 0; i < item.commentViews.length; i++) {
                 let second = item.commentViews[i];
@@ -173,7 +173,7 @@ import ClickOutside from 'vue-click-outside';
                   name: second.userEntity.nickname,
                   msg: second.commentMsg,
                   replayName: second.replyNickName,
-                  showReplay: second.replyUserId !== flagId,
+                  showReplay: second.replyUserId !== second.userId,
                   time: timeago(second.createTime)
                 }
                 obj.children.push(subObj)
@@ -197,7 +197,7 @@ import ClickOutside from 'vue-click-outside';
       showSecond(index, e) {
         const data = this.firstComment[index];
         this.secondComment = data;
-        // console.log('second comment', this.secondComment);
+        console.log('second comment', this.secondComment);
         this.isSecond = true;
         this.setCommentModal(true);
         const top = this.fromTop;
@@ -206,6 +206,7 @@ import ClickOutside from 'vue-click-outside';
         e.stopPropagation();
       },
       showReplay(name, pid, replyId, e) {
+        console.log(replyId)
         this.tips = `回复${name}`;
         this.pid = pid;
         this.replyId = replyId;
@@ -229,6 +230,7 @@ import ClickOutside from 'vue-click-outside';
         if(this.value === '') {
           return;
         }
+        this.isSecond = false;
         addComment(this.value, this.pid, this.replyId, this.userId, this.currentVideoId).then(res => {
           if(res.data.status === 1) {
             this.$Message.success('回复成功');
