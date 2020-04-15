@@ -83,7 +83,6 @@ import mixins from '@/utils/mixins.js';
                     "id": this.videoId,
                 }
                 editVideo(params).then(res => {
-                    console.log(222, res)
                     if(res.data.status === 1) {
                         this.$Message.success(this.renderI18nKey('base.uploadSuccess'));
                         this.$router.push('/mine');
