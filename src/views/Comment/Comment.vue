@@ -151,7 +151,7 @@ import ClickOutside from 'vue-click-outside';
         getComment(videoId, currentPage, pageSize).then(res => {
           if(res.data.status === 1) {
             let first = res.data.data.firstCommentViews;
-            console.log('first', first)
+            // console.log('first', first)
             first.forEach((item) => {
               let obj = {
                 id: item.userId,
@@ -162,18 +162,19 @@ import ClickOutside from 'vue-click-outside';
                 msg: item.commentMsg,
                 children: []
               }
-              // let flagId = item.userId;
+              let flagId = item.userId;
               let ppid = item.id;
               for(let i = 0; i < item.commentViews.length; i++) {
                 let second = item.commentViews[i];
+                // console.log(second.replyUserId !== flagId)
                 let subObj = {
-                  id: item.userId,
+                  id: second.userId,
                   pid: ppid,
                   avatar: baseUrl + second.userEntity.avatar,
                   name: second.userEntity.nickname,
                   msg: second.commentMsg,
                   replayName: second.replyNickName,
-                  showReplay: second.replyUserId !== second.userId,
+                  showReplay: second.replyUserId !== flagId,
                   time: timeago(second.createTime)
                 }
                 obj.children.push(subObj)
