@@ -6,6 +6,7 @@ import { setLocale, getLocale } from '@/utils/localStorage.js'
 
 Vue.use(VueI18n);
 
+// 中英文切换
 let messages = {
   zh,
   en
