@@ -3,7 +3,10 @@ const messages = {
     save: '保存',
     uploadSuccess: '上传成功',
     remove: '删除',
-    finish: '完成'
+    finish: '完成',
+    login: '登录',
+    registe: '注册',
+    quit: '退出'
   },
   slider: {
     home: '首页',

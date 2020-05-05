@@ -3,7 +3,10 @@ const messages = {
     save: 'save',
     uploadSuccess: 'Uploaded successfully',
     remove: 'Remove',
-    finish: 'Finish'
+    finish: 'Finish',
+    login: 'Login',
+    registe: 'Registe',
+    quit: 'Quit'
   },
   slider: {
     home: 'Home',

@@ -90,10 +90,14 @@
       </div>
       <div class="btn-wrapper">
         <div class="register-btn">
-          <router-link to="/login">登录</router-link>
+          <router-link to="/login">{{$t('base.login')}}</router-link>
         </div>
         <div class="login-btn">
-          <router-link to="/registration">注册</router-link>
+          <router-link to="/registration">{{$t('base.registe')}}</router-link>
+        </div>
+        <div class="login-btn">
+          <a href="javascript:;" @click="quit">{{$t('base.quit')}}</a>
+          <!-- <router-link to="/registration">{{$t('base.quit')}}</router-link> -->
         </div>
       </div>
     </div>
@@ -148,7 +152,11 @@ export default {
       this.setIsMenu(false)
     },
     toHome() {
-      this.$router.push('/home')
+      this.$router.push('/home');
+    },
+    quit() {
+      this.setIsLogin(false);
+      this.setUserId(null);
     }
   },
   created() {
