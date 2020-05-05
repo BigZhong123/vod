@@ -13,10 +13,10 @@
                     class="type-btn">
                 {{item.name}}</div>
             </div>
+            <!-- 不做视频格式的限制 -->
             <Upload
                 class="upload-btn"
                 ref="upload"
-                :format="['mp4']"
                 :on-format-error="uploadErr"
                 action="http://101.133.165.169:8000/api/upload/video"
                 :on-success="handleVideoSuccess">

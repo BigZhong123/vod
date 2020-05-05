@@ -5,7 +5,6 @@ $bg-color-pink: #ff8f8f;
 $bg-color-green:#0bba4f;
 
 @mixin color_primary($color){
-  // color:$color;
   /*判断匹配*/
   [data-theme="light"] & {
     background-color: $bg-color-light;
