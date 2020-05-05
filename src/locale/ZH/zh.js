@@ -80,7 +80,10 @@ const messages = {
     format: '请上传正确格式的文件',
     size: '请选择5M以内的图片！',
     picOrDis: '请输入视频标题或介绍',
-    manage: '管理视频'
+    manage: '管理视频',
+    noLoginTip: '还未登录，赶紧去登录吧~',
+    noCollect: '暂无收藏的视频!',
+    noUpload: '暂无上传的视频!'
   }
 }
 

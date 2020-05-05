@@ -15,6 +15,7 @@
           :name="item.nickname"
           :orderNum="item.followCount"
           :videoNum="item.videoCount"
+          @click.native="toPage(item.id)"
           ></author-card>
       </div>
     </div>
@@ -27,7 +28,7 @@ export default {
   data () {
     return {
     }
-  }, 
+  },
   props: {
     authorList: {
       type: Array,
@@ -36,6 +37,17 @@ export default {
   },
   components: {
     AuthorCard
+  },
+  methods: {
+    toPage(id) {
+      console.log(111)
+      this.$router.push({
+        name: 'centerInfo',
+        params: {
+          id
+        }
+      })
+    }
   }
 }
 </script>

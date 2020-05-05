@@ -80,7 +80,10 @@ const messages = {
     format: 'Please upload the correct file format',
     size: 'Please select the picture within 5M!',
     picOrDis: 'Please enter video title or introduction',
-    manage: 'Manage Video'
+    manage: 'Manage Video',
+    noLoginTip: 'Not yet logged in, go log in~',
+    noCollect: 'No video collection!',
+    noUpload: 'Temporary no - upload video!'
   }
 }
 

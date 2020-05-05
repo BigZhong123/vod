@@ -1,6 +1,6 @@
 <template>
   <div class="mine" :style="{'min-height': minHeight + 'px'}">
-    <div v-if="!isLogin" style="padding: 10px">还未登录，赶紧去登录吧~</div>
+    <div v-if="!isLogin" style="padding: 10px">{{$t('mine.noLoginTip')}}</div>
     <div v-else>
       <div class="line"
         @click="handleShowavatar"

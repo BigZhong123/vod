@@ -4,7 +4,7 @@
       <div class="bg-wrapper">
         <img src="@/assets/images/order-bg.png" width="80%">
       </div>
-      <div class="tip">还未登录，赶紧去登录吧</div>
+      <div class="tip">{{$t('mine.noLoginTip')}}</div>
     </div>
     <div class="spin" v-else-if="isLoading">
       <Spin size="large" fix></Spin>

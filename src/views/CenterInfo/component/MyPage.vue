@@ -1,7 +1,10 @@
 <template>
   <div class="my-page">
       <div class="text">我的视频</div>
-      <div class="video-wrapper">
+      <div v-if="userVideoLists.length === 0" style="margin-left: 20px; margin-top: 10px">
+        {{$t('mine.noUpload')}}
+      </div>
+      <div class="video-wrapper" v-else>
         <tiny-video
           v-for="(item, index) in userVideoLists"
           :key="index"
