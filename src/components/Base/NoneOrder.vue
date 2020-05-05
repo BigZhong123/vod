@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     toPage(id) {
-      console.log(111)
       this.$router.push({
         name: 'centerInfo',
         params: {
