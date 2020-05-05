@@ -70,6 +70,9 @@ export default {
   },
   methods: {
     toMySubscribe() {
+      if(this.id !== this.userId) {
+        return;
+      }
       this.$router.push({
         name: 'mySubscribe',
         params: {
@@ -78,6 +81,9 @@ export default {
       })
     },
     toMyFollow() {
+      if(this.id !== this.userId) {
+        return;
+      }
       this.$router.push({
         name: 'myFollow',
         params: {
