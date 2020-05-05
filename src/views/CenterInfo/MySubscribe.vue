@@ -36,7 +36,7 @@ import { getMySubscribe } from "@/api/mine.js";
     methods: {
       getMySubscribe() {
         getMySubscribe(this.id).then(res => {
-          console.log(res)
+          // console.log(res)
           if(res.data.status === 1) {
             // console.log(res);
             const lists = res.data.data.userEntities;
