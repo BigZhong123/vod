@@ -1,6 +1,6 @@
 <template>
   <div class="my-subscribe">
-    <div v-if="userLists.length === 0" style="padding: 10px">暂无关注者，赶紧去关注吧！</div>
+    <div v-if="userLists.length === 0 || !hasSubscribe" style="padding: 10px">暂无关注者，赶紧去关注吧！</div>
     <div v-else>
       <div style="padding: 10px">我的关注</div>
       <author
@@ -24,7 +24,8 @@ import { getMySubscribe } from "@/api/mine.js";
     data() {
       return {
           userLists: [],
-          id: this.$route.params.id
+          id: this.$route.params.id,
+          hasSubscribe: true
       }
     },
     components: {
@@ -36,9 +37,9 @@ import { getMySubscribe } from "@/api/mine.js";
     methods: {
       getMySubscribe() {
         getMySubscribe(this.id).then(res => {
-          // console.log(res)
+          console.log(res)
           if(res.data.status === 1) {
-            // console.log(res);
+            this.hasSubscribe = res.data.data.hasSubscribes > 0 ? true : false
             const lists = res.data.data.userEntities;
             lists.forEach((item, index) => {
               lists[index].avatar = baseUrl + lists[index].avatar
