@@ -198,7 +198,7 @@ import ClickOutside from 'vue-click-outside';
       showSecond(index, e) {
         const data = this.firstComment[index];
         this.secondComment = data;
-        // console.log('second comment', this.secondComment);
+        console.log('second comment', this.secondComment);
         this.isSecond = true;
         this.setCommentModal(true);
         const top = this.fromTop;

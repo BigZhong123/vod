@@ -6,7 +6,19 @@ import MyPage from '../views/CenterInfo/component/MyPage.vue';
 import MyCollect from '../views/CenterInfo/component/MyCollect.vue';
 import MyFollow from '../views/CenterInfo/MyFollow.vue';
 import MySubscribe from '../views/CenterInfo/MySubscribe.vue';
-import Login from '../views/Login/Login.vue'
+import Login from '../views/Login/Login.vue';
+import Home from '../views/Home/Home.vue';
+import Registration from '../views/Register/Register.vue';
+import Popular from '../views/Popular/Popular.vue';
+import Order from '../views/Order/Order.vue';
+import Mine from '../views/Mine/Mine.vue';
+import Watch from '../views/Watch/Watch.vue';
+import UploadVideo from '../views/UploadVideo/UploadVideo.vue';
+import Cropper from '../components/Image/Cropper.vue';
+import CenterInfo from '../views/CenterInfo/CenterInfo.vue';
+import SearchResult from '../views/Home/SearchResult.vue';
+import ManageVideo from '../views/ManangeVideo/ManangeVideo.vue';
+import Edit from '../views/EditVideo/EditVideo.vue';
 
 Vue.use(VueRouter)
 
@@ -14,13 +26,13 @@ const routes = [
   {
     path: '*',
     name: 'home',
-    component: () => import('../views/Home/Home.vue')
+    component: Home
     // component: Home
   },
   {
     path: '/registration',
     name: 'register',
-    component: () => import('../views/Register/Register.vue')
+    component: Registration
   },
   {
     path: '/login',
@@ -30,27 +42,27 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: () => import('../views/Home/Home.vue')
+    component: Home
   }, {
     path: '/popular/:id',
     name: 'popular',
-    component: () => import('../views/Popular/Popular.vue')
+    component: Popular
   }, {
     path: '/popular',
     name: 'popularNone',
-    component: () => import('../views/Popular/Popular.vue')
+    component: Popular
   }, {
     path: '/order',
     name: 'order',
-    component: () => import('../views/Order/Order.vue')
+    component: Order
   }, {
     path: '/mine',
     name: 'mine',
-    component: () => import('../views/Mine/Mine.vue')
+    component: Mine
   }, {
     path: '/watch',
     name: 'watch',
-    component: () => import('../views/Watch/Watch.vue'),
+    component: Watch,
     children: [
       {
         path: '/watch/introduce',
@@ -67,15 +79,15 @@ const routes = [
   }, {
     path: '/upload',
     name: 'upload',
-    component: () => import('../views/UploadVideo/UploadVideo.vue')
+    component: UploadVideo
   }, {
     path: '/cropper',
     name: 'cropper',
-    component: () => import('../components/Image/Cropper.vue')
+    component: Cropper
   }, {
     path: '/centerInfo',
     name: 'centerInfo',
-    component: () => import('../views/CenterInfo/CenterInfo.vue'),
+    component: CenterInfo,
     children: [
       {
         path: '/centerInfo/myPage/:id',
@@ -91,7 +103,7 @@ const routes = [
   }, {
     path: '/search',
     name: 'search',
-    component: () => import('../views/Home/SearchResult.vue')
+    component: SearchResult
   }, {
     path: '/myFollow/:id',
     name: 'myFollow',
@@ -103,11 +115,11 @@ const routes = [
   }, {
     path: '/management',
     name: 'manageVideo',
-    component: () => import('../views/ManangeVideo/ManangeVideo.vue')
+    component: ManageVideo
   }, {
     path: '/edit',
     name: 'edit',
-    component: () => import('../views/EditVideo/EditVideo.vue')
+    component: Edit
   }
 ]
 
