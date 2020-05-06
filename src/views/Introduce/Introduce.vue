@@ -11,7 +11,7 @@
       <div class="info-right">
         <Icon type="md-heart" @click="showLove" :class="{'animation': isShowLove, 'isPink': isShowLove}" size="30" />
         <Icon type="ios-star" @click="showCollect" :class="{'animation': isShowCollect, 'isPink': isShowCollect}" size="30" />
-        <div class="order-btn" :style="{'background': isSubscribe ? '#ccc' : '#f98c8c'}">
+        <div class="order-btn" :style="{'background': isSubscribe ? '#ccc' : '#f98c8c'}" v-if="isToFollow && !isLogin">
           <span v-if="!isSubscribe" @click="addFollow">+ {{$t('introduce.follow')}}</span>
           <span v-else @click="cancelFollow">{{$t('introduce.followed')}}</span>
         </div>
@@ -78,7 +78,8 @@ export default {
       collectCount: 0,
       isSubscribe: false,
       upId: -1,
-      followCount: 0
+      followCount: 0,
+      isToFollow: true
     }
   },
   components: {
@@ -129,6 +130,7 @@ export default {
           this.loveCount = data.videoOperationEntity.likeCount;
           this.collectCount = data.videoOperationEntity.collectCount;
           this.upId = data.upId;
+          this.isToFollow = parseInt(data.upId) === parseInt(this.userId) ? false : true
           this.followCount = data.userEntity.followCount;
         }
       })
