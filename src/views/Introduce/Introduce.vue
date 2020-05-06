@@ -11,7 +11,7 @@
       <div class="info-right">
         <Icon type="md-heart" @click="showLove" :class="{'animation': isShowLove, 'isPink': isShowLove}" size="30" />
         <Icon type="ios-star" @click="showCollect" :class="{'animation': isShowCollect, 'isPink': isShowCollect}" size="30" />
-        <div class="order-btn" :style="{'background': isSubscribe ? '#ccc' : '#f98c8c'}" v-if="isToFollow && !isLogin">
+        <div class="order-btn" :style="{'background': isSubscribe ? '#ccc' : '#f98c8c'}" v-if="isToFollow || !isLogin">
           <span v-if="!isSubscribe" @click="addFollow">+ {{$t('introduce.follow')}}</span>
           <span v-else @click="cancelFollow">{{$t('introduce.followed')}}</span>
         </div>
@@ -79,7 +79,7 @@ export default {
       isSubscribe: false,
       upId: -1,
       followCount: 0,
-      isToFollow: true
+      isToFollow: false
     }
   },
   components: {
