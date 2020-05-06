@@ -7,16 +7,24 @@
       <div class="avatar-wrapper">
         <img :src="avatar">
       </div>
-      <div class="info-text">
-        <div class="name">{{name}}</div>
-        <div class="center-introduce">{{introduction}}</div>
-        <div class="follow-wrapper">
-          <div @click="toMyFollow">
-            <span>{{followCount}}</span>粉丝
+      <div class="info-btn-wrapper">
+        <div class="info-text">
+          <div class="name">{{name}}</div>
+          <div class="center-introduce">{{introduction}}</div>
+          <div class="follow-wrapper">
+            <div @click="toMyFollow">
+              <span>{{followCount}}</span>粉丝
+            </div>
+            <div @click="toMySubscribe">
+              <span style="margin-left: 10px;">{{subscribeCount}}</span>关注
+            </div>
           </div>
-          <div @click="toMySubscribe">
-            <span style="margin-left: 10px;">{{subscribeCount}}</span>关注
-          </div>
+        </div>
+        <div v-if="isToFollow || !isLogin">
+          <span class="btn" :style="{'background': isSubscribe ? '#ccc' : '#f98c8c'}">
+            <span v-if="!isSubscribe" @click="addFollow">+ {{$t('introduce.follow')}}</span>
+            <span v-else @click="cancelFollow">{{$t('introduce.followed')}}</span>
+          </span>
         </div>
       </div>
     </div>
@@ -38,39 +46,59 @@
 </template>
 
 <script>
-import { getUserInfo } from '@/api/mine.js';
+import { getUserInfo, getIsSubscribe } from '@/api/mine.js';
 import { baseUrl } from '@/api/home.js';
 import mixins from '@/utils/mixins.js';
+import { addFollow, cancelFollow } from '@/api/watch.js';
 export default {
   mixins: [mixins],
   data () {
     return {
       type: 1,
       minHeight: 0,
-      id: this.$route.params.id,
+      id: this.$route.params.id, // 该id下的主页
       avatar: '',
       name: '',
       introduction: '',
       followCount: 0,
-      subscribeCount: 0
+      subscribeCount: 0,
+      isSubscribe: false,
+      isToFollow: false
     }
   },
   created() {
     const height = document.documentElement.clientHeight || document.body.clientHeight;
     this.minHeight = height - 100;
-    // 获取用户信息
-    getUserInfo(this.id).then(res => {
-      if(res.data.status === 1) {
-        const data = res.data.data;
-        this.avatar = baseUrl + data.avatar;
-        this.name = data.nickname;
-        this.introduction = data.introduction;
-        this.followCount = data.followCount;
-        this.subscribeCount = data.subscribeCount;
-      }
-    })
+    // 是否显示关注按钮
+    this.isToFollow = parseInt(this.id) === parseInt(this.userId) ? false : true;
+    this.getUserInfo();
+    this.getIsSubscribe();
   },
   methods: {
+    getUserInfo() {
+      // 获取用户信息
+      getUserInfo(this.id).then(res => {
+        if(res.data.status === 1) {
+          const data = res.data.data;
+          this.avatar = baseUrl + data.avatar;
+          this.name = data.nickname;
+          this.introduction = data.introduction;
+          this.followCount = data.followCount;
+          this.subscribeCount = data.subscribeCount;
+        }
+      })
+    },
+    getIsSubscribe() {
+      if(!this.isLogin) {
+        return;
+      }
+      getIsSubscribe(this.userId, this.id).then(res => {
+        console.log(res)
+        if(res.data.status === 1) {
+          this.isSubscribe = res.data.data === 1;
+        }
+      })
+    },
     toMySubscribe() {
       if(parseInt(this.id) !== parseInt(this.userId)) {
         return;
@@ -90,6 +118,26 @@ export default {
         name: 'myFollow',
         params: {
           id: this.id
+        }
+      })
+    },
+    addFollow() {
+      if(!this.isLogin) {
+        this.$router.push('/login');
+        return;
+      }
+      this.isSubscribe = true;
+      addFollow(this.userId, this.id).then(res => {
+        if(res.status === 0) {
+          this.isSubscribe = false;
+        }
+      })
+    },
+    cancelFollow() {
+      this.isSubscribe = false;
+      cancelFollow(this.userId, this.id).then(res => {
+        if (res.status === 0) {
+          this.isSubscribe = true;
         }
       })
     }
@@ -120,19 +168,28 @@ export default {
         border-radius: 50%;
       }
     }
-    .info-text {
-      position: relative;
-      top: -15px;
-      .name {
-        color: black;
-        font-size: 14px;
+    .info-btn-wrapper {
+      display: flex;
+      justify-content: space-between;
+      .info-text {
+        position: relative;
+        top: -15px;
+        .name {
+          color: black;
+          font-size: 14px;
+        }
+        .introduction {
+          color: black;
+          font-size: 14px;
+        }
+        .follow-wrapper {
+          display: flex;
+        }
       }
-      .introduction {
-        color: black;
-        font-size: 14px;
-      }
-      .follow-wrapper {
-        display: flex;
+      .btn {
+        background: #f98c8c;
+        padding: 5px;
+        color: white;
       }
     }
   }

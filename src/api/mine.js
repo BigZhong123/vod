@@ -87,3 +87,15 @@ export const getMyFollow = function(userId) {
         params
     })
 }
+
+// 判断一个用户是否关注另外一个用户
+export const getIsSubscribe = function(userId, upId) {
+    const url = '/api/follow/has_subscribe';
+    const params = {
+        user_id: userId,
+        up_id: upId
+    }
+    return axios.get(url, {
+        params
+    })
+}

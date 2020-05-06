@@ -2,7 +2,7 @@
   <div class="introduce">
     <div class="up-info">
       <div class="info-left">
-        <img :src="upAvatar">
+        <img :src="upAvatar" @click="toCenterInfo">
         <div style="margin-left: 10px">
           <span>{{upName}}</span>
           <div>{{followCount}}粉丝</div>
@@ -146,6 +146,14 @@ export default {
       } else {
         cancelLikeVideo(this.userId, this.currentVideoId);
       }
+    },
+    toCenterInfo() {
+      this.$router.push({
+        name: 'centerInfo',
+        params: {
+          id: this.upId
+        }
+      })
     },
     showCollect() {
       if(!this.isLogin) {
