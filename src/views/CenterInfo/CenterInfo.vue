@@ -40,7 +40,9 @@
 <script>
 import { getUserInfo } from '@/api/mine.js';
 import { baseUrl } from '@/api/home.js';
+import mixins from '@/utils/mixins.js';
 export default {
+  mixins: [mixins],
   data () {
     return {
       type: 1,
@@ -70,7 +72,7 @@ export default {
   },
   methods: {
     toMySubscribe() {
-      if(this.id !== this.userId) {
+      if(parseInt(this.id) !== parseInt(this.userId)) {
         return;
       }
       this.$router.push({
@@ -81,7 +83,7 @@ export default {
       })
     },
     toMyFollow() {
-      if(this.id !== this.userId) {
+      if(parseInt(this.id) !== parseInt(this.userId)) {
         return;
       }
       this.$router.push({
