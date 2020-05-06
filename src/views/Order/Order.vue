@@ -16,7 +16,7 @@
       <div v-else>
         <div v-for="(item, index) in videoLists"
          :key="index"
-         @click="toWatch(item.videoEntity.savePath, item.videoEntity.id, item.videoEntity.partitionId)">
+         @click="toWatch(item.videoView.savePath, item.videoView.id, item.videoView.partitionId)">
           <video-card
             :upId="item.videoView.upId"
             :cover="item.videoView.img"
@@ -93,6 +93,7 @@ export default {
           lists[i].videoView.userEntity.avatar = baseUrl + lists[i].videoView.userEntity.avatar;
         }
         this.videoLists = lists;
+        // console.log(this.videoLists)
       }).finally(() => {
         this.setIsLoading(false);
       })
