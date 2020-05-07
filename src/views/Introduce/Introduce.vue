@@ -143,8 +143,10 @@ export default {
       this.isShowLove = !this.isShowLove;
       if (this.isShowLove) {
         likeVideo(this.userId, this.currentVideoId);
+        this.loveCount++
       } else {
         cancelLikeVideo(this.userId, this.currentVideoId);
+        this.loveCount--
       }
     },
     toCenterInfo() {
@@ -163,8 +165,10 @@ export default {
       this.isShowCollect = !this.isShowCollect;
       if (this.isShowCollect) {
         collectVideo(this.userId, this.currentVideoId);
+        this.collectCount++
       } else {
         cancelCollectVideo(this.userId, this.currentVideoId);
+        this.collectCount--
       }
     },
     getRandomPart() {
@@ -187,6 +191,7 @@ export default {
         return;
       }
       this.isSubscribe = true;
+      this.followCount++
       addFollow(this.userId, this.upId).then(res => {
         if(res.status === 0) {
           this.isSubscribe = false;
@@ -195,6 +200,7 @@ export default {
     },
     cancelFollow() {
       this.isSubscribe = false;
+      this.followCount--
       cancelFollow(this.userId, this.upId).then(res => {
         if (res.status === 0) {
           this.isSubscribe = true;

@@ -93,7 +93,6 @@ export default {
         return;
       }
       getIsSubscribe(this.userId, this.id).then(res => {
-        console.log(res)
         if(res.data.status === 1) {
           this.isSubscribe = res.data.data === 1;
         }
