@@ -5,7 +5,7 @@
           <img :src="imgPath">
           <div class="click-count">
               <Icon type="logo-youtube" size="10" />
-              {{clickCount}}w
+              {{clickCount}}
           </div>
           <div class="video-length">
               {{length}}
