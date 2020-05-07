@@ -274,7 +274,10 @@ export default {
         height: 40px;
         box-sizing: border-box;
         padding-left: 10px;
-        line-height: 40px;
+        // line-height: 40px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
         padding: 10px;
         border: 1px solid #dcdee2;
         border-radius: 4px;

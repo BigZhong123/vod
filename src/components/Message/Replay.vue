@@ -7,6 +7,7 @@
       <div class="left">
         <input
           v-focus="focusType"
+          class="reply-input"
           name="sendReport"
           :value="value"
           :placeholder="tips"
@@ -151,7 +152,10 @@ export default {
         display: inline-block;
         width: 100%;
         height: 32px;
-        line-height: 1.5;
+        // line-height: 1.5;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
         padding: 4px 7px;
         font-size: 14px;
         border: 1px solid #dcdee2;
