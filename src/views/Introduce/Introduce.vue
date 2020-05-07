@@ -195,6 +195,7 @@ export default {
       addFollow(this.userId, this.upId).then(res => {
         if(res.status === 0) {
           this.isSubscribe = false;
+          this.followCount--
         }
       })
     },
@@ -204,6 +205,7 @@ export default {
       cancelFollow(this.userId, this.upId).then(res => {
         if (res.status === 0) {
           this.isSubscribe = true;
+          this.followCount++
         }
       })
     }
