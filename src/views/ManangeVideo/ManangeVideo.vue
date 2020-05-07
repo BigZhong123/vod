@@ -1,7 +1,7 @@
 <template>
   <div class="manage-video">
     <div class="nav">
-        <div class="back" id="cancel">
+        <div class="back" id="cancel" @click="back">
             <Icon type="ios-arrow-back" size="20" />
         </div>
         <div class="save" id="button" v-if="isRemove" @click="isRemove = !isRemove">{{$t('base.remove')}}</div>
@@ -118,6 +118,9 @@ import { deleteVideo } from '@/api/management.js'
             this.setIsNav(false);
             this.setIsSlider(false);
         },
+        back() {
+            history.go(-1)
+        }
     },
     destroyed() {
         this.show()
