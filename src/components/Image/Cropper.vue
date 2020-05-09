@@ -17,7 +17,7 @@
           class="save"
           id="button"
           @click="commit"
-        >保存</div>
+        >{{$t('base.save')}}</div>
       </div>
       <div class="cropper-img">
         <img
@@ -65,7 +65,7 @@
               size="30"
             />
           </div>
-          <span>本地上传</span>
+          <span>{{$t('base.localUpload')}}</span>
         </div>
       </div>
     </div>

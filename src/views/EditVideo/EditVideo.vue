@@ -1,9 +1,9 @@
 <template>
     <div class="upload-video" :style="{'min-height': minHeight + 'px'}">
         <div class="form">
-            <input type="text" v-model="title" class="item-input" placeholder="请输入视频标题">
-            <input type="text" v-model="instroduction" class="item-input" placeholder="请输入视频介绍">
-            <div class="tip" :style="{'color': noneType ? 'red' : 'black'}">请选择一个分类</div>
+            <input type="text" v-model="title" class="item-input" :placeholder="$t('base.inputVideoTitle')">
+            <input type="text" v-model="instroduction" class="item-input" :placeholder="$t('base.inputVideoInstr')">
+            <div class="tip" :style="{'color': noneType ? 'red' : 'black'}">{{$t('base.selectType')}}</div>
             <div class="type">
                 <div
                     v-for="item in opts"
@@ -13,7 +13,7 @@
                     class="type-btn">
                 {{item.name}}</div>
             </div>
-            <div class="confirm-btn" @click="update">修改</div>
+            <div class="confirm-btn" @click="update">{{$t('base.modify')}}</div>
         </div>
     </div>
 </template>

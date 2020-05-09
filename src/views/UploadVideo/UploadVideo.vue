@@ -1,9 +1,9 @@
 <template>
     <div class="upload-video" :style="{'min-height': minHeight + 'px'}">
         <div class="form">
-            <input type="text" v-model="title" class="item-input" placeholder="请输入视频标题">
-            <input type="text" v-model="instroduction" class="item-input" placeholder="请输入视频介绍">
-            <div class="tip" :style="{'color': noneType ? 'red' : 'black'}">请选择一个分类</div>
+            <input type="text" v-model="title" class="item-input" :placeholder="$t('base.inputVideoTitle')">
+            <input type="text" v-model="instroduction" class="item-input" :placeholder="$t('base.inputVideoInstr')">
+            <div class="tip" :style="{'color': noneType ? 'red' : 'black'}">{{$t('base.selectType')}}</div>
             <div class="type">
                 <div
                     v-for="item in opts"
@@ -20,10 +20,10 @@
                 :on-format-error="uploadErr"
                 action="http://101.133.165.169:8000/api/upload/video"
                 :on-success="handleVideoSuccess">
-                <Button class="btn" icon="ios-cloud-upload-outline">上传视频</Button>
+                <Button class="btn" icon="ios-cloud-upload-outline">{{$t('base.uploadVideo')}}</Button>
             </Upload>
             <div class="cover-img" v-if="imgPath && imgPath.length > 0">
-                <div class="tip" :style="{'color': noneImg ? 'red' : 'black'}">请选择一张封面</div>
+                <div class="tip" :style="{'color': noneImg ? 'red' : 'black'}">{{$t('base.selectCover')}}</div>
                 <div class="img-wrapper">
                     <img
                         v-for="(item, index) in imgPath"
@@ -34,7 +34,7 @@
                     >
                 </div>
             </div>
-            <div class="confirm-btn" @click="upload">上传</div>
+            <div class="confirm-btn" @click="upload">{{$t('base.upload')}}</div>
         </div>
     </div>
 </template>
@@ -83,7 +83,7 @@ import mixins from '@/utils/mixins.js';
             }
         },
         uploadErr() {
-            this.$Message.error('请上传正确格式的文件')
+            this.$Message.error(this.renderI18nKey('base.uploadCorrectTip'))
         },
         seceltRealPart(index) {
             this.realPart = index;

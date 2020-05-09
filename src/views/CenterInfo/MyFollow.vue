@@ -1,10 +1,10 @@
 <template>
   <div class="my-subscribe">
     <div style="padding: 10px" v-if="userLists.length === 0">
-      暂无粉丝，赶紧去发布作品吧!
+      {{$t('base.noFansTip')}}
     </div>
     <div v-else>
-      <div style="padding: 10px">我的粉丝</div>
+      <div style="padding: 10px">{{$t('base.myFans')}}</div>
       <author
         v-for="(item, index) in userLists"
         :key="index"

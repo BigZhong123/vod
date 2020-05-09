@@ -1,7 +1,7 @@
 <template>
   <div class="search-result" :style="{'min-height': minHeight + 'px'}">
     <div class="user-lists" v-if="userResult.length > 0">
-      <div style="padding-left: 10px;">用户</div>
+      <div style="padding-left: 10px;">{{$t('base.user')}}</div>
       <author
         v-for="(item, index) in userResult"
         :key="index"
@@ -13,7 +13,7 @@
       ></author>
     </div>
     <div class="video-lists" v-if="videoResult.length > 0">
-      <div style="padding-left: 10px;">视频</div>
+      <div style="padding-left: 10px;">{{$t('base.video')}}</div>
       <small-video
         v-for="(item, i) in videoResult"
         :isClick="false"
@@ -26,7 +26,7 @@
       ></small-video>
     </div>
     <div v-if="userResult.length === 0 && videoResult.length === 0" style="padding: 10px">
-      暂无搜索结果
+      {{$t('base.noSearchResult')}}
     </div>
   </div>
 </template>

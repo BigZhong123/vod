@@ -11,11 +11,11 @@
       :tips="tips"
       @send="send"></replay>
     <div class="take-reply">
-      <Input v-model="replyMsg" placeholder="说点什么把~" @on-enter="replyVideo"/>
-      <span class="send-text" @click="replyVideo">发送</span>
+      <Input v-model="replyMsg" :placeholder="$t('base.saySomething')" @on-enter="replyVideo"/>
+      <span class="send-text" @click="replyVideo">{{$t('base.send')}}</span>
     </div>
-    <div style="padding: 10px 0 0 20px;">热门评论</div>
-    <div style="padding-left: 10px;" v-if="firstComment.length === 0">暂无评论噢，快去评论吧~</div>
+    <div style="padding: 10px 0 0 20px;">{{$T('base.hotComment')}}</div>
+    <div style="padding-left: 10px;" v-if="firstComment.length === 0">{{$t('base.noCommentTip')}}</div>
     <div class="comment-wrapper" v-else>
       <div
         v-for="(item, index) in firstComment"
@@ -44,7 +44,7 @@
               <div class="sub-msg">{{sub.msg}}</div>
             </div>
           </div>
-          <div style="color: #7373ff;">查看全部回复</div>
+          <div style="color: #7373ff;">{{$t('base.allReply')}}</div>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
               <div class="other-name">{{item.name}}</div>
               <div>
                 <span v-if="item.showReplay">
-                  回复
+                  {{$t('base.reply')}}
                   <span style="color: #7373ff;">{{item.replayName}}</span>
                   ：
                 </span>
@@ -221,7 +221,7 @@ import ClickOutside from 'vue-click-outside';
         }
         addComment(this.replyMsg, 0, 0, this.userId, this.currentVideoId).then(res => {
           if(res.data.status === 1) {
-            this.$Message.success('评论成功');
+            this.$Message.success(this.renderI18nKey('base.commentSuccess'));
             this.getComment(this.currentVideoId, this.currentPage, this.pageSize);
             this.replyMsg = '';
           }
@@ -234,7 +234,7 @@ import ClickOutside from 'vue-click-outside';
         this.isSecond = false;
         addComment(this.value, this.pid, this.replyId, this.userId, this.currentVideoId).then(res => {
           if(res.data.status === 1) {
-            this.$Message.success('回复成功');
+            this.$Message.success(this.renderI18nKey('base.replySuccess'));
             this.value = '';
             this.getComment(this.currentVideoId, this.currentPage, this.pageSize);
           }

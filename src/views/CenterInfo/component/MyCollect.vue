@@ -1,6 +1,6 @@
 <template>
   <div class="my-page">
-      <div class="text">我的收藏</div>
+      <div class="text">{{$t('base.myCollect')}}</div>
       <div v-if="userVideoLists.length == 0" style="margin-left: 20px; margin-top: 10px">
         {{$t('mine.noCollect')}}
       </div>

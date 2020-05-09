@@ -167,7 +167,7 @@ export default {
       this.showUpdate = false;
     },
     uploadErr() {
-      this.$Message.error('请上传正确的文件格式')
+      this.$Message.error(this.renderI18nKey('base.uploadCorrectTip'))
     },
     handleAvatarSuccess(data) {
       this.avatarInfo =  data;

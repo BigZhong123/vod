@@ -33,7 +33,7 @@
               @click="cancelSearch"
               size="20" />
         <Input v-model="searchContent"
-               placeholder="在SUNTV中搜索..."
+               :placeholder="$t('base.searchInSystem')"
                class="search-ipt"
                @keyup.enter.native="search"
         />
@@ -49,12 +49,12 @@
              @click="toSearch(item)"
              class="history">
           <div>{{item}}</div>
-          <div @click="removeHistory(index, $event)">移除</div>
+          <div @click="removeHistory(index, $event)">{{$t('base.remove')}}</div>
         </div>
       </div>
       <div class="search-history"
            v-else>
-        <div class="history">暂无历史搜索内容...</div>
+        <div class="history">{{$t('base.historySearch')}}</div>
       </div>
       <div class="search-outside"
            @click="cancelSearch"></div>

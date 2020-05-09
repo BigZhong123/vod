@@ -5,7 +5,7 @@
         <img :src="upAvatar" @click="toCenterInfo">
         <div style="margin-left: 10px">
           <span>{{upName}}</span>
-          <div>{{followCount}}粉丝</div>
+          <div>{{followCount}}{{$t('base.fans')}}</div>
         </div>
       </div>
       <div class="info-right">
@@ -25,15 +25,15 @@
       <div style="display: flex; align-items: center">
         <div class="click-count">
           <Icon type="logo-youtube" size="10" />
-          {{clickCount}}观看
+          {{clickCount}}{{$t('base.watchTime')}}
         </div>
         <div class="click-count" style="margin-left: 8px;">
           <Icon type="md-heart" size="10" />
-          {{loveCount}}点赞
+          {{loveCount}}{{$t('base.like')}}
         </div>
         <div class="click-count" style="margin-left: 8px;">
           <Icon type="ios-star" size="10" />
-          {{collectCount}}收藏
+          {{collectCount}}{{$t('base.collect')}}
         </div>
       </div>
     </div>

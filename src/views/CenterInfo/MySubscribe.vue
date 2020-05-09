@@ -1,8 +1,8 @@
 <template>
   <div class="my-subscribe">
-    <div v-if="userLists.length === 0 || !hasSubscribe" style="padding: 10px">暂无关注者，赶紧去关注吧！</div>
+    <div v-if="userLists.length === 0 || !hasSubscribe" style="padding: 10px">{{$t('base.noFollowersTip')}}</div>
     <div v-else>
-      <div style="padding: 10px">我的关注</div>
+      <div style="padding: 10px">{{$t('base.myFollower')}}</div>
       <author
         v-for="(item, index) in userLists"
         :key="index"

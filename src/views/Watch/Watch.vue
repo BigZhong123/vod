@@ -5,8 +5,8 @@
     </div>
     <div class="classification">
       <div class="class-type">
-        <router-link :to="{path: '/watch/introduce'}" @click.native="type = 1">视频简介</router-link>
-        <router-link :to="{path: '/watch/comment'}" @click.native="type = 2">精选评论</router-link>
+        <router-link :to="{path: '/watch/introduce'}" @click.native="type = 1">{{$t('base.introduction')}}</router-link>
+        <router-link :to="{path: '/watch/comment'}" @click.native="type = 2">{{$t('base.comment')}}</router-link>
       </div>
       <div class="b-bottom" :class="{'right': type === 2}"></div>
     </div>

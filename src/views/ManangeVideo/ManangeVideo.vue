@@ -94,7 +94,7 @@ import { deleteVideo } from '@/api/management.js'
                     this.selectVideoArr = [];
                     this.isRemove = !this.isRemove;
                     this.getUserVideo();
-                    this.$Message.success('删除成功')
+                    this.$Message.success(this.renderI18nKey('base.removeSuccess'));
                 }
             })
         },

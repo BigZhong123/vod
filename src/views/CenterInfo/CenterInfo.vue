@@ -13,10 +13,10 @@
           <div class="center-introduce">{{introduction}}</div>
           <div class="follow-wrapper">
             <div @click="toMyFollow">
-              <span>{{followCount}}</span>粉丝
+              <span>{{followCount}}</span>{{$t('base.fans')}}
             </div>
             <div @click="toMySubscribe">
-              <span style="margin-left: 10px;">{{subscribeCount}}</span>关注
+              <span style="margin-left: 10px;">{{subscribeCount}}</span>{{$t('base.follower')}}
             </div>
           </div>
         </div>
@@ -30,10 +30,10 @@
     </div>
     <div class="router-opts">
       <div class="opt">
-        <router-link :to="{path: `/centerInfo/myPage/${$route.params.id}`}" @click.native="type = 1">主页</router-link>
+        <router-link :to="{path: `/centerInfo/myPage/${$route.params.id}`}" @click.native="type = 1">{{$t('base.myPage')}}</router-link>
       </div>
       <div class="opt">
-        <router-link :to="{path: `/centerInfo/myCollect/${$route.params.id}`}" @click.native="type = 2">收藏</router-link>
+        <router-link :to="{path: `/centerInfo/myCollect/${$route.params.id}`}" @click.native="type = 2">{{$t('base.collect')}}</router-link>
       </div>
       <div class="slider" :class="{'right': type === 2}"></div>
     </div>

@@ -13,7 +13,7 @@
           :placeholder="tips"
           @change="handleChange($event)"></div>
       <div class="right" @click="send">
-        <span>发送</span>
+        <span>{{$t('base.send')}}</span>
       </div>
     </div>
     <div

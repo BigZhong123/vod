@@ -20,7 +20,7 @@
             {{name}}
           </div>
           <div class="num-time">
-            <span>{{num}}次观看</span>
+            <span>{{num}}{{$t('base.watchTime')}}</span>
             <span class="dot"></span>
             <span>{{time}}</span>
           </div>

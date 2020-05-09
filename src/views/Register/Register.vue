@@ -230,7 +230,7 @@ export default {
         toRegister(this.registerInfo).then((res) => {
           if (res.data.status === 1) {
             this.$Message.success({
-              content: '注册成功，去登录',
+              content: this.renderI18nKey('base.registerSuccess'),
             });
             this.$router.push('/login')
           } else {
